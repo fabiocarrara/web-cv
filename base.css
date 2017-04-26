@@ -1,0 +1,48 @@
+
+#foto {
+	float: right;
+	height: 200px;
+}
+
+
+
+
+
+body {
+	font-family: sans-serif;
+}
+
+#generalita .nome, #generalita .cognome {
+	font-weight: bold;
+	font-size: 2.5em;
+}
+
+#generalita .cognome:after {
+	content: "\A";
+	white-space: pre;
+	
+}
+
+#generalita .nato-a, #generalita .nato-il {
+	color: #555;
+}
+
+#residenza. #contatti, #misc {
+	float: left;
+	clear: left;
+}
+
+#residenza:before {
+	content: 'Residenza:';
+	font-weight: bold;
+}
+
+
+
+
+
+#dati-personali {
+	height: 200px;
+}
+
+
