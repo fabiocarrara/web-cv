@@ -3,27 +3,38 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Curriculum Vitae di Fabio Carrara (Versione Italiana)</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"  crossorigin="anonymous"> -->
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 	<link href="base.css" rel="stylesheet" type="text/css">
 </head>
 <!-- TODO:
-	- glyphicons con bootstrap
 	- h1, h2, h3 e poi nasconderli con CSS
 -->
-<body>
+<body class="container">
+    <header>
+        <img id="foto" src="foto.png" alt="Foto Fabio Carrara">
+        <h1><span class="nome">Fabio</span> <span class="cognome">Carrara</span> <small>Curriculum Vitae</small></h1>
+    </header>
 	<div id="dati-personali">
+        <h2>Dati Personali</h2>
 		<div id="generalita">
-			<img id="foto" src="foto.png" alt="Foto Fabio Carrara">
-			<span class="nome">Fabio</span>
-			<span class="cognome">Carrara</span>
 			<span class="nato-a">Empoli (FI)</span>
-			<span class="nato-il">23/07/1990</span>
+			<time class="nato-il" datetime="1990/07/23">23 Luglio 1990</time>
 		</div>
 		<div id="residenza">
+            <h3>Residenza</h3>
 			<span class="residente-a">Empoli (FI)</span>
 			<span class="via">Via Jacopo Carrucci, 48</span>
 			<span class="cap">50053</span>
 		</div>
 		<div id="contatti">
+            <h3>Contatti</h3>
 			<a class="telefono" href="tel:+393332479082">+39 3332479082</a>
 			<a class="email" href="mailto:fabio.carrara90@gmail.com">fabio.carrara90@gmail.com</a>
 		</div>
@@ -32,72 +43,85 @@
 		</div>
 	</div>
 	<div id="educazione">
+        <h2>Educazione</h2>
 		<div class="titolo-di-studio corrente">
-			<span class="titolo">Corso di Dottorato di Ricerca in Ingegneria dell'Informazione</span>
+			<h3 class="titolo">Corso di Dottorato di Ricerca in Ingegneria dell'Informazione</h3>
+			<span class="quando">2015 - 2018 (previsto)</span>
 			<span class="dove">Università di Pisa</span>
 			<span class="descrizione">Titolo da conseguire, vincitore di Borsa ISTI A.Faedo CNR per attività di ricerca su ‘Rilevamento e Riconoscimento Visuale Automatico di Oggetti’</span>
-			<span class="quando">2015 - 2018 (previsto)</span>
-			<ul class="corsi">
-				<li>
-					<span class="titolo-corso">Game Theory and Optimization in communications and Networking</span>
-					<span class="tenuto-da">M. Luise, L.Sanguinetti</span>
-					<span class="durata">16h (4 CFU)</span>
-				</li>
-				<li>
-					<span class="titolo-corso">Machine Learning Techniques and Selected Applications for Big Data</span>
-					<span class="tenuto-da">M. Stewin</span>
-					<span class="durata">20h (5 CFU)</span>
-				</li>
-				<li>
-					<span class="titolo-corso">Signal Processing and Mining of Big Data: Biological Data as Case Study</span>
-					<span class="tenuto-da">G. Coro</span>
-					<span class="durata">20h (5 CFU)</span>
-				</li>
-				<li>
-					<span class="titolo-corso">Multi-modal Registration of Visual Data</span>
-					<span class="tenuto-da">M. Corsini</span>
-					<span class="durata">15h (4 CFU)</span>
-				</li>
-				<li>
-					<span class="titolo-corso">Academic Writing and Presentation Skills</span>
-					<span class="tenuto-da">J. Spataro</span>
-					<span class="durata">30h (4 CFU)</span>
-				</li>
-				<li>
-					<span class="titolo-corso">Linked Open Data: a paradigm for the Semantic Web</span>
-					<span class="tenuto-da">A. Lo Duca</span>
-					<span class="durata">12h (3 CFU)</span>
-				</li>
-			</ul>
+            <div class="corsi panel panel-default">
+                <div class="panel-heading">Corsi di Dottorato Frequentati</div>
+                <table class="table table-condensed table-striped">
+                    <thead>
+                        <tr>
+                            <th class="titolo-corso">Titolo Corso</th>
+                            <th class="tenuto-da">Tenuto Da</th>
+                            <th class="durata">Durata</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="titolo-corso">Game Theory and Optimization in communications and Networking</td>
+                            <td class="tenuto-da">M. Luise, L.Sanguinetti</td>
+                            <td class="durata">16h (4 CFU)</td>
+                        </tr>
+                        <tr>
+                            <td class="titolo-corso">Machine Learning Techniques and Selected Applications for Big Data</td>
+                            <td class="tenuto-da">M. Stewin</td>
+                            <td class="durata">20h (5 CFU)</td>
+                        </tr>
+                        <tr>
+                            <td class="titolo-corso">Signal Processing and Mining of Big Data: Biological Data as Case Study</td>
+                            <td class="tenuto-da">G. Coro</td>
+                            <td class="durata">20h (5 CFU)</td>
+                        </tr>
+                        <tr>
+                            <td class="titolo-corso">Multi-modal Registration of Visual Data</td>
+                            <td class="tenuto-da">M. Corsini</td>
+                            <td class="durata">15h (4 CFU)</td>
+                        </tr>
+                        <tr>
+                            <td class="titolo-corso">Academic Writing and Presentation Skills</td>
+                            <td class="tenuto-da">J. Spataro</td>
+                            <td class="durata">30h (4 CFU)</td>
+                        </tr>
+                        <tr>
+                            <td class="titolo-corso">Linked Open Data: a paradigm for the Semantic Web</td>
+                            <td class="tenuto-da">A. Lo Duca</td>
+                            <td class="durata">12h (3 CFU)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 		</div>
 		
 		<div class="titolo-di-studio">
-			<span class="titolo">Abilitazione all'esercizio della professione di Ingegnere dell'Informazione</span>
-			<span class="dove">Università di Pisa</span>
+			<h3 class="titolo">Abilitazione all'esercizio della professione di Ingegnere dell'Informazione</h3>
 			<span class="quando todo">2015</span>
+			<span class="dove">Università di Pisa</span>
 			<span class="descrizione">Ha conseguito l’abilitazione alla professione di Ingegnere dell’Informazione, Sezione A</span>
 		</div>
 		
 		<div class="titolo-di-studio">
-			<span class="titolo">Laurea Magistrale in Ingegneria Informatica (Computer Engineering)</span>
-			<span class="dove">Università di Pisa</span>
-			<span class="voto">110 e Lode / 110</span>
+			<h3 class="titolo">Laurea Magistrale in Ingegneria Informatica (Computer Engineering)</h3>
+			<span class="voto label label-info">110 e Lode / 110</span>
 			<span class="quando">2012 - 2015</span>
+			<span class="dove">Università di Pisa</span>
 			<span class="data">20 Febbraio 2015</span>
 			<span class="descrizione">Ha conseguito la Laurea Magistrale in Computer Engineering (Ingegneria Informatica, con corsi ed esami sostenuti in lingua inglese) presso l’Università di Pisa in data 20 Febbraio 2015</span>
-			
-			<div class="tesi">
-				<span class="titolo-tesi">Design and implementation of a system for incremental real-time visual object detection and autonomous recognition</span>
-				<ul class="relatori-tesi">
-					<li>Dott. Giuseppe Amato</li>
-					<li>Dott. Claudio Gennaro</li>
-					<li>Prof. Francesco Marcelloni</li>
-				</ul>
-				<span class="ref">Diploma n. 293222, Pisa, 15 Settembre 2015</span>
-				<p class="abstract">In this work, a system for incremental real-time visual object detection and autonomous recognition is presented. Object detection is based on a novel interest point-based background subtraction method. Objects are incrementally learnt by collecting observations in real-time. Experiments have been performed on publicly available datasets to evaluate the detection task and the ability of the system to build good clusters of observations.</p>
-			</div>
-			
-			<table class="esami">
+			<div class="tesi panel panel-default">
+                <div class="panel-heading">Tesi di Laurea</div>
+                <table class="table table-condensed">
+                    <tbody>
+                        <tr><th>Titolo</th> <td class="titolo-tesi">Design and implementation of a system for incremental real-time visual object detection and autonomous recognition</td></tr>
+                        <tr><th>Relatori</th> <td class="relatori-tesi">Dott. Giuseppe Amato, Dott. Claudio Gennaro, Prof. Francesco Marcelloni</td></tr>
+                        <tr><th>Abstract</th> <td class="abstract text-justify">In this work, a system for incremental real-time visual object detection and autonomous recognition is presented. Object detection is based on a novel interest point-based background subtraction method. Objects are incrementally learnt by collecting observations in real-time. Experiments have been performed on publicly available datasets to evaluate the detection task and the ability of the system to build good clusters of observations.</td></tr>
+                        <tr><th>Rif.</th> <td class="ref">Diploma n. 293222, Pisa, 15 Settembre 2015</td></tr>
+                    </tbody>
+                </table>
+            </div>
+			<!-- TODO panel! -->
+			<table class="esami table table-condensed table-striped">
 				<thead>
 					<tr><th>Anno di Corso</th><th>Attività Didattiche</th><th>CFU</th><th>Voto</th><th>Data Esame</th></tr>
 				</thead>
@@ -120,7 +144,7 @@
 		</div>
 		
 		<div class="titolo-di-studio">
-			<span class="titolo">Laurea in Ingegneria dell’Informazione</span>
+			<h3 class="titolo">Laurea in Ingegneria dell’Informazione</h3>
 			<span class="dove">Università di Pisa</span>
 			<span class="voto">110 e Lode / 110</span>
 			<span class="quando">2009 - 2012</span>
@@ -174,7 +198,7 @@
 		</div>
 		
 		<div class="titolo-di-studio">
-			<span class="titolo">Maturità Scientifica</span>
+			<h3 class="titolo">Maturità Scientifica</h3>
 			<span class="dove">Liceo Scientifico Il Pontormo, Via Raffaello Sanzio, 159, 50053 Empoli FI</span>
 			<span class="voto">100 / 100</span>
 			<span class="quando">2004 - 2009</span>
@@ -182,6 +206,7 @@
 		
 	</div>
 	<div id="professioni">
+        <h2>Esperienze Lavorative</h2>
 		<div class="esperienza-lavorativa corrente">
 			<span class="cosa">Assegnista di ricerca su tematica "Analisi automatica di dati visuali"</span>
 			<span class="dove">Istituto di Scienza e Tecnologia dell’Informazione “A.Faedo” - CNR - Pisa</span>
@@ -206,7 +231,7 @@
 		</div>
 	</div>
 	<div id="lingue">
-		
+		<h2>Certificazioni Linguistiche</h2>
 		<div class="certificazione todo">
 			<span class="cosa">Certificazione di Lingua Inglese (Livello C1 - TODO)</span>
 			<span class="dove">Pisa</span>
@@ -229,6 +254,7 @@
 		</div>
 	</div>
 	<div id="informatica todo">
+        <h2>Competenze Informatiche</h2>
 		<ul class="linguaggi">
 			Linguaggi di Programmazione / Scripting / Markup
 			<li>Python</li>
@@ -292,6 +318,7 @@
 		</ul>
 	</div>
 	<div id="presentazioni-orali">
+        <h2>Presentazioni Orali</h2>
 		<div class="talk">
 			<span class="congresso">ISCC 2016: The Twenty-First IEEE Symposium on Computers and Communications</span>
 			<span class="dove">Messina, Italy, 27 - 30 June, 2016</span>
@@ -307,6 +334,7 @@
 		</div>
 	</div>
 	<div id="revisione">
+        <h2>Attività di revisione</h2>
 		<ul class="riviste">
 			<li>Information Systems (Elsevier, ISSN: 0306-4379)</li>
 		</ul>
@@ -314,8 +342,8 @@
 			<li>IEEE Symposium on Computers and Communications (ISCC 2016)</li>
 		</ul>
 	</div>
-	<div id="pubblicationi">
-		Authors	Title	Publication	Volume	Number	Pages	Year	Publisher
+	<div id="pubblicazioni">
+        <h2>Pubblicazioni</h2>
 		<div class="pub">
 			<span class="autori">Amato, Giuseppe; Carrara, Fabio; Falchi, Fabrizio; Gennaro, Claudio; Meghini, Carlo; Vairo, Claudio</span>
 			<span class="titolo">Deep learning for decentralized parking lot occupancy detection</span>

@@ -1,48 +1,119 @@
 
+/* SHOW/HIDE LIST */
+
+#dati-personali h2,
+#dati-personali h3,
+#dati-personali .nato-a,
+#educazione .titolo-di-studio .data {
+    display: none;
+}
+
+#dati-personali .nato-il:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\e008"; /* USER */
+    vertical-align: bottom;
+    padding: 5px;
+}
+
+
 #foto {
 	float: right;
-	height: 200px;
+	height: 180px;
+    border-radius: 5px;
+}
+
+#residenza .residente-a:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\e021"; /* HOME */
+    vertical-align: bottom;
+    padding: 5px;
+}
+
+
+#contatti .telefono:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\e182"; /* PHONE or 145 SMARTPHONE*/
+    vertical-align: bottom;
+    padding: 5px;
+    color: #333;
+}
+
+#contatti .email:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\2709"; /* MAIL */
+    vertical-align: bottom;
+    padding: 5px;
+    color: #333;
+}
+
+#misc:before {
+    font-family: 'Glyphicons Halflings';
+    content: "\e024"; /* ROAD */
+    vertical-align: bottom;
+    padding: 5px;
+    color: #333;
+}
+
+#contatti .email:before:hover, #contatti .telefono:before:hover {
+    text-decoration: none;
+}
+
+#educazione .titolo-di-studio .titolo {
+    font-size: 1.1em;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0;
+}
+
+#educazione .titolo-di-studio .titolo:before {
+    font-family: 'Glyphicons Halflings';
+    /* content: "\e080"; /* > */
+    content: "\e233"; /* EDU */
+    vertical-align: bottom;
+    padding: 5px;
+}
+
+
+#educazione .titolo-di-studio .dove {
+    font-style: italic;
+    color: #555;
+}
+
+#educazione .titolo-di-studio .dove:after {
+    content: "\A";
+    white-space: pre;
+}
+
+#educazione .titolo-di-studio .quando {
+    float: right;
+    line-height: 3em;
+    font-size: 1.1em;
+    font-weight: bold;
+}
+
+#educazione .titolo-di-studio .descrizione {
+    font-size: 85%;
+    padding-left: 28px;
+}
+
+#educazione .titolo-di-studio .corsi, #educazione .titolo-di-studio .tesi, #educazione .titolo-di-studio .esami {
+    margin-left: 24px;
+    font-size: 85%;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+#educazione .titolo-di-studio table .titolo-corso {
+    padding-left: 25px;
+}
+
+#educazione .titolo-di-studio table caption {
+    padding-left: 4px;
 }
 
 
 
-
-
-body {
-	font-family: sans-serif;
+ .tesi table th {
+    text-align: right;
+    padding-left: 15px !important;
 }
-
-#generalita .nome, #generalita .cognome {
-	font-weight: bold;
-	font-size: 2.5em;
-}
-
-#generalita .cognome:after {
-	content: "\A";
-	white-space: pre;
-	
-}
-
-#generalita .nato-a, #generalita .nato-il {
-	color: #555;
-}
-
-#residenza. #contatti, #misc {
-	float: left;
-	clear: left;
-}
-
-#residenza:before {
-	content: 'Residenza:';
-	font-weight: bold;
-}
-
-
-
-
-
-#dati-personali {
-	height: 200px;
-}
-
-
