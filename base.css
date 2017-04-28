@@ -15,20 +15,23 @@
     padding: 5px;
 }
 
-
 #foto {
 	float: right;
 	height: 180px;
     border-radius: 5px;
 }
 
-#residenza .residente-a:before {
+#residenza .via:before {
     font-family: 'Glyphicons Halflings';
     content: "\e021"; /* HOME */
     vertical-align: bottom;
     padding: 5px;
 }
 
+#contatti .telefono:after {
+    content: "\A";
+    white-space: pre;
+}
 
 #contatti .telefono:before {
     font-family: 'Glyphicons Halflings';
@@ -58,11 +61,19 @@
     text-decoration: none;
 }
 
-#educazione .titolo-di-studio .titolo {
+#educazione .titolo-di-studio .titolo,
+#professioni .esperienza-lavorativa .cosa,
+#lingue .certificazione .cosa,
+#informatica .competenza .cosa,
+#presentazioni .talk .cosa {
     font-size: 1.1em;
     font-weight: bold;
     display: inline-block;
     margin-bottom: 0;
+}
+
+#informatica .competenza .cosa {
+	display: block;
 }
 
 #educazione .titolo-di-studio .titolo:before {
@@ -73,30 +84,76 @@
     padding: 5px;
 }
 
+#professioni .esperienza-lavorativa .cosa:before {
+	font-family: 'Glyphicons Halflings';
+    /* content: "\e080"; /* > */
+    content: "\e139"; /* WORK */
+    vertical-align: bottom;
+    padding: 5px;
+}
 
-#educazione .titolo-di-studio .dove {
+#lingue .certificazione .cosa:before {
+	font-family: 'Glyphicons Halflings';
+    /* content: "\e080"; /* > */
+    content: "\e135"; /* GLOBE */
+    vertical-align: bottom;
+    padding: 5px;
+}
+
+#informatica .competenza .cosa:before {
+	font-family: 'Glyphicons Halflings';
+    /* content: "\e080"; /* > */
+    content: "\e172"; /* FLOPPY */
+    vertical-align: bottom;
+    padding: 5px;
+}
+
+#presentazioni .talk .cosa:before {
+	font-family: 'Glyphicons Halflings';
+    /* content: "\e080"; /* > */
+    content: "\e218"; /* BLACKBOARD */
+    vertical-align: bottom;
+    padding: 5px;
+}
+
+#educazione .titolo-di-studio .dove,
+#professioni .esperienza-lavorativa .dove,
+#lingue .certificazione .dove,
+#presentazioni .talk .dove {
     font-style: italic;
     color: #555;
 }
 
-#educazione .titolo-di-studio .dove:after {
+#educazione .titolo-di-studio .dove:after,
+#professioni .esperienza-lavorativa .dove:after,
+#lingue .certificazione .dove:after,
+#presentazioni .talk .dove:after {
     content: "\A";
     white-space: pre;
 }
 
-#educazione .titolo-di-studio .quando {
+#educazione .titolo-di-studio .quando,
+#professioni .esperienza-lavorativa .quando,
+#lingue .certificazione .quando {
     float: right;
-    line-height: 3em;
+    line-height: 1em;
     font-size: 1.1em;
     font-weight: bold;
+	padding-top: 20px;
 }
 
-#educazione .titolo-di-studio .descrizione {
+#educazione .titolo-di-studio .descrizione,
+#professioni .esperienza-lavorativa .descrizione,
+#informatica .competenza .descrizione,
+#presentazioni .talk .descrizione {
     font-size: 85%;
     padding-left: 28px;
 }
 
-#educazione .titolo-di-studio .corsi, #educazione .titolo-di-studio .tesi, #educazione .titolo-di-studio .esami {
+#educazione .titolo-di-studio .corsi,
+#educazione .titolo-di-studio .tesi,
+#educazione .titolo-di-studio .esami,
+#professioni .esperienza-lavorativa .dettagli {
     margin-left: 24px;
     font-size: 85%;
     margin-top: 5px;
@@ -111,9 +168,35 @@
     padding-left: 4px;
 }
 
-
-
  .tesi table th {
     text-align: right;
     padding-left: 15px !important;
+}
+
+.codice-esame {
+	font-family: monospace;
+}
+
+#educazione .titolo-di-studio table tr > *:first-child,
+#professioni .esperienza-lavorativa table tr > *:first-child
+{
+	padding-left: 15px;
+}
+
+#informatica .linguaggi {
+	display: inline;
+	padding-left: 5px;
+}
+
+#presentazioni .talk .award,
+#presentazioni .talk .autori {
+	font-size: 85%;
+}
+
+#presentazioni .talk .autori {
+	font-style: italic;
+}
+
+#presentazioni .talk .autori:before {
+	content: ' - '
 }
