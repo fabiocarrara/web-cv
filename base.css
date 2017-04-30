@@ -254,6 +254,6 @@ ol {
 ol > li:before {
 	font-weight: bold;
 	font-family: monospace;
-	content: "[" counter(list) "] ";
+	content: "[" counter(list) "]";
 	counter-increment: list;
 }

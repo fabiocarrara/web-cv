@@ -1,6 +1,7 @@
 .corsi,
 .esami,
 #presentazioni,
-#revisione {
+#revisione,
+.tesi {
     display: none;
 }
