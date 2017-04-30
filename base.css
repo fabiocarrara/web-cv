@@ -65,11 +65,13 @@
 #professioni .esperienza-lavorativa .cosa,
 #lingue .certificazione .cosa,
 #informatica .competenza .cosa,
-#presentazioni .talk .cosa {
+#presentazioni .talk .cosa,
+#pubblicazioni .pub .titolo {
     font-size: 1.1em;
     font-weight: bold;
     display: inline-block;
     margin-bottom: 0;
+	margin-right: 5px;
 }
 
 #informatica .competenza .cosa {
@@ -116,6 +118,17 @@
     padding: 5px;
 }
 
+/* #pubblicazioni .pub:before {
+	font-family: 'Glyphicons Halflings';
+*/
+    /* content: "\e080"; /* > */
+/*    content: "\e022"; /* FILE */
+/*    vertical-align: bottom;
+    padding: 5px;
+	font-style: normal;
+} */
+
+
 #educazione .titolo-di-studio .dove,
 #professioni .esperienza-lavorativa .dove,
 #lingue .certificazione .dove,
@@ -126,7 +139,7 @@
 
 #educazione .titolo-di-studio .dove:after,
 #professioni .esperienza-lavorativa .dove:after,
-#lingue .certificazione .dove:after,
+/*#lingue .certificazione .dove:after,*/
 #presentazioni .talk .dove:after {
     content: "\A";
     white-space: pre;
@@ -168,7 +181,7 @@
     padding-left: 4px;
 }
 
- .tesi table th {
+.tesi table th {
     text-align: right;
     padding-left: 15px !important;
 }
@@ -184,8 +197,7 @@
 }
 
 #informatica .linguaggi {
-	display: inline;
-	padding-left: 5px;
+	padding-left: 25px;
 }
 
 #presentazioni .talk .award,
@@ -199,4 +211,40 @@
 
 #presentazioni .talk .autori:before {
 	content: ' - '
+}
+
+#pubblicazioni .pub .number:before {
+	content: 'n.'
+}
+
+#pubblicazioni .pub .pages:before {
+	content: 'pp. '
+}
+
+#pubblicazioni .pub .autori:after,
+#pubblicazioni .pub .number:after,
+#pubblicazioni .pub .pages:after {
+	content: ', '
+}
+
+.voto {
+	margin-right: 5px;
+}
+
+cite.ref {
+	font-style: normal;
+	font-weight: bold;
+	font-family: monospace;
+}
+
+ol {
+	counter-reset: list;
+	list-style-type: none;
+	padding-left: 0;
+}
+ol > li:before {
+	font-weight: bold;
+	font-family: monospace;
+	content: "[" counter(list) "] ";
+	counter-increment: list;
 }

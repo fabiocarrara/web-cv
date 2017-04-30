@@ -15,7 +15,40 @@
 	<script>
 		$(function(){
 			$("#informatica .linguaggi li").addClass("label").addClass("label-default");
-			$(".award").addClass("label").addClass("label-info");
+			$(".award").addClass("label").addClass("label-success");
+			$("#pubblicazioni .year").addClass("label").addClass("label-info");
+			$("#pubblicazioni .autori .nome").each(function(i, el) {
+				el.textContent = el.textContent[0] + '.'
+			});
+
+			$("#pubblicazioni .pub").each(function(i, el) {
+				var $el = $(el);
+				var autori = $el.find('.autori').text();
+				var autore = autori.substr(0, autori.indexOf(',')).toLocaleLowerCase();
+				var anno = $el.find('.year').text();
+				var titolo = $el.find('.titolo').text();
+				var parolaTitolo = titolo.substr(0, titolo.indexOf(' ')).toLocaleLowerCase();
+
+				$el.attr('id', autore + anno + parolaTitolo);
+			});
+
+			// REFS
+			$('cite.ref').each(function(i, el) {
+				var $el = $(el);
+				var refs = $el.data('ref').split(' ');
+				var text = '[';
+				for (j in refs) {
+					var refname = refs[j];
+					var $li = $('#' + refname);
+					var ind = $li.parent().find("li").index($li[0]) + 1;
+					console.log(refs[j] + ': ' + ind);
+					text += '<a href="#' + refname + '">' + ind + '</a>,'
+				}
+
+				text = text.substr(0, text.length - 1) + ']';
+				$el.html(text);
+			});
+
 		});
 	</script>
 </head>
@@ -284,7 +317,7 @@
     <h2>Competenze Informatiche</h2>
 	<div id="informatica">
 		<div class="competenza">
-			<h3 class="cosa">Deep Learning per Image Representation, Classification e Retrieval [add refs]</h3>
+			<h3 class="cosa">Deep Learning per Image Representation, Classification e Retrieval <cite class="ref" data-ref="amato2017deep amato2016car carrara2016picture"></cite></h3>
 			<span class="descrizione">Ottima conoscenza di <em>reti neurali</em>, <em>reti neurali convoluzionali</em>, <em>spazi metrici e vettoriali</em></span>
 			<ul class="linguaggi">
 				<li>Caffe (Python)</li>
@@ -298,7 +331,7 @@
 		</div>
 		
 		<div class="competenza">
-			<h3 class="cosa">Computer Vision e Image Processing [add refs]</h3>
+			<h3 class="cosa">Computer Vision e Image Processing <cite class="ref" data-ref="carrara2015semiautomatic carrara2015efficient"></cite></h3>
 			<span class="descrizione">Ottima conoscenza di <em>local features detector e descriptor (FAST, SURF, SIFT, ORB, LBP)</em>, <em>algoritmi di background subtraction</em>, <em>object detection and recognition</em>, <em>registrazione 2D, basati su local features e trasformazioni omografiche</em>, <em>face detection e recognition basati su local features</em></span>
 			<ul class="linguaggi">
 				<li>OpenCV (Python, C/C++, Java)</li>
@@ -325,7 +358,7 @@
 		</div>
 		
 		<div class="competenza">
-			<h3 class="cosa">Software di Editing Multimediale [add ref]</h3>
+			<h3 class="cosa">Software di Editing Multimediale <cite class="ref" data-ref="carrara2015design"></cite></h3>
 			<span class="descrizione">Ottima conoscenza delle rappresentazioni digitali di audio e immagini. Buona conoscenza di software di manipolazione immagini e processing/editing/generazione audio.</span>
 			<ul class="linguaggi">
 				<li>Ardour</li>
@@ -372,52 +405,53 @@
 			<li>IEEE Symposium on Computers and Communications (ISCC 2016)</li>
 		</ul>
 	</div>
-	<div id="pubblicazioni">
-        <h2>Pubblicazioni</h2>
-		<div class="pub">
-			<span class="autori">Amato, Giuseppe; Carrara, Fabio; Falchi, Fabrizio; Gennaro, Claudio; Meghini, Carlo; Vairo, Claudio</span>
+    <h2>Pubblicazioni</h2>
+	<ol id="pubblicazioni">
+		<li class="pub">
+			<time class="year">2017</time>
 			<span class="titolo">Deep learning for decentralized parking lot occupancy detection</span>
-			<span class="publication">Expert Systems with Applications</span>
+			<span class="autori">Amato, <span class="nome">Giuseppe</span>; Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span>; Meghini, Carlo; Vairo, <span class="nome">Claudio</span></span>
+			<cite class="publication">Expert Systems with Applications</cite>
 			<span class="number">72</span>
 			<span class="pages">327-334</span>
-			<span class="year">2017</span>
 			<span class="publisher">Pergamon</span>
-		</div>
-		<div class="pub">
-			<span class="autori">Amato, Giuseppe; Carrara, Fabio; Falchi, Fabrizio; Gennaro, Claudio; Vairo, Claudio</span>
+		</li>
+		<li class="pub">
+			<time class="year">2016</time>
 			<span class="titolo">Car parking occupancy detection using smart camera networks and Deep Learning</span>
-			<span class="publication">Computers and Communication (ISCC), 2016 IEEE Symposium on</span>
+			<span class="autori">Amato, <span class="nome">Giuseppe</span>; Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span>; Vairo, <span class="nome">Claudio</span></span>
+			<cite class="publication">Computers and Communication (ISCC), 2016 IEEE Symposium on</cite>
 			<span class="pages">1212-1217</span>
-			<span class="year">2016</span>
 			<span class="publisher">IEEE</span>
-		</div>
-		<div class="pub">
-			<span class="autori">Carrara, Fabio; Esuli, Andrea; Fagni, Tiziano; Falchi, Fabrizio; Fernández, Alejandro Moreo</span>
+			<span class="award">Best Italian Paper Award</span>
+		</li>
+		<li class="pub">
+			<time class="year">2016</time>
 			<span class="titolo">Picture it in your mind: Generating high level visual representations from textual descriptions</span>
-			<span class="publication">arXiv preprint arXiv:1606.07287</span>
-			<span class="year">2016</span>
-		</div>
-		<div class="pub">
-			<span class="autori">Carrara, Fabio; Falchi, Fabrizio; Gennaro, Claudio</span>
+			<span class="autori">Carrara, <span class="nome">Fabio</span>; Esuli, Andrea; Fagni, Tiziano; Falchi, <span class="nome">Fabrizio</span>; Moreo, <span class="nome">Alejandro</span> <span class="nome">Fernández</span></span>
+			<cite class="publication">arXiv preprint arXiv:1606.07287</cite>
+		</li>
+		<li class="pub">
+			<time class="year">2015</time>
 			<span class="titolo">Semiautomatic Learning of 3D Objects from Video Streams</span>
-			<span class="publication">International Conference on Similarity Search and Applications</span>
+			<span class="autori">Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span></span>
+			<cite class="publication">International Conference on Similarity Search and Applications</cite>
 			<span class="pages">217-228</span>
-			<span class="year">2015</span>
 			<span class="publisher">Springer International Publishing</span>
-		</div>
-		<div class="pub">
-			<span class="autori">Carrara, Fabio; Amato, Giuseppe; Falchi, Fabrizio; Gennaro, Claudio</span>
+		</li>
+		<li class="pub">
+			<time class="year">2015</time>
 			<span class="titolo">Efficient foreground-background segmentation using local features for object detection</span>
-			<span class="publication">Proceedings of the 9th International Conference on Distributed Smart Cameras</span>
+			<span class="autori">Carrara, <span class="nome">Fabio</span>; Amato, <span class="nome">Giuseppe</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span></span>
+			<cite class="publication">Proceedings of the 9th International Conference on Distributed Smart Cameras</cite>
 			<span class="pages">175-180</span>
-			<span class="year">2015</span>
 			<span class="publisher">ACM</span>
-		</div>
-		<div class="pub">
-			<span class="autori">Carrara, Fabio</span>
+		</li>
+		<li class="pub">
+			<time class="year">2015</time>
 			<span class="titolo">Design and implementation of a system for incremental real-time visual object detection and autonomous recognition</span>
-			<span class="year">2015</span>
-		</div>
-	</div>
+			<span class="autori">Carrara, <span class="nome">Fabio</span></span>
+		</li>
+	</ol>
 </body>
 </html>
