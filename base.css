@@ -12,6 +12,7 @@
     font-family: 'Glyphicons Halflings';
     content: "\e008"; /* USER */
     vertical-align: bottom;
+	font-weight: normal;
     padding: 5px;
 }
 
@@ -25,6 +26,7 @@
     font-family: 'Glyphicons Halflings';
     content: "\e021"; /* HOME */
     vertical-align: bottom;
+	font-weight: normal;
     padding: 5px;
 }
 
@@ -37,6 +39,7 @@
     font-family: 'Glyphicons Halflings';
     content: "\e182"; /* PHONE or 145 SMARTPHONE*/
     vertical-align: bottom;
+	font-weight: normal;
     padding: 5px;
     color: #333;
 }
@@ -53,6 +56,7 @@
     font-family: 'Glyphicons Halflings';
     content: "\e024"; /* ROAD */
     vertical-align: bottom;
+	font-weight: normal;
     padding: 5px;
     color: #333;
 }
@@ -70,8 +74,7 @@
     font-size: 1.1em;
     font-weight: bold;
     display: inline-block;
-    margin-bottom: 0;
-	margin-right: 5px;
+    margin: 10px 5px 0 0;
 }
 
 #informatica .competenza .cosa {
@@ -83,6 +86,7 @@
     /* content: "\e080"; /* > */
     content: "\e233"; /* EDU */
     vertical-align: bottom;
+	font-weight: normal;
     padding: 5px;
 }
 
@@ -91,6 +95,7 @@
     /* content: "\e080"; /* > */
     content: "\e139"; /* WORK */
     vertical-align: bottom;
+	font-weight: normal;
     padding: 5px;
 }
 
@@ -99,6 +104,7 @@
     /* content: "\e080"; /* > */
     content: "\e135"; /* GLOBE */
     vertical-align: bottom;
+	font-weight: normal;
     padding: 5px;
 }
 
@@ -107,6 +113,7 @@
     /* content: "\e080"; /* > */
     content: "\e172"; /* FLOPPY */
     vertical-align: bottom;
+	font-weight: normal;
     padding: 5px;
 }
 
@@ -115,6 +122,7 @@
     /* content: "\e080"; /* > */
     content: "\e218"; /* BLACKBOARD */
     vertical-align: bottom;
+	font-weight: normal;
     padding: 5px;
 }
 
@@ -149,10 +157,10 @@
 #professioni .esperienza-lavorativa .quando,
 #lingue .certificazione .quando {
     float: right;
-    line-height: 1em;
     font-size: 1.1em;
     font-weight: bold;
-	padding-top: 20px;
+	font-style: italic;
+	padding-top: 6px;
 }
 
 #educazione .titolo-di-studio .descrizione,
@@ -161,6 +169,7 @@
 #presentazioni .talk .descrizione {
     font-size: 85%;
     padding-left: 28px;
+	display: inline-block;
 }
 
 #educazione .titolo-di-studio .corsi,
