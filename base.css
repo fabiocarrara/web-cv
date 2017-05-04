@@ -116,6 +116,10 @@ header small {
     padding: 5px;
 }
 
+#pubblicazioni .pub .titolo {
+    margin-left: 0px;
+}
+
 #professioni .esperienza-lavorativa .cosa:before {
 	font-family: 'Glyphicons Halflings';
     /* content: "\e080"; /* > */
@@ -194,7 +198,8 @@ header small {
 
 #educazione .titolo-di-studio .quando,
 #professioni .esperienza-lavorativa .quando,
-#lingue .certificazione .quando {
+#lingue .certificazione .quando,
+#presentazioni .talk .quando {
 	box-sizing: border-box;
 	padding-right: 5px;
     float: left;
@@ -208,7 +213,6 @@ header small {
 
 #educazione .titolo-di-studio .descrizione,
 #professioni .esperienza-lavorativa .descrizione,
-/* #informatica .competenza .descrizione, */
 #presentazioni .talk .descrizione,
 #lingue .certificazione .ref {
     font-size: 85%;
@@ -218,7 +222,7 @@ header small {
 
 #informatica .competenza .descrizione {
 	margin-left: 32px;
-	display: block;
+	display: inline-block;
 }
 
 #educazione .titolo-di-studio .corsi,
@@ -263,6 +267,7 @@ table > thead > tr > td,
 table > thead > tr > th {
     border: none !important;
 	box-shadow: none !important;
+    text-align: justify;
 }
 
 #educazione .titolo-di-studio table tr > *:first-child,
@@ -329,4 +334,8 @@ ol > li:before {
 	font-family: monospace;
 	content: "[" counter(list) "]";
 	counter-increment: list;
+}
+
+#informatica .competenza .repo {
+    font-style: normal;
 }
