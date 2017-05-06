@@ -14,6 +14,15 @@
     "jobs": "Work Experience",
     "details": "Details",
     "languages": "Languages",
+    "motherTongue": "Mother Tongue",
+    "otherLanguages": {
+        "language": "Other Languages",
+        "listening": "Listening",
+        "reading": "Reading",
+        "spokenInteraction": "Spoken Interaction",
+        "spokenProduction": "Spoken Production",
+        "writing": "Writing"
+    },
     "languageCertificates": "Language Certifications",
     "itSkills": "Digital Competences",
     "presentations": "Presentations",

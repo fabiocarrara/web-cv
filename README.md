@@ -16,6 +16,29 @@ Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app 
 
 Run `npm build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
+## Customization
+
+Customization files are all stored inside the 'data' folder
+
+### main.json
+
+The main.json file is the main configuration file.
+Currently the only supported attribute is 'language' which determines the folder in which other json files will be read.
+For example, if you se it to 'en', all other json file will be read from the 'data/en' folder.
+
+### labels.json
+
+The labels.json files contains all the labels of the CV.
+If you want to translate the CV to your own language, you need to create a new folder with your language name, translate the labels and save the labels.json file inside the new folder and set the language value in the main.json file.
+
+TODO: document the labels
+
+### data.json
+
+The data.json file contains the data that is used to fill the CV.
+
+TODO: document the data
+
 ## Contacts
 
 For any information you can contact:

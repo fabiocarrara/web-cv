@@ -100,7 +100,17 @@
         }
     ],
     "languages": {
-        "levels": [],
+        "motherTongue": "Italiano",
+        "otherLanguages": [
+            {
+                "language": "Inglese",
+                "listening": "C2",
+                "reading": "C2",
+                "spokenInteraction": "C2",
+                "spokenProduction": "C2",
+                "writing": "C2"
+            }
+        ],
         "certificates": [
             {
                 "what": "Certificazione di Lingua Inglese (Livello C1)",

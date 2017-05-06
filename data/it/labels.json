@@ -14,6 +14,15 @@
     "jobs": "Esperienze Lavorative",
     "details": "Dettagli",
     "languages": "Lingue",
+    "motherTongue": "Madre Lingua",
+    "otherLanguages": {
+        "language": "Altre Lingue",
+        "listening": "Ascolto",
+        "reading": "Lettura",
+        "spokenInteraction": "Interazione Orale",
+        "spokenProduction": "ProduzioneOrale",
+        "writing": "Scrittura"
+    },
     "languageCertificates": "Certificazioni Linguistiche",
     "itSkills": "Competenze Informatiche",
     "presentations": "Presentazioni Orali",

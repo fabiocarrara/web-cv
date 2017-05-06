@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css', './bootstrap.min.css', './print.css']
+  styleUrls: ['./bootstrap.min.css', './app.component.css', './short.css', './print.css']
 })
 export class AppComponent {
   private dataDirectory = 'data/';

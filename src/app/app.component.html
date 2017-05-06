@@ -82,8 +82,36 @@
 	<div *ngIf='data.languages' id="lingue">
 		<h2>{{labels.languages}}</h2>
 
+		<div *ngIf='data.languages.motherTongue' class='madrelingua'>
+			<span class="madrelingua-label" innerHtml="{{labels.motherTongue}}"></span>
+			<span class="madrelingua-value" innerHtml="{{data.languages.motherTongue}}"></span>
+		</div>
+
+		<table *ngIf='data.languages.otherLanguages' class="table table-condensed table-striped">
+			<thead>
+				<tr>
+					<th>{{labels.otherLanguages.language}}</th>
+					<th>{{labels.otherLanguages.listening}}</th>
+					<th>{{labels.otherLanguages.reading}}</th>
+					<th>{{labels.otherLanguages.spokenInteraction}}</th>
+					<th>{{labels.otherLanguages.spokenProduction}}</th>
+					<th>{{labels.otherLanguages.writing}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor='let otherLanguage of data.languages.otherLanguages'>
+					<td>{{otherLanguage.language}}</td>
+					<td>{{otherLanguage.listening}}</td>
+					<td>{{otherLanguage.reading}}</td>
+					<td>{{otherLanguage.spokenInteraction}}</td>
+					<td>{{otherLanguage.spokenProduction}}</td>
+					<td>{{otherLanguage.writing}}</td>
+				</tr>
+			</tbody>
+		</table>
+
 		<div *ngIf='data.languages.certificates'>
-			<h2>{{labels.languageCertificates}}</h2>
+			<h3>{{labels.languageCertificates}}</h3>
 			<div *ngFor='let certificate of data.languages.certificates' class="certificazione todo">
 				<h3 class="cosa" innerHtml="{{certificate.what}}"></h3>
 				<span class="quando" innerHtml="{{certificate.when}}"></span>
