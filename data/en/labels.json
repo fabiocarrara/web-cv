@@ -1,0 +1,21 @@
+{
+    "curriculum": "Curriculum Vitae",
+    "personalData": "Personal Information",
+    "address": "Address",
+    "contatti": "Contacts",
+    "education": "Education",
+    "thesis": {
+        "caption": "Thesis",
+        "title": "Title",
+        "supervisors": "Supervisors",
+        "abstract": "Abstract",
+        "reference": "Ref."
+    },
+    "jobs": "Work Experience",
+    "details": "Details",
+    "languages": "Languages",
+    "languageCertificates": "Language Certifications",
+    "itSkills": "Digital Competences",
+    "presentations": "Presentations",
+    "publications": "Publications"
+}

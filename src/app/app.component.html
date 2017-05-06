@@ -1,56 +1,56 @@
-<div class="container">
+<div *ngIf='labels && data' class="container">
 	<header>
-		<img id="foto" src="foto.png" alt="{{personalData.name}} {{personalData.surname}}">
-		<h1><span class="nome">{{personalData.name}}</span> <span class="cognome">{{personalData.surname}}</span> <small>Curriculum Vitae</small></h1>
+		<img id="foto" src="foto.png" alt="{{data.personalData.name}} {{data.personalData.surname}}">
+		<h1><span class="nome">{{data.personalData.name}}</span> <span class="cognome">{{data.personalData.surname}}</span> <small>{{labels.curriculum}}</small></h1>
 	</header>
-	<div id="dati-personali">
-		<h2>Dati Personali</h2>
+	<div *ngIf='data.personalData' id="dati-personali">
+		<h2>{{labels}}</h2>
 		<div id="generalita">
-			<span class="nato-a">{{personalData.birthplace}}</span>
-			<time class="nato-il">{{personalData.birthday}}</time>
+			<span class="nato-a">{{data.personalData.birthplace}}</span>
+			<time class="nato-il">{{data.personalData.birthday}}</time>
 		</div>
 		<div id="residenza">
-			<h3>Residenza</h3>
-			<span class="via">{{personalData.address.street}}, {{personalData.address.streetNumber}}</span>
-			<span class="cap">{{personalData.address.zipCode}}</span>
-			<span class="citta">{{personalData.address.city}} ({{personalData.address.province}})</span>
-			<span class="stato">{{personalData.address.nation}}</span>
+			<h3>{{labels.address}}</h3>
+			<span class="via">{{data.personalData.address.street}}, {{data.personalData.address.streetNumber}}</span>
+			<span class="cap">{{data.personalData.address.zipCode}}</span>
+			<span class="citta">{{data.personalData.address.city}} ({{data.personalData.address.province}})</span>
+			<span class="stato">{{data.personalData.address.nation}}</span>
 		</div>
 		<div id="contatti">
-			<h3>Contatti</h3>
-			<a class="telefono" href="tel:{{personalData.phoneNumber}}">{{personalData.phoneNumber}}</a>
-			<a class="email" href="mailto:{{personalData.email}}">{{personalData.email}}</a>
+			<h3>{{labels.contacts}}</h3>
+			<a class="telefono" href="tel:{{data.personalData.phoneNumber}}">{{data.personalData.phoneNumber}}</a>
+			<a class="email" href="mailto:{{data.personalData.email}}">{{data.personalData.email}}</a>
 		</div>
 		<div id="misc">
-			<span class="patente">{{personalData.license}}</span>
+			<span class="patente">{{data.personalData.license}}</span>
 		</div>
 	</div>
-	<div *ngIf='education' id="educazione">
-		<h2>Educazione</h2>
-		<div *ngFor='let educationItem of education' class="titolo-di-studio">
+	<div *ngIf='data.education' id="educazione">
+		<h2>{{labels.education}}</h2>
+		<div *ngFor='let educationItem of data.education' class="titolo-di-studio">
 			<h3 class="titolo" innerHtml="{{educationItem.what}}"></h3>
 			<span class="quando" innerHtml="{{educationItem.when}}"></span>
 			<span class="voto label label-info" innerHtml="{{educationItem.result}}"></span>
 			<span class="dove" innerHtml="{{educationItem.where}}"></span>
 			<span class="descrizione" innerHtml="{{educationItem.description}}"></span>
 			<div *ngIf='educationItem.thesis' class="tesi panel panel-default">
-				<div class="panel-heading">Tesi di Laurea</div>
+				<div class="panel-heading">{{labels.thesis.caption}}</div>
 				<table class="table table-condensed">
 					<tbody>
 						<tr>
-							<th>Titolo</th>
+							<th>{{labels.thesis.title}}</th>
 							<td class="titolo-tesi" innerHtml="{{educationItem.thesis.title}}"></td>
 						</tr>
 						<tr>
-							<th>Relatori</th>
+							<th>{{labels.thesis.supervisors}}</th>
 							<td class="relatori-tesi" innerHtml="{{educationItem.thesis.supervisors}}"></td>
 						</tr>
 						<tr>
-							<th>Abstract</th>
+							<th>{{labels.thesis.abstract}}</th>
 							<td class="abstract text-justify" innerHtml="{{educationItem.thesis.abstract}}"></td>
 						</tr>
 						<tr>
-							<th>Rif.</th>
+							<th>{{labels.thesis.reference}}</th>
 							<td class="ref" innerHtml="{{educationItem.thesis.ref}}"></td>
 						</tr>
 					</tbody>
@@ -58,15 +58,15 @@
 			</div>
 		</div>
 	</div>
-	<div *ngIf='jobs' id="professioni">
-		<h2>Esperienze Lavorative</h2>
-		<div *ngFor='let jobItem of jobs' class="esperienza-lavorativa">
+	<div *ngIf='data.jobs' id="professioni">
+		<h2>{{labels.jobs}}</h2>
+		<div *ngFor='let jobItem of data.job' class="esperienza-lavorativa">
 			<h3 class="cosa" innerHtml="{{jobItem.what}}"></h3>
 			<span class="quando" innerHtml="{{jobItem.when}}"></span>
 			<span class="dove" innerHtml="{{jobItem.where}}"></span>
 			<span class="descrizione" innerHtml="{{jobItem.description}}"></span>
 			<div *ngIf='jobItem.details' class="dettagli panel panel-default">
-				<div class="panel-heading">Dettagli</div>
+				<div class="panel-heading">{{labels.details}}</div>
 				<table class="table table-striped table-condensed">
 					<tbody>
 						<tr *ngFor='let jobItemDetail of jobItem.details'>
@@ -79,12 +79,12 @@
 		</div>
 	</div>
 
-	<div *ngIf='languages' id="lingue">
-		<h2>Lingue</h2>
+	<div *ngIf='data.languages' id="lingue">
+		<h2>{{labels.languages}}</h2>
 
-		<div *ngIf='languages.certificates'>
-			<h2>Certificazioni Linguistiche</h2>
-			<div *ngFor='let certificate of languages.certificates' class="certificazione todo">
+		<div *ngIf='data.languages.certificates'>
+			<h2>{{labels.languageCertificates}}</h2>
+			<div *ngFor='let certificate of data.languages.certificates' class="certificazione todo">
 				<h3 class="cosa" innerHtml="{{certificate.what}}"></h3>
 				<span class="quando" innerHtml="{{certificate.when}}"></span>
 				<span class="dove" innerHtml="{{certificate.where}}"></span>
@@ -92,9 +92,9 @@
 			</div>
 		</div>
 	</div>
-	<div *ngIf='itSkills' id="informatica">
-		<h2>Competenze Informatiche</h2>
-		<div *ngFor='let itSkill of itSkills' class="competenza">
+	<div *ngIf='data.itSkills' id="informatica">
+		<h2>{{labels.itSkills}}</h2>
+		<div *ngFor='let itSkill of data.itSkills' class="competenza">
 			<h3 class="cosa" innerHtml="{{itSkill.title}}"></h3>
 			<span class="descrizione" innerHtml="{{itSkill.description}}"></span>
 			<ul class="linguaggi">
@@ -102,9 +102,9 @@
 			</ul>
 		</div>
 	</div>
-	<div id="presentazioni">
-		<h2>Presentazioni Orali</h2>
-		<div *ngFor='let presentation of presentations' class="talk">
+	<div *ngIf='data.presentations' id="presentazioni">
+		<h2>{{labels.presentations}}</h2>
+		<div *ngFor='let presentation of data.presentations' class="talk">
 			<span class="cosa" innerHtml="{{presentation.what}}"></span>
 			<span class="dove" innerHtml="{{presentation.where}}, {{presentation.when}}"></span>
 			<span class="descrizione" innerHtml="{{presentation.description}}"></span>
@@ -112,10 +112,10 @@
 			<span *ngIf='presentation.award' class="award label label-award" innerHtml="{{presentation.award}}"></span>
 		</div>
 	</div>
-	<div *ngIf='publications'>
-		<h2>Pubblicazioni</h2>
+	<div *ngIf='data.publications'>
+		<h2>{{labels.publications}}</h2>
 		<ol id="pubblicazioni">
-			<li *ngFor='let publication of publications' class="pub">
+			<li *ngFor='let publication of data.publications' class="pub">
 				<time class="year label label-info" innerHtml="{{publication.when}}"></time>
 				<span class="titolo" innerHtml="{{publication.what}}"></span>
 				<span class="autori" innerHtml="{{publication.who}}"></span>

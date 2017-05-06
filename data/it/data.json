@@ -1,0 +1,260 @@
+{
+    "personalData": {
+        "name": "Fabio",
+        "surname": "Carrara",
+        "birthplace": "Empoli (FI)",
+        "birthday": "23 Luglio 1990",
+        "address": {
+            "street": "Via Jacopo Carrucci",
+            "streetNumber": 48,
+            "zipCode": 50053,
+            "City": "Empoli",
+            "Province": "FI",
+            "Nation": "Italia"
+        },
+        "phoneNumber": "+39 3332479082",
+        "email": "fabio.carrara@gmail.com",
+        "license": "Patente di guida, categoria B"
+    },
+    "education": [
+        {
+            "what": "Corso di Dottorato di Ricerca in Ingegneria dell'Informazione",
+            "where": "Università di Pisa",
+            "when": "2015 - 2018 (previsto)",
+            "description": "Titolo da conseguire, vincitore di Borsa ISTI A.Faedo CNR per attività di ricerca su ‘Rilevamento e Riconoscimento Visuale Automatico di Oggetti’",
+            "result": ""
+        },
+        {
+            "what": "Abilitazione all'esercizio della professione di Ingegnere dell'Informazione",
+            "where": "Università di Pisa",
+            "when": "2015",
+            "description": "Ha conseguito l’abilitazione alla professione di Ingegnere dell’Informazione, Sezione A",
+            "result": ""
+        },
+        {
+            "what": "Laurea Magistrale in Ingegneria Informatica (Computer Engineering)",
+            "where": "Università di Pisa",
+            "when": "2012 - 2015",
+            "description": "Ha conseguito la Laurea Magistrale in Computer Engineering (Ingegneria Informatica, con corsi ed esami sostenuti in lingua inglese) presso l’Università di Pisa in data 20 Febbraio 2015",
+            "result": "110 e Lode / 110",
+            "thesis": {
+                "title": "Design and implementation of a system for incremental real-time visual object detection and autonomous recognition",
+                "supervisors": "Dott. Giuseppe Amato, Dott. Claudio Gennaro, Prof. Francesco Marcelloni",
+                "abstract": "In this work, a system for incremental real-time visual object detection and autonomous recognition is presented. Object detection is based on a novel interest point-based background subtraction method. Objects are incrementally learnt by collecting observations in real-time. Experiments have been performed on publicly available datasets to evaluate the detection task and the ability of the system to build good clusters of observations",
+                "ref": "Diploma n. 293222, Pisa, 15 Settembre 2015"
+            }
+        },
+        {
+            "what": "Laurea Triennale in Ingegneria dell’Informazione",
+            "where": "Università di Pisa",
+            "when": "2009 - 2012",
+            "description": "Ha conseguito la laurea in Ingegneria Informatica presso l’Università degli Studi di Pisa in data 4 Ottobre 2012",
+            "result": "110 e Lode / 110",
+            "thesis": {
+                "what": "Sonificazione con PureData per Android: dai sensori ai segnali al suono",
+                "supervisors": "Prof. Marco Avvenuti, Ing. Mario G. C. A. Cimino, Ing. Daniel Cesarini",
+                "abstract": "Grazie all’avvento del pervasive computing, che vede un sempre maggior numero di dispositivi di calcolo inseriti nella vita quotidiana, sono possibili applicazioni che interagiscono con l’ambiente circostante e con l’uomo, attraverso l’elaborazione e lo scambio di molte informazioni. Ne sono un esempio dispositivi come smartphones e tablets, che mettono a disposizione potenza di calcolo e sensori mobili. La loro diffusione ha permesso agli sviluppatori di rendere fruibili queste applicazioni, dette context-aware. Il potente sistema uditivo umano permette la ricezione di informazioni veicolate attraverso il suono, anche quando questo non è formato da fonemi. È possibile sfruttare questa proprietà per trasmettere informazioni tramite la sonificazione, cioè la generazione di suono parametrica. Questa tesi propone uno strumento di sonificazione e di analisi di dati utilizzabile da applicazioni mobili sviluppate su Android. Il software chiave che offre questi servizi è Pure Data, ambiente di programmazione per l’elaborazione di segnali digitali, con enfasi sui segnali sonori.",
+                "ref": "Diploma n. 271883, Pisa, 19 Febbraio 2013"
+            }
+        },
+        {
+            "what": "Maturità Scientifica",
+            "where": "Liceo Scientifico Il Pontormo, Via Raffaello Sanzio, 159, 50053 Empoli FI",
+            "when": "2004 - 2009",
+            "description": "Ha conseguito la laurea in Ingegneria Informatica presso l’Università degli Studi di Pisa in data 4 Ottobre 2012",
+            "result": "100 / 100"
+        }
+    ],
+    "jobs": [
+        {
+            "what": "Assegnista di ricerca su tematica \"Analisi automatica di dati visuali\"",
+            "where": "Istituto di Scienza e Tecnologia dell’Informazione “A.Faedo” - CNR - Pisa",
+            "when": "11/07/2016 – Presente",
+            "description": "Assegno professionalizzante per lo svolgimento di attività di ricerca con tema \"Analisi automatica di dati visuali\" nell'ambito del progetto \"SmartNews: Social Sensing for Breaking News\" (Bando FAR-FAS 2014, CUP D58C15000270008)",
+            "result": ""
+        },
+        {
+            "what": "Collaboratore di ricerca",
+            "where": "Istituto di Scienza e Tecnologia dell’Informazione “A.Faedo” - CNR - Pisa",
+            "when": "15/07/2015 – 14/08/2015",
+            "description": "Contratto di prestazione d’opera in regime di lavoro autonomo occasionale",
+            "result": "",
+            "details": [
+                {
+                    "title": "Attività e Responsabilità",
+                    "description": "Studio e ricerca sulla problematica dell’identificazione e riconoscimento visuale automatico di oggetti da sorgenti multimediali. In particolare, studio delle tecniche di apprendimento automatico e modellazione dello sfondo delle immagini per poter identificare oggetti che compaiono nella scena, e successivamente riconoscerli automaticamente, L’attività di ricerca ha preso in esame lo stato dell’arte e ha identificato direzioni da seguire per migliorare le tecniche esistenti. Sono stati effettuati esperimenti per valutare oggettivamente i risultati ottenuti."
+                },
+                {
+                    "title": "Competenze e Obiettivi",
+                    "description": "competenze tecniche, gestione del tempo, stesura di trattati scientifici."
+                },
+                {
+                    "title": "Rif.",
+                    "description": "prot. n. 2355 del 04/06/2015, n. 2859 del 08/07/2015"
+                },
+                {
+                    "title": "Carica",
+                    "description": "collaboratore coordinato e continuativo"
+                }
+            ]
+        }
+    ],
+    "languages": {
+        "levels": [],
+        "certificates": [
+            {
+                "what": "Certificazione di Lingua Inglese (Livello C1)",
+                "when": "Maggio 2016",
+                "where": "Pisa",
+                "ref": "Attestato di conseguimento"
+            },
+            {
+                "what": "Corso di Lingua Inglese in madrelingua (Livello B2 - Upper Intermediate)",
+                "when": "Luglio 2005",
+                "where": "Edinburgh Napier University (UK)",
+                "ref": "Attestato di frequenza"
+            },
+            {
+                "what": "Certificazione di Lingua Inglese (Livello A2 - Key English Test)",
+                "when": "Maggio 2004",
+                "where": "Firenze",
+                "ref": "Certificato di idoneità n. 0011783250 rilasciato dalla University of Cambridge, il 5 Luglio 2004, Firenze"
+            }
+        ]
+    },
+    "itSkills": [
+        {
+            "title": "Deep Learning per Image Representation, Classification e Retrieval <cite class='ref' data-ref='amato2017deep amato2016car carrara2016picture'></cite>",
+            "description": "Ottima conoscenza di <em>reti neurali</em>, <em>reti neurali convoluzionali</em>, <em>spazi metrici e vettoriali</em>",
+            "technologies": [
+                "Caffe (Python)",
+                "OpenCV (Python)",
+                "numpy, scikit, matplotlib, pandas (Python)",
+                "TensorFlow (Python)",
+                "Keras (Python)",
+                "Bash",
+                "Torch (Lua)"
+            ]
+        },
+        {
+            "title": "Computer Vision e Image Processing <cite class='ref' data-ref='carrara2015semiautomatic carrara2015efficient'></cite>",
+            "description": "Ottima conoscenza di <em>local features detector e descriptor (FAST, SURF, SIFT, ORB, LBP)</em>, <em>algoritmi di background subtraction</em>, <em>object detection and recognition</em>, <em>registrazione 2D, basati su local features e trasformazioni omografiche</em>, <em>face detection e recognition basati su local features</em>",
+            "technologies": [
+                "OpenCV (Python, C/C++, Java)",
+                "numpy, scikit, matplotlib (Python)",
+                "MATLAB"
+            ]
+        },
+        {
+            "title": "Linux OS e Web development",
+            "description": "Ottima conoscenza di <em>sistemi Linux Debian-based</em>. Buona conoscenza di tecnologie web front-end e back-end.",
+            "technologies": [
+                "HTML5",
+                "CSS3",
+                "JavaScript",
+                "Bootstrap",
+                "AngularJS",
+                "jQuery",
+                "Ubuntu (Linux)",
+                "Apache",
+                "PHP",
+                "SQL (MySQL)"
+            ]
+        },
+        {
+            "title": "Software di Editing Multimediale",
+            "description": "Ottima conoscenza delle rappresentazioni digitali di audio e immagini. Buona conoscenza di software di manipolazione immagini e processing/editing/generazione audio.",
+            "technologies": [
+                "Ardour",
+                "PureData",
+                "GIMP",
+                "Inkscape",
+                "Lightworks",
+                "OpenShot"
+            ]
+        },
+        {
+            "title": "Preparazione documenti scientifici",
+            "description": "Ottima conoscenza di programmi e linguaggi per la preparazione e stesura di documenti scientifici.",
+            "technologies": [
+                "LaTeX / BibTeX",
+                "Open/Libre Office",
+                "MS Office"
+            ]
+        },
+        {
+            "title": "Preparazione documenti scientifici",
+            "description": "Ottima conoscenza di programmi e linguaggi per la preparazione e stesura di documenti scientifici.",
+            "technologies": [
+                "LaTeX / BibTeX",
+                "Open/Libre Office",
+                "MS Office"
+            ]
+        }
+    ],
+    "presentations": [
+        {
+            "what": "ISCC 2016: The Twenty-First IEEE Symposium on Computers and Communications",
+            "where": "Messina, Italy",
+            "when": "27 - 30 June 2016",
+            "who": "Giuseppe Amato, Fabio Carrara, Fabrizio Falchi, Claudio Gennaro and Claudio Vairo",
+            "description": "Car Parking Occupancy Detection Using Smart Camera Networks and Deep Learning",
+            "award": "Best Italian Paper Award"
+        },
+        {
+            "what": "SISAP 2015: 8th International Conference on Similarity Search and Applications",
+            "where": "Glagow, Scotland, UK",
+            "when": "12-14 Ottobre 2015",
+            "who": "Fabio Carrara, Fabrizio Falchi and Claudio Gennaro",
+            "description": "Semiautomatic Learning of 3D Objects from Video Streams"
+        }
+    ],
+    "publications": [
+        {
+            "when": "2017",
+            "what": "Deep learning for decentralized parking lot occupancy detection",
+            "who": "Amato, <span class='nome'>Giuseppe</span>; Carrara, <span class='nome'>Fabio</span>; Falchi, <span class='nome'>Fabrizio</span>; Gennaro, <span class='nome'>Claudio</span>; Meghini, Carlo; Vairo, <span class='nome'>Claudio</span>",
+            "where": "Expert Systems with Applications",
+            "number": "72",
+            "pages": "327-334",
+            "publisher": "Pergamon"
+        },
+        {
+            "when": "2016",
+            "what": "Car parking occupancy detection using smart camera networks and Deep Learning",
+            "who": "Amato, <span class='nome'>Giuseppe</span>; Carrara, <span class='nome'>Fabio</span>; Falchi, <span class='nome'>Fabrizio</span>; Gennaro, <span class='nome'>Claudio</span>; Vairo, <span class='nome'>Claudio</span>",
+            "where": "Computers and Communication (ISCC), 2016 IEEE Symposium on",
+            "number": "72",
+            "pages": "1212-1217",
+            "publisher": "IEEE",
+            "award": "Best Italian Paper Award"
+        },
+        {
+            "when": "2016",
+            "what": "Picture it in your mind: Generating high level visual representations from textual descriptions",
+            "who": "Carrara, <span class='nome'>Fabio</span>; Esuli, Andrea; Fagni, Tiziano; Falchi, <span class='nome'>Fabrizio</span>; Moreo, <span class='nome'>Alejandro</span> <span class='nome'>Fernández</span>",
+            "where": "arXiv preprint arXiv:1606.07287"
+        },
+        {
+            "when": "2015",
+            "what": "Semiautomatic Learning of 3D Objects from Video Streams",
+            "who": "Carrara, <span class='nome'>Fabio</span>; Falchi, <span class='nome'>Fabrizio</span>; Gennaro, <span class='nome'>Claudio",
+            "where": "International Conference on Similarity Search and Applications",
+            "pages": "217-228",
+            "publisher": "Springer International Publishing"
+        },
+        {
+            "when": "2015",
+            "what": "Efficient foreground-background segmentation using local features for object detection",
+            "who": "Carrara, <span class='nome'>Fabio</span>; Amato, <span class='nome'>Giuseppe</span>; Falchi, <span class='nome'>Fabrizio</span>; Gennaro, <span class='nome'>Claudio</span>",
+            "where": "International Conference on Similarity Search and Applications",
+            "pages": "Proceedings of the 9th International Conference on Distributed Smart Cameras",
+            "publisher": "ACM"
+        },
+        {
+            "when": "2015",
+            "what": "Design and implementation of a system for incremental real-time visual object detection and autonomous recognition",
+            "who": "Carrara, <span class='nome'>Fabio</span>"
+        }
+    ]
+}
