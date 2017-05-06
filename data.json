@@ -1,0 +1,70 @@
+{
+    "personalData": {
+        "name": "Fabio",
+        "surname": "Carrara",
+        "birthplace": "Empoli (FI)",
+        "birthday": "23 Luglio 1990",
+        "address": {
+            "street": "Via Jacopo Carrucci",
+            "streetNumber": 48,
+            "zipCode": 50053,
+            "City": "Empoli",
+            "Province": "FI",
+            "Nation": "Italia"
+        },
+        "phoneNumber": "+39 3332479082",
+        "email": "fabio.carrara@gmail.com",
+        "license": "Patente di guida, categoria B"
+    },
+    "education": [
+        {
+            "title": "Corso di Dottorato di Ricerca in Ingegneria dell'Informazione",
+            "where": "Università di Pisa",
+            "when": "2015 - 2018 (previsto)",
+            "description": "Titolo da conseguire, vincitore di Borsa ISTI A.Faedo CNR per attività di ricerca su ‘Rilevamento e Riconoscimento Visuale Automatico di Oggetti’",
+            "result": ""
+        },
+        {
+            "title": "Abilitazione all'esercizio della professione di Ingegnere dell'Informazione",
+            "where": "Università di Pisa",
+            "when": "2015",
+            "description": "Ha conseguito l’abilitazione alla professione di Ingegnere dell’Informazione, Sezione A",
+            "result": ""
+        },
+        {
+            "title": "Laurea Magistrale in Ingegneria Informatica (Computer Engineering)",
+            "where": "Università di Pisa",
+            "when": "2012 - 2015",
+            "description": "Ha conseguito la Laurea Magistrale in Computer Engineering (Ingegneria Informatica, con corsi ed esami sostenuti in lingua inglese) presso l’Università di Pisa in data 20 Febbraio 2015",
+            "result": "110 e Lode / 110",
+            "thesis":
+            {
+                "title": "Design and implementation of a system for incremental real-time visual object detection and autonomous recognition",
+                "supervisors": "Dott. Giuseppe Amato, Dott. Claudio Gennaro, Prof. Francesco Marcelloni",
+                "abstract": "In this work, a system for incremental real-time visual object detection and autonomous recognition is presented. Object detection is based on a novel interest point-based background subtraction method. Objects are incrementally learnt by collecting observations in real-time. Experiments have been performed on publicly available datasets to evaluate the detection task and the ability of the system to build good clusters of observations",
+                "ref": "Diploma n. 293222, Pisa, 15 Settembre 2015"
+            }
+        },
+        {
+            "title": "Laurea Triennale in Ingegneria dell’Informazione",
+            "where": "Università di Pisa",
+            "when": "2009 - 2012",
+            "description": "Ha conseguito la laurea in Ingegneria Informatica presso l’Università degli Studi di Pisa in data 4 Ottobre 2012",
+            "result": "110 e Lode / 110",
+            "thesis":
+            {
+                "title": "Sonificazione con PureData per Android: dai sensori ai segnali al suono",
+                "supervisors": "Prof. Marco Avvenuti, Ing. Mario G. C. A. Cimino, Ing. Daniel Cesarini",
+                "abstract": "Grazie all’avvento del pervasive computing, che vede un sempre maggior numero di dispositivi di calcolo inseriti nella vita quotidiana, sono possibili applicazioni che interagiscono con l’ambiente circostante e con l’uomo, attraverso l’elaborazione e lo scambio di molte informazioni. Ne sono un esempio dispositivi come smartphones e tablets, che mettono a disposizione potenza di calcolo e sensori mobili. La loro diffusione ha permesso agli sviluppatori di rendere fruibili queste applicazioni, dette context-aware. Il potente sistema uditivo umano permette la ricezione di informazioni veicolate attraverso il suono, anche quando questo non è formato da fonemi. È possibile sfruttare questa proprietà per trasmettere informazioni tramite la sonificazione, cioè la generazione di suono parametrica. Questa tesi propone uno strumento di sonificazione e di analisi di dati utilizzabile da applicazioni mobili sviluppate su Android. Il software chiave che offre questi servizi è Pure Data, ambiente di programmazione per l’elaborazione di segnali digitali, con enfasi sui segnali sonori.",
+                "ref": "Diploma n. 271883, Pisa, 19 Febbraio 2013"
+            }
+        },
+        {
+            "title": "Maturità Scientifica",
+            "where": "Liceo Scientifico Il Pontormo, Via Raffaello Sanzio, 159, 50053 Empoli FI",
+            "when": "2004 - 2009",
+            "description": "Ha conseguito la laurea in Ingegneria Informatica presso l’Università degli Studi di Pisa in data 4 Ottobre 2012",
+            "result": "100 / 100"
+        }
+    ]
+}

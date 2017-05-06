@@ -1,3 +1,250 @@
-<h1>
-  It is the new title: {{title}}
-</h1>
+<div class="container">
+    <header>
+        <img id="foto" src="foto.png" alt="Foto Fabio Carrara">
+        <h1><span class="nome">{{personalData.name}}</span> <span class="cognome">{{personalData.surname}}</span> <small>Curriculum Vitae</small></h1>
+    </header>
+	<div id="dati-personali">
+        <h2>Dati Personali</h2>
+		<div id="generalita">
+			<span class="nato-a">{{personalData.birthplace}}</span>
+			<time class="nato-il" datetime="1990/07/23">{{personalData.birthday}}</time>
+		</div>
+		<div id="residenza">
+            <h3>Residenza</h3>
+			<span class="via">{{personalData.address.street}}, {{personalData.address.streetNumber}}</span>
+			<span class="cap">{{personalData.address.zipCode}}</span>
+			<span class="citta">{{personalData.address.city}} ({{personalData.address.province}})</span>
+			<span class="stato">{{personalData.address.nation}}</span>
+		</div>
+		<div id="contatti">
+            <h3>Contatti</h3>
+			<a class="telefono" href="tel:+393332479082">{{personalData.phoneNumber}}</a>
+			<a class="email" href="mailto:fabio.carrara90@gmail.com">{{personalData.email}}</a>
+		</div>
+		<div id="misc">
+			<span class="patente">{{personalData.license}}</span>
+		</div>
+	</div>
+	<div id="educazione">
+        <h2>Educazione</h2>
+		<div *ngFor='let educationItem of education' class="titolo-di-studio">
+			<h3 class="titolo">{{educationItem.title}}</h3>
+			<span class="quando">{{educationItem.when}}</span>
+			<span class="voto label label-info">{{educationItem.result}}</span>
+			<span class="dove">{{educationItem.where}}</span>
+			<span class="descrizione">{{educationItem.description}}</span>
+			<div *ngIf='educationItem.thesis' class="tesi panel panel-default">
+                <div class="panel-heading">Tesi di Laurea</div>
+                <table class="table table-condensed">
+                    <tbody>
+                        <tr><th>Titolo</th> <td class="titolo-tesi">{{educationItem.thesis.title}}</td></tr>
+                        <tr><th>Relatori</th> <td class="relatori-tesi">{{educationItem.thesis.supervisors}}</td></tr>
+                        <tr><th>Abstract</th> <td class="abstract text-justify">{{educationItem.thesis.abstract}}</td></tr>
+                        <tr><th>Rif.</th> <td class="ref">{{educationItem.thesis.ref}}</td></tr>
+                    </tbody>
+                </table>
+            </div>
+		</div>		
+	</div>
+	<div id="professioni">
+        <h2>Esperienze Lavorative</h2>
+		<div class="esperienza-lavorativa corrente">
+			<h3 class="cosa">Assegnista di ricerca su tematica "Analisi automatica di dati visuali"</h3>
+			<span class="quando">11/07/2016 – presente</span>
+			<span class="dove">Istituto di Scienza e Tecnologia dell’Informazione “A.Faedo” - CNR - Pisa</span>
+			<span class="descrizione">Assegno professionalizzante per lo svolgimento di attività di ricerca con tema "Analisi automatica di dati visuali" nell'ambito del progetto "SmartNews: Social Sensing for Breaking News" (Bando FAR-FAS 2014, CUP D58C15000270008)</span>
+			<div class="dettagli panel panel-default">
+				<div class="panel-heading">Dettagli</div>
+				<table class="table table-striped table-condensed">
+					<tbody>
+						<!-- <tr><th>Attività e<br>Responsabilità</th><td class="attivita-responsabilita">TODO</td></tr> -->
+						<!-- <tr><th>Competenze e<br>Obiettivi</th><td class="competenze-obiettivi">competenze tecniche, gestione del tempo, stesura di trattati scientifici.</td></tr> -->
+						<tr><th>Responsabile</th><td class="responsabile">Dott. Fabrizio Falchi</td></tr>
+						<tr><th>Rif.</th><td class="ref">Bando ISTI 003/2016 - PI Prot. 2154 del 01/06/2016, prot. n. 2654 del 06/07/2016</td></tr>
+						<tr><th>Carica</th><td class="carica">assegnista di ricerca</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		
+		<div class="esperienza-lavorativa">
+			<h3 class="cosa">Collaboratore di ricerca</h3>
+			<span class="quando">15/07/2015 – 14/08/2015</span>
+			<span class="dove">Istituto di Scienza e Tecnologia dell’Informazione “A.Faedo” - CNR - Pisa</span>
+			<span class="descrizione">Contratto di prestazione d’opera in regime di lavoro autonomo occasionale</span>
+			<div class="dettagli panel panel-default">
+				<div class="panel-heading">Dettagli</div>
+				<table class="table table-striped table-condensed">
+					<tbody>
+						<tr><th>Attività e<br>Responsabilità</th><td class="attivita-responsabilita">Studio e ricerca sulla problematica dell’identificazione e riconoscimento visuale automatico di oggetti da sorgenti multimediali. In particolare, studio delle tecniche di apprendimento automatico e modellazione dello sfondo delle immagini per poter identificare oggetti che compaiono nella scena, e successivamente riconoscerli automaticamente, L’attività di ricerca ha preso in esame lo stato dell’arte e ha identificato direzioni da seguire per migliorare le tecniche esistenti. Sono stati effettuati esperimenti per valutare oggettivamente i risultati ottenuti.</td></tr>
+						<tr><th>Competenze e<br>Obiettivi</th><td class="competenze-obiettivi">competenze tecniche, gestione del tempo, stesura di trattati scientifici.</td></tr>
+						<tr><th>Rif.</th><td class="ref">prot. n. 2355 del 04/06/2015, n. 2859 del 08/07/2015</td></tr>
+						<tr><th>Carica</th><td class="carica">collaboratore coordinato e continuativo</td></tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div id="lingue">
+		<h2>Certificazioni Linguistiche</h2>
+		<div class="certificazione todo">
+			<h3 class="cosa">Certificazione di Lingua Inglese (Livello C1)</h3>
+			<span class="quando">Maggio 2016</span>
+			<span class="dove">Pisa</span>
+			<span class="ref todo">Attestato di conseguimento</span>
+		</div>
+		
+		<div class="certificazione">
+			<h3 class="cosa">Corso di Lingua Inglese in madrelingua (Livello B2 - Upper Intermediate)</h3>
+			<span class="quando">Luglio 2005</span>
+			<span class="dove">Edinburgh Napier University (UK)</span>
+			<span class="ref todo">Attestato di frequenza</span>
+		</div>
+		
+		<div class="certificazione">
+			<h3 class="cosa">Certificazione di Lingua Inglese (Livello A2 - Key English Test)</h3>
+			<span class="quando">Maggio 2004</span>
+			<span class="dove">Firenze</span>
+			<span class="ref todo">Certificato di idoneità n. 0011783250 rilasciato dalla University of Cambridge, il 5 Luglio 2004, Firenze</span>
+		</div>
+	</div>
+    <h2>Competenze Informatiche</h2>
+	<div id="informatica">
+		<div class="competenza">
+			<h3 class="cosa">Deep Learning per Image Representation, Classification e Retrieval <cite class="ref" data-ref="amato2017deep amato2016car carrara2016picture"></cite></h3>
+			<span class="descrizione">Ottima conoscenza di <em>reti neurali</em>, <em>reti neurali convoluzionali</em>, <em>spazi metrici e vettoriali</em></span>
+			<ul class="linguaggi">
+				<li>Caffe (Python)</li>
+				<li>OpenCV (Python)</li>
+				<li>numpy, scikit, matplotlib, pandas (Python)</li>
+				<li>TensorFlow (Python)</li>
+				<li>Keras (Python)</li>
+				<li>Bash</li>
+				<li>Torch (Lua)</li>
+			</ul>
+		</div>
+		
+		<div class="competenza">
+			<h3 class="cosa">Computer Vision e Image Processing <cite class="ref" data-ref="carrara2015semiautomatic carrara2015efficient"></cite></h3>
+			<span class="descrizione">Ottima conoscenza di <em>local features detector e descriptor (FAST, SURF, SIFT, ORB, LBP)</em>, <em>algoritmi di background subtraction</em>, <em>object detection and recognition</em>, <em>registrazione 2D, basati su local features e trasformazioni omografiche</em>, <em>face detection e recognition basati su local features</em></span>
+			<ul class="linguaggi">
+				<li>OpenCV (Python, C/C++, Java)</li>
+				<li>numpy, scikit, matplotlib (Python)</li>
+				<li>MATLAB</li>
+			</ul>
+		</div>
+		
+		<div class="competenza">
+			<h3 class="cosa">Linux OS e Web development</h3>
+			<span class="descrizione">Ottima conoscenza di <em>sistemi Linux Debian-based</em>. Buona conoscenza di tecnologie web front-end e back-end.</span>
+			<ul class="linguaggi">
+				<li>HTML5</li>
+				<li>CSS3</li>
+				<li>JavaScript</li>
+				<li>Bootstrap</li>
+				<li>AngularJS</li>
+				<li>jQuery</li>
+				<li>Ubuntu (Linux)</li>
+				<li>Apache</li>
+				<li>PHP</li>
+				<li>SQL (MySQL)</li>
+			</ul>
+		</div>
+		
+		<div class="competenza">
+			<h3 class="cosa">Software di Editing Multimediale <!--<cite class="ref" data-ref="carrara2015design"></cite>--></h3>
+			<span class="descrizione">Ottima conoscenza delle rappresentazioni digitali di audio e immagini. Buona conoscenza di software di manipolazione immagini e processing/editing/generazione audio.</span>
+			<ul class="linguaggi">
+				<li>Ardour</li>
+				<li>PureData</li>
+				<li>Gimp 2.0</li>
+				<li>Inkscape</li>
+				<li>Lightworks</li>
+				<li>OpenShot</li>	
+			</ul>
+		</div>
+		
+		<div class="competenza">
+			<h3 class="cosa">Preparazione documenti scientifici</h3>
+			<span class="descrizione">Ottima conoscenza di programmi e linguaggi per la preparazione e stesura di documenti scientifici.</span>
+			<ul class="linguaggi">
+				<li>LaTeX / BibTeX</li>
+				<li>Open/Libre Office</li>
+				<li>MS Office</li>
+			</ul>
+		</div>
+	</div>
+	<div id="presentazioni">
+        <h2>Presentazioni Orali</h2>
+		<div class="talk">
+			<span class="cosa">ISCC 2016: The Twenty-First IEEE Symposium on Computers and Communications</span>
+			<span class="dove">Messina, Italy, 27 - 30 June, 2016</span>
+			<span class="descrizione">Car Parking Occupancy Detection Using Smart Camera Networks and Deep Learning</span>
+			<span class="autori">Giuseppe Amato, Fabio Carrara, Fabrizio Falchi, Claudio Gennaro and Claudio Vairo</span>
+			<span class="award">Best Italian Paper Award</span>
+		</div>
+		<div class="talk">
+			<span class="cosa">SISAP 2015: 8th International Conference on Similarity Search and Applications</span>
+			<span class="dove">Glagow, Scotland, UK, 12-14 Ottobre 2015</span>
+			<span class="descrizione">Semiautomatic Learning of 3D Objects from Video Streams</span>
+			<span class="autori">Fabio Carrara, Fabrizio Falchi and Claudio Gennaro</span>
+		</div>
+	</div>
+	<div id="revisione">
+        <h2>Attività di revisione</h2>
+		<ul class="riviste">
+			<li>Information Systems (Elsevier, ISSN: 0306-4379)</li>
+		</ul>
+		<ul class="conferenze">
+			<li>IEEE Symposium on Computers and Communications (ISCC 2016)</li>
+		</ul>
+	</div>
+    <h2>Pubblicazioni</h2>
+	<ol id="pubblicazioni">
+		<li class="pub">
+			<time class="year">2017</time>
+			<span class="titolo">Deep learning for decentralized parking lot occupancy detection</span>
+			<span class="autori">Amato, <span class="nome">Giuseppe</span>; Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span>; Meghini, Carlo; Vairo, <span class="nome">Claudio</span></span>
+			<cite class="publication">Expert Systems with Applications</cite>
+			<span class="number">72</span>
+			<span class="pages">327-334</span>
+			<span class="publisher">Pergamon</span>
+		</li>
+		<li class="pub">
+			<time class="year">2016</time>
+			<span class="titolo">Car parking occupancy detection using smart camera networks and Deep Learning</span>
+			<span class="autori">Amato, <span class="nome">Giuseppe</span>; Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span>; Vairo, <span class="nome">Claudio</span></span>
+			<cite class="publication">Computers and Communication (ISCC), 2016 IEEE Symposium on</cite>
+			<span class="pages">1212-1217</span>
+			<span class="publisher">IEEE</span>
+			<span class="award">Best Italian Paper Award</span>
+		</li>
+		<li class="pub">
+			<time class="year">2016</time>
+			<span class="titolo">Picture it in your mind: Generating high level visual representations from textual descriptions</span>
+			<span class="autori">Carrara, <span class="nome">Fabio</span>; Esuli, Andrea; Fagni, Tiziano; Falchi, <span class="nome">Fabrizio</span>; Moreo, <span class="nome">Alejandro</span> <span class="nome">Fernández</span></span>
+			<cite class="publication">arXiv preprint arXiv:1606.07287</cite>
+		</li>
+		<li class="pub">
+			<time class="year">2015</time>
+			<span class="titolo">Semiautomatic Learning of 3D Objects from Video Streams</span>
+			<span class="autori">Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span></span>
+			<cite class="publication">International Conference on Similarity Search and Applications</cite>
+			<span class="pages">217-228</span>
+			<span class="publisher">Springer International Publishing</span>
+		</li>
+		<li class="pub">
+			<time class="year">2015</time>
+			<span class="titolo">Efficient foreground-background segmentation using local features for object detection</span>
+			<span class="autori">Carrara, <span class="nome">Fabio</span>; Amato, <span class="nome">Giuseppe</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span></span>
+			<cite class="publication">Proceedings of the 9th International Conference on Distributed Smart Cameras</cite>
+			<span class="pages">175-180</span>
+			<span class="publisher">ACM</span>
+		</li>
+		<li class="pub">
+			<time class="year">2015</time>
+			<span class="titolo">Design and implementation of a system for incremental real-time visual object detection and autonomous recognition</span>
+			<span class="autori">Carrara, <span class="nome">Fabio</span></span>
+		</li>
+	</ol>
+</div>
