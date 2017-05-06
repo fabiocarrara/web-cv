@@ -14,6 +14,11 @@ export class AppComponent {
   private jsonFile = 'data.json';
   personalData: any;
   education: any;
+  jobs: any;
+  languages: any;
+  itSkills: any;
+  presentations: any;
+  publications: any;
 
   constructor(http: Http) {
     http
@@ -26,6 +31,11 @@ export class AppComponent {
   private readJson(jsonData: any) {
     this.personalData = jsonData.personalData;
     this.education = jsonData.education;
+    this.jobs = jsonData.jobs;
+    this.languages = jsonData.languages;
+    this.itSkills = jsonData.itSkills;
+    this.presentations = jsonData.presentations;
+    this.publications = jsonData.publications;
   }
 
   private handleError(error: Response | any) {
