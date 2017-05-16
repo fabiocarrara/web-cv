@@ -81,22 +81,24 @@ header small {
 
 /* FINE HEADER */
 
-#educazione .titolo-di-studio,
+/* #educazione .titolo-di-studio,
 #professioni .esperienza-lavorativa,
 #lingue .certificazione,
 #informatica .competenza,
 #presentazioni .talk,
-#pubblicazioni .pub {
+#pubblicazioni .pub */
+.entry {
 	clear: both;
 }
 
 
-#educazione .titolo-di-studio .titolo,
+/* #educazione .titolo-di-studio .titolo,
 #professioni .esperienza-lavorativa .cosa,
 #lingue .certificazione .cosa,
 #informatica .competenza .cosa,
 #presentazioni .talk .cosa,
-#pubblicazioni .pub .titolo {
+#pubblicazioni .pub .titolo */
+.entry-title {
     font-size: 1.1em;
     font-weight: bold;
     display: inline-block;
@@ -167,9 +169,10 @@ header small {
 } */
 
 
-#educazione .titolo-di-studio .dove,
+/* #educazione .titolo-di-studio .dove,
 #professioni .esperienza-lavorativa .dove,
-#presentazioni .talk .dove {
+#presentazioni .talk .dove */
+.entry-where {
 	float: left;
 	width: 170px;
     font-size: 0.9em;
@@ -180,26 +183,29 @@ header small {
 	padding-top: 3px;
 }
 
-#educazione .titolo-di-studio .dove,
+/*#educazione .titolo-di-studio .dove,
 #professioni .esperienza-lavorativa .dove,
 #lingue .certificazione .dove,
-#presentazioni .talk .dove {
+#presentazioni .talk .dove */ 
+.gray {
     font-style: italic;
     color: #555;
 }
 
-#educazione .titolo-di-studio .dove:after,
-#professioni .esperienza-lavorativa .dove:after,
-#lingue .certificazione .dove:after,
-#presentazioni .talk .dove:after {
+#educazione .entry-where:after,
+#professioni .entry-where:after,
+#lingue .entry-where:after,
+#presentazioni .entry-where:after {
+	/* trick to go to new line */
     content: "\A";
     white-space: pre;
 }
 
-#educazione .titolo-di-studio .quando,
+/* #educazione .titolo-di-studio .quando,
 #professioni .esperienza-lavorativa .quando,
 #lingue .certificazione .quando,
-#presentazioni .talk .quando {
+#presentazioni .talk .quando */
+.entry-when {
 	box-sizing: border-box;
 	padding-right: 5px;
     float: left;
@@ -211,10 +217,11 @@ header small {
 	padding-top: 8px;
 }
 
-#educazione .titolo-di-studio .descrizione,
+/* #educazione .titolo-di-studio .descrizione,
 #professioni .esperienza-lavorativa .descrizione,
 #presentazioni .talk .descrizione,
-#lingue .certificazione .ref {
+#lingue .certificazione .ref */ 
+.entry-description {
     font-size: 85%;
   	margin-left: 182px;
 	display: block;
@@ -225,10 +232,11 @@ header small {
 	display: inline-block;
 }
 
-#educazione .titolo-di-studio .corsi,
+/* #educazione .titolo-di-studio .corsi,
 #educazione .titolo-di-studio .tesi,
 #educazione .titolo-di-studio .esami,
-#professioni .esperienza-lavorativa .dettagli {
+#professioni .esperienza-lavorativa .dettagli */
+.entry-details {
     font-size: 85%;
     padding-top: 5px;
     box-sizing: border-box;
