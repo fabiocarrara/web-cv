@@ -88,7 +88,16 @@
             "where": "Istituto di Scienza e Tecnologia dell’Informazione “A.Faedo” - CNR - Pisa",
             "when": "11/07/2016 – Presente",
             "description": "Assegno professionalizzante per lo svolgimento di attività di ricerca con tema \"Analisi automatica di dati visuali\" nell'ambito del progetto \"SmartNews: Social Sensing for Breaking News\" (Bando FAR-FAS 2014, CUP D58C15000270008)",
-            "result": ""
+            "result": "",
+            "technologies": [
+                "Caffe (Python)",
+                "OpenCV (Python)",
+                "numpy, scikit, matplotlib, pandas (Python)",
+                "TensorFlow (Python)",
+                "Keras (Python)",
+                "Bash",
+                "Torch (Lua)"
+            ]
         },
         {
             "what": "Collaboratore di ricerca",

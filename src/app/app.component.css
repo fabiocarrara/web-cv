@@ -89,7 +89,8 @@ header small {
 }
 
 .entry .description,
-.entry .who {
+.entry .who,
+.entry .repo {
     font-size: 85%;
   	margin-left: 182px;
 	display: block;
@@ -138,6 +139,7 @@ table > thead > tr > th {
     text-align: justify;
 }
 
+#jobs .entry table tr > *:first-child,
 #education .entry table tr > *:first-child {
 	text-align: right;
 	width: 176px;
