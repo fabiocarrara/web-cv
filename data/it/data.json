@@ -8,9 +8,9 @@
             "street": "Via Jacopo Carrucci",
             "streetNumber": 48,
             "zipCode": 50053,
-            "City": "Empoli",
-            "Province": "FI",
-            "Nation": "Italia"
+            "city": "Empoli",
+            "province": "FI",
+            "nation": "Italia"
         },
         "phoneNumber": "+39 3332479082",
         "email": "fabio.carrara@gmail.com",
@@ -51,7 +51,7 @@
             "description": "Ha conseguito la laurea in Ingegneria Informatica presso l’Università degli Studi di Pisa in data 4 Ottobre 2012",
             "result": "110 e Lode / 110",
             "thesis": {
-                "what": "Sonificazione con PureData per Android: dai sensori ai segnali al suono",
+                "title": "Sonificazione con PureData per Android: dai sensori ai segnali al suono",
                 "supervisors": "Prof. Marco Avvenuti, Ing. Mario G. C. A. Cimino, Ing. Daniel Cesarini",
                 "abstract": "Grazie all’avvento del pervasive computing, che vede un sempre maggior numero di dispositivi di calcolo inseriti nella vita quotidiana, sono possibili applicazioni che interagiscono con l’ambiente circostante e con l’uomo, attraverso l’elaborazione e lo scambio di molte informazioni. Ne sono un esempio dispositivi come smartphones e tablets, che mettono a disposizione potenza di calcolo e sensori mobili. La loro diffusione ha permesso agli sviluppatori di rendere fruibili queste applicazioni, dette context-aware. Il potente sistema uditivo umano permette la ricezione di informazioni veicolate attraverso il suono, anche quando questo non è formato da fonemi. È possibile sfruttare questa proprietà per trasmettere informazioni tramite la sonificazione, cioè la generazione di suono parametrica. Questa tesi propone uno strumento di sonificazione e di analisi di dati utilizzabile da applicazioni mobili sviluppate su Android. Il software chiave che offre questi servizi è Pure Data, ambiente di programmazione per l’elaborazione di segnali digitali, con enfasi sui segnali sonori.",
                 "ref": "Diploma n. 271883, Pisa, 19 Febbraio 2013"

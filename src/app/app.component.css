@@ -1,13 +1,8 @@
-
 /* SHOW/HIDE LIST */
 
-#dati-personali h2,
-#dati-personali h3,
-#dati-personali .nato-a,
-#educazione .titolo-di-studio .data {
+#personal-data .birthplace {
     display: none;
 }
-
 
 /* HEADER */
 
@@ -16,19 +11,11 @@ header small {
 	margin-bottom: 20px;
 }
 
-#dati-personali div {
+#personal-data div {
 	line-height: 1.75em;
 }
 
-#dati-personali .nato-il:before {
-    font-family: 'Glyphicons Halflings';
-    content: "\e008"; /* USER */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-}
-
-#foto {
+#photo {
 	float: left;
 	height: 200px;
     border-radius: 5px;
@@ -36,141 +23,33 @@ header small {
 	box-sizing: border-box;
 }
 
-#residenza .via:before {
-    font-family: 'Glyphicons Halflings';
-    content: "\e021"; /* HOME */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-}
-
-#contatti .telefono:after {
+.phone:after {
     content: "\A";
     white-space: pre;
 }
 
-#contatti .telefono:before {
-    font-family: 'Glyphicons Halflings';
-    content: "\e182"; /* PHONE or 145 SMARTPHONE*/
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-    color: #333;
-}
-
-#contatti .email:before {
-    font-family: 'Glyphicons Halflings';
-    content: "\2709"; /* MAIL */
-    vertical-align: bottom;
-    padding: 5px;
-    color: #333;
-}
-
-#misc:before {
-    font-family: 'Glyphicons Halflings';
-    content: "\e024"; /* ROAD */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-    color: #333;
-}
-
-#contatti .email:before:hover, #contatti .telefono:before:hover {
+#contacts .email:before:hover, #contacts .phone:before:hover {
     text-decoration: none;
 }
 
 /* FINE HEADER */
 
-#educazione .titolo-di-studio,
-#professioni .esperienza-lavorativa,
-#lingue .certificazione,
-#lingue .madrelingua,
-#informatica .competenza,
-#presentazioni .talk,
-#pubblicazioni .pub {
+.entry {
 	clear: both;
 }
 
-
-#educazione .titolo-di-studio .titolo,
-#professioni .esperienza-lavorativa .cosa,
-#lingue .certificazione .cosa,
-#informatica .competenza .cosa,
-#presentazioni .talk .cosa,
-#pubblicazioni .pub .titolo {
+.entry .title {
     font-size: 1.1em;
     font-weight: bold;
     display: inline-block;
     margin: 10px 5px 4px 8px;
 }
 
-#informatica .competenza .cosa {
+#itSkills .entry .title {
 	display: block;
 }
 
-#educazione .titolo-di-studio .titolo:before {
-    font-family: 'Glyphicons Halflings';
-    /* content: "\e080"; /* > */
-    content: "\e233"; /* EDU */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-}
-
-#pubblicazioni .pub .titolo {
-    margin-left: 0px;
-}
-
-#professioni .esperienza-lavorativa .cosa:before {
-	font-family: 'Glyphicons Halflings';
-    /* content: "\e080"; /* > */
-    content: "\e139"; /* WORK */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-}
-
-#lingue .certificazione .cosa:before {
-	font-family: 'Glyphicons Halflings';
-    /* content: "\e080"; /* > */
-    content: "\e135"; /* GLOBE */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-}
-
-#informatica .competenza .cosa:before {
-	font-family: 'Glyphicons Halflings';
-    /* content: "\e080"; /* > */
-    content: "\e172"; /* FLOPPY */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-}
-
-#presentazioni .talk .cosa:before {
-	font-family: 'Glyphicons Halflings';
-    /* content: "\e080"; /* > */
-    content: "\e218"; /* BLACKBOARD */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-}
-
-/* #pubblicazioni .pub:before {
-	font-family: 'Glyphicons Halflings';
-*/
-    /* content: "\e080"; /* > */
-/*    content: "\e022"; /* FILE */
-/*    vertical-align: bottom;
-    padding: 5px;
-	font-style: normal;
-} */
-
-
-#educazione .titolo-di-studio .dove,
-#professioni .esperienza-lavorativa .dove,
-#presentazioni .talk .dove {
+.entry .where {
 	float: left;
 	width: 170px;
     font-size: 0.9em;
@@ -179,29 +58,16 @@ header small {
 	box-sizing: border-box;
 	padding-right: 5px;
 	padding-top: 3px;
-}
-
-#educazione .titolo-di-studio .dove,
-#professioni .esperienza-lavorativa .dove,
-#lingue .certificazione .dove,
-#presentazioni .talk .dove {
     font-style: italic;
     color: #555;
 }
 
-#educazione .titolo-di-studio .dove:after,
-#professioni .esperienza-lavorativa .dove:after,
-#lingue .certificazione .dove:after,
-#presentazioni .talk .dove:after {
+.entry .where:after {
     content: "\A";
     white-space: pre;
 }
 
-#educazione .titolo-di-studio .quando,
-#professioni .esperienza-lavorativa .quando,
-#lingue .certificazione .quando,
-#lingue .madrelingua-label,
-#presentazioni .talk .quando {
+.entry .when {
 	box-sizing: border-box;
 	padding-right: 5px;
     float: left;
@@ -213,46 +79,36 @@ header small {
 	padding-top: 8px;
 }
 
-#educazione .titolo-di-studio .descrizione,
-#professioni .esperienza-lavorativa .descrizione,
-#presentazioni .talk .descrizione,
-#lingue .certificazione .ref,
-#lingue .madrelingua-value {
+.entry .description,
+.entry .who {
     font-size: 85%;
   	margin-left: 182px;
 	display: block;
 }
 
-#informatica .competenza .descrizione {
+#itSkills .entry .description {
 	margin-left: 32px;
 	display: inline-block;
 }
 
-#educazione .titolo-di-studio .corsi,
-#educazione .titolo-di-studio .tesi,
-#educazione .titolo-di-studio .esami,
-#professioni .esperienza-lavorativa .dettagli {
+.details {
     font-size: 85%;
     padding-top: 5px;
     box-sizing: border-box;
 	clear: both;
 }
 
-#educazione .titolo-di-studio table .titolo-corso {
+#education .entry table .title {
     padding-left: 25px;
 }
 
-#educazione .titolo-di-studio table caption {
+#education .entry table caption {
     padding-left: 4px;
 }
 
-.tesi table th {
+.detail table th {
     text-align: right;
     padding-left: 15px !important;
-}
-
-.codice-esame {
-	font-family: monospace;
 }
 
 .panel-heading {
@@ -273,72 +129,92 @@ table > thead > tr > th {
     text-align: justify;
 }
 
-#educazione .titolo-di-studio table tr > *:first-child,
-#professioni .esperienza-lavorativa table tr > *:first-child
-{
+#education .entry table tr > *:first-child {
 	text-align: right;
 	width: 176px;
 	box-sizing: border-box;
 	padding-right: 12px;
 }
 
-#informatica .linguaggi {
+#itSkills .linguaggi {
 	padding-left: 32px;
 }
 
-#informatica .competenza {
+#itSkills .entry {
 	margin-top: 15px;
 }
 
-#presentazioni .talk .award,
-#presentazioni .talk .autori {
+#presentations .entry .who {
+	font-style: italic;
 	font-size: 85%;
 }
 
-#presentazioni .talk .autori {
-	font-style: italic;
-}
-
-#presentazioni .talk .autori:before {
-	content: ' - '
-}
-
-#pubblicazioni .pub .number:before {
-	content: 'n.'
-}
-
-#pubblicazioni .pub .pages:before {
-	content: 'pp. '
-}
-
-#pubblicazioni .pub .autori:after,
-#pubblicazioni .pub .number:after,
-#pubblicazioni .pub .pages:after {
-	content: ', '
-}
-
-.voto {
+.result {
 	margin-right: 5px;
 }
 
-cite.ref {
-	font-style: normal;
-	font-weight: bold;
-	font-family: monospace;
-}
-
-ol {
-	counter-reset: list;
-	list-style-type: none;
-	padding-left: 0;
-}
-ol > li:before {
-	font-weight: bold;
-	font-family: monospace;
-	content: "[" counter(list) "]";
-	counter-increment: list;
-}
-
-#informatica .competenza .repo {
+#itSkills .entry .repo {
     font-style: normal;
+}
+
+/* ICONS */
+
+.with-icon:before {
+    font-family: 'Glyphicons Halflings';
+    vertical-align: bottom;
+	font-weight: normal;
+    padding: 5px;
+    color: #333;
+}
+
+.birthdate:before {
+    content: "\e008"; /* USER */
+}
+
+.address:before {
+    content: "\e021"; /* HOME */
+}
+
+.phone:before {
+    content: "\e182"; /* PHONE or 145 SMARTPHONE*/
+}
+
+.email:before {
+    content: "\2709"; /* MAIL */
+}
+
+.license:before {
+    content: "\e024"; /* ROAD */
+}
+
+.social:before {
+    content: "\e284"; /* PEOPLE GROUP */
+}
+
+#education .entry .title:before {
+    content: "\e233"; /* EDU */
+}
+
+#jobs .entry .title:before {
+    content: "\e139"; /* WORK */
+}
+
+#language-certifications .entry .title:before {
+    content: "\e135"; /* GLOBE */
+}
+
+#itSkills .entry .title:before {
+    content: "\e172"; /* FLOPPY */
+}
+
+#presentations .entry .title:before {
+    content: "\e218"; /* BLACKBOARD */
+}
+
+#publications .entry .title:before {
+    content: "\e043"; /* BOOK */
+}
+
+#projects .entry .title:before {
+    content: "\e118"; /* FOLDER OPEN */
 }
