@@ -166,6 +166,12 @@ table > thead > tr > th {
     font-style: normal;
 }
 
+footer {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 85%;
+}
+
 /* ICONS */
 
 .with-icon:before {

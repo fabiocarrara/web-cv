@@ -10,6 +10,7 @@ Planned features:
 * Fix CSS
 * Improve social section with predefined icons
 * Improve self-language assess table
+* Move angular branch to trunk
 * Document json file structure
 
 ## Prerequisites
@@ -40,16 +41,12 @@ For example, if you se it to 'en', all other json file will be read from the 'da
 The labels.json files contains all the labels of the CV.
 If you want to translate the CV to your own language, you need to create a new folder with your language name, translate the labels and save the labels.json file inside the new folder and set the language value in the main.json file.
 
-TODO: document the labels
-
 ### data.json
 
 The data.json file contains the data that is used to fill the CV.
 
-TODO: document the data
-
 ## Contacts
 
 For any information you can contact:
-Fabio Carrara (fabio.carrara@gmail.com)
-Daniele Formichelli (daniele.formichelli@gmail.com)
+[Fabio Carrara](mailto:fabio.carrara@gmail.com)
+[Daniele Formichelli](mailto:daniele.formichelli@gmail.com)
