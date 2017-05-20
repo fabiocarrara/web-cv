@@ -14,7 +14,24 @@
         },
         "phoneNumber": "+39 3332479082",
         "email": "fabio.carrara@gmail.com",
-        "license": "Patente di guida, categoria B"
+        "license": "Patente di guida, categoria B",
+        "social": [
+            {
+                "name": "facebook",
+                "value": "fabio.carrara",
+                "link": "https://www.facebook.com/fabio.carrara"
+            },
+            {
+                "name": "linkedin",
+                "value": "fabio.carrara",
+                "link": "https://www.linkedin.com/fabio.carrara"
+            },
+            {
+                "name": "Google+",
+                "value": "fabio.carrara",
+                "link": "https://www.google.com/fabio.carrara"
+            }
+        ]
     },
     "education": [
         {

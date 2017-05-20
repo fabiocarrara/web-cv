@@ -3,6 +3,15 @@
 An WEB based CV customizable by editing a json data file.
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.0.2.
 
+## Work In Progress
+
+It is still a work in progress.
+Planned features:
+* Fix CSS
+* Improve social section with predefined icons
+* Improve self-language assess table
+* Document json file structure
+
 ## Prerequisites
 
 You need node.js installed on your machine.

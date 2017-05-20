@@ -5,6 +5,12 @@
 	</header>
 
 	<div *ngIf='data.personalData' id="personal-data">
+		<div *ngIf='data.personalData.social' id="social">
+			<div *ngFor='let socialItem of data.personalData.social' class="entry with-icon">
+				{{socialItem.name}}: <a href="{{socialItem.link}}">{{socialItem.value}}</a>
+				</div>
+		</div>
+		
 		<div>
 			<time class="birthdate with-icon">{{data.personalData.birthday}}</time>
 			<span class="birthplace">{{data.personalData.birthplace}}</span>

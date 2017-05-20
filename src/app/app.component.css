@@ -24,12 +24,21 @@ header small {
 }
 
 .phone:after {
+    /* newline */
     content: "\A";
     white-space: pre;
 }
 
 #contacts .email:before:hover, #contacts .phone:before:hover {
     text-decoration: none;
+}
+
+#social {
+    float: right
+}
+
+#social .entry {
+    text-align: right;
 }
 
 /* FINE HEADER */
@@ -165,6 +174,15 @@ table > thead > tr > th {
 	font-weight: normal;
     padding: 5px;
     color: #333;
+}
+
+#social .with-icon:after {
+    font-family: 'Glyphicons Halflings';
+    vertical-align: bottom;
+	font-weight: normal;
+    padding: 5px;
+    color: #333;
+    content: "\e135";
 }
 
 .birthdate:before {
