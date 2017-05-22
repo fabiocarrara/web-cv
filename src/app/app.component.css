@@ -41,10 +41,17 @@ header small {
     text-align: right;
 }
 
-/* FINE HEADER */
+/* END HEADER */
+
+h2 {
+    margin-top: 30px;
+    margin-left: 180px;
+    clear: both;
+}
 
 .entry {
 	clear: both;
+	overflow: auto;
 }
 
 .entry .title {
@@ -54,7 +61,7 @@ header small {
     margin: 10px 5px 4px 8px;
 }
 
-#itSkills .entry .title {
+#it-skills .entry .title {
 	display: block;
 }
 
@@ -96,7 +103,7 @@ header small {
 	display: block;
 }
 
-#itSkills .entry .description {
+#it-skills .entry .description {
 	margin-left: 32px;
 	display: inline-block;
 }
@@ -116,7 +123,7 @@ header small {
     padding-left: 4px;
 }
 
-.detail table th {
+.entry table th {
     text-align: right;
     padding-left: 15px !important;
 }
@@ -139,20 +146,27 @@ table > thead > tr > th {
     text-align: justify;
 }
 
-#jobs .entry table tr > *:first-child,
-#education .entry table tr > *:first-child {
+/* #jobs .entry table tr > *:first-child, 
+#education .entry table tr > *:first-child */
+.entry table tr > *:first-child,
+#languages table tr > *:first-child {
 	text-align: right;
 	width: 176px;
 	box-sizing: border-box;
 	padding-right: 12px;
 }
 
-#itSkills .linguaggi {
+#language-certifications > h3 {
+    margin-left: 180px;
+}
+
+#it-skills .linguaggi {
 	padding-left: 32px;
 }
 
-#itSkills .entry {
+#it-skills .entry {
 	margin-top: 15px;
+	margin-left: 180px;
 }
 
 #presentations .entry .who {
@@ -164,7 +178,7 @@ table > thead > tr > th {
 	margin-right: 5px;
 }
 
-#itSkills .entry .repo {
+#it-skills .entry .repo {
     font-style: normal;
 }
 
@@ -229,7 +243,7 @@ footer {
     content: "\e135"; /* GLOBE */
 }
 
-#itSkills .entry .title:before {
+#it-skills .entry .title:before {
     content: "\e172"; /* FLOPPY */
 }
 
