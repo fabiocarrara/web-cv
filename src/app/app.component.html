@@ -27,6 +27,30 @@
 		</div>
 	</div>
 
+	<div *ngIf='data.jobs' id="jobs">
+		<h2>{{labels.jobs}}</h2>
+		<div *ngFor='let jobItem of data.jobs' class="entry">
+			<h3 class="title with-icon" innerHtml="{{jobItem.what}}"></h3>
+			<span class="when" innerHtml="{{jobItem.when}}"></span>
+			<span class="where" innerHtml="{{jobItem.where}}"></span>
+			<span class="description" innerHtml="{{jobItem.description}}"></span>
+			<ul *ngIf='jobItem.technologies' class="technologies">
+				<li *ngFor='let technology of jobItem.technologies' class='label label-default' innerHtml="{{technology}}"></li>
+			</ul>
+			<div *ngIf='jobItem.details' class="details panel panel-default">
+				<div class="panel-heading">{{labels.details}}</div>
+				<table class="table table-striped table-condensed">
+					<tbody>
+						<tr *ngFor='let jobItemDetail of jobItem.details'>
+							<th innerHtml="{{jobItemDetail.title}}"></th>
+							<td class="attivita-responsabilita" innerHtml="{{jobItemDetail.description}}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
 	<div *ngIf='data.education' id="education">
 		<h2>{{labels.education}}</h2>
 		<div *ngFor='let educationItem of data.education' class="entry">
@@ -57,72 +81,6 @@
 						</tr>
 					</tbody>
 				</table>
-			</div>
-		</div>
-	</div>
-
-	<div *ngIf='data.jobs' id="jobs">
-		<h2>{{labels.jobs}}</h2>
-		<div *ngFor='let jobItem of data.jobs' class="entry">
-			<h3 class="title with-icon" innerHtml="{{jobItem.what}}"></h3>
-			<span class="when" innerHtml="{{jobItem.when}}"></span>
-			<span class="where" innerHtml="{{jobItem.where}}"></span>
-			<span class="description" innerHtml="{{jobItem.description}}"></span>
-			<ul *ngIf='jobItem.technologies' class="technologies">
-				<li *ngFor='let technology of jobItem.technologies' class='label label-default' innerHtml="{{technology}}"></li>
-			</ul>
-			<div *ngIf='jobItem.details' class="details panel panel-default">
-				<div class="panel-heading">{{labels.details}}</div>
-				<table class="table table-striped table-condensed">
-					<tbody>
-						<tr *ngFor='let jobItemDetail of jobItem.details'>
-							<th innerHtml="{{jobItemDetail.title}}"></th>
-							<td class="attivita-responsabilita" innerHtml="{{jobItemDetail.description}}"></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>
-		</div>
-	</div>
-
-	<div *ngIf='data.languages' id="languages">
-		<h2>{{labels.languages}}</h2>
-
-		<div *ngIf='data.languages.motherTongue' class='entry'>
-			<span class="when" innerHtml="{{labels.motherTongue}}"></span>
-			<span class="title" innerHtml="{{data.languages.motherTongue}}"></span>
-		</div>
-
-		<table *ngIf='data.languages.otherLanguages' class="table table-condensed table-striped">
-			<thead>
-				<tr>
-					<th>{{labels.otherLanguages.language}}</th>
-					<th>{{labels.otherLanguages.listening}}</th>
-					<th>{{labels.otherLanguages.reading}}</th>
-					<th>{{labels.otherLanguages.spokenInteraction}}</th>
-					<th>{{labels.otherLanguages.spokenProduction}}</th>
-					<th>{{labels.otherLanguages.writing}}</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr *ngFor='let otherLanguage of data.languages.otherLanguages'>
-					<td>{{otherLanguage.language}}</td>
-					<td>{{otherLanguage.listening}}</td>
-					<td>{{otherLanguage.reading}}</td>
-					<td>{{otherLanguage.spokenInteraction}}</td>
-					<td>{{otherLanguage.spokenProduction}}</td>
-					<td>{{otherLanguage.writing}}</td>
-				</tr>
-			</tbody>
-		</table>
-
-		<div *ngIf='data.languages.certificates' id="language-certifications">
-			<h3>{{labels.languageCertificates}}</h3>
-			<div *ngFor='let certificate of data.languages.certificates' class="entry">
-				<h3 class="title with-icon" innerHtml="{{certificate.what}}"></h3>
-				<span class="when" innerHtml="{{certificate.when}}"></span>
-				<span class="where" innerHtml="{{certificate.where}}"></span>
-				<span class="description" innerHtml="{{certificate.ref}}"></span>
 			</div>
 		</div>
 	</div>
@@ -176,6 +134,48 @@
 			<span class="who" innerHtml="{{project.who}}"></span>
 			<span class="repo"><a class="ref" href="{{project.ref}}">{{project.ref}}</a></span>
 			<span *ngIf='project.award' class="award label label-award" innerHtml="{{project.award}}"></span>
+		</div>
+	</div>
+
+	<div *ngIf='data.languages' id="languages">
+		<h2>{{labels.languages}}</h2>
+
+		<div *ngIf='data.languages.motherTongue' class='entry'>
+			<span class="when" innerHtml="{{labels.motherTongue}}"></span>
+			<span class="title" innerHtml="{{data.languages.motherTongue}}"></span>
+		</div>
+
+		<table *ngIf='data.languages.otherLanguages' class="table table-condensed table-striped">
+			<thead>
+				<tr>
+					<th>{{labels.otherLanguages.language}}</th>
+					<th>{{labels.otherLanguages.listening}}</th>
+					<th>{{labels.otherLanguages.reading}}</th>
+					<th>{{labels.otherLanguages.spokenInteraction}}</th>
+					<th>{{labels.otherLanguages.spokenProduction}}</th>
+					<th>{{labels.otherLanguages.writing}}</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor='let otherLanguage of data.languages.otherLanguages'>
+					<td>{{otherLanguage.language}}</td>
+					<td>{{otherLanguage.listening}}</td>
+					<td>{{otherLanguage.reading}}</td>
+					<td>{{otherLanguage.spokenInteraction}}</td>
+					<td>{{otherLanguage.spokenProduction}}</td>
+					<td>{{otherLanguage.writing}}</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div *ngIf='data.languages.certificates' id="language-certifications">
+			<h3>{{labels.languageCertificates}}</h3>
+			<div *ngFor='let certificate of data.languages.certificates' class="entry">
+				<h3 class="title with-icon" innerHtml="{{certificate.what}}"></h3>
+				<span class="when" innerHtml="{{certificate.when}}"></span>
+				<span class="where" innerHtml="{{certificate.where}}"></span>
+				<span class="description" innerHtml="{{certificate.ref}}"></span>
+			</div>
 		</div>
 	</div>
 
