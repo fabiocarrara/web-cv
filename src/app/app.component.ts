@@ -14,6 +14,7 @@ export class AppComponent {
   private jsonMainFile = 'main.json';
   private jsonLabelsFile = 'labels.json';
   private jsonDataFile = 'data.json';
+  disable: String[];
   labels: any;
   data: any;
 
@@ -21,7 +22,9 @@ export class AppComponent {
   }
 
   async ngOnInit() {
-    let language = (await this.http.get(this.dataDirectory + this.jsonMainFile).toPromise()).json().language;
+    let main = (await this.http.get(this.dataDirectory + this.jsonMainFile).toPromise()).json();
+    let language = main.language;
+    this.disable = main.disable;
     this.labels = (await this.http.get(this.dataDirectory + language + '/' + this.jsonLabelsFile).toPromise()).json();
     this.data = (await this.http.get(this.dataDirectory + language + '/' + this.jsonDataFile).toPromise()).json();
   }

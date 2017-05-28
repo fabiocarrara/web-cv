@@ -27,7 +27,7 @@
 		</div>
 	</div>
 
-	<div *ngIf='data.jobs' id="jobs">
+	<div *ngIf='data.jobs && !disable.includes("jobs")' id="jobs">
 		<h2>{{labels.jobs}}</h2>
 		<div *ngFor='let jobItem of data.jobs' class="entry">
 			<h3 class="title with-icon" innerHtml="{{jobItem.what}}"></h3>
@@ -51,7 +51,7 @@
 		</div>
 	</div>
 
-	<div *ngIf='data.education' id="education">
+	<div *ngIf='data.education && !disable.includes("education")' id="education">
 		<h2>{{labels.education}}</h2>
 		<div *ngFor='let educationItem of data.education' class="entry">
 			<h3 class="title with-icon" innerHtml="{{educationItem.what}}"></h3>
@@ -85,7 +85,7 @@
 		</div>
 	</div>
 
-	<div *ngIf='data.itSkills' id="it-skills">
+	<div *ngIf='data.itSkills && !disable.includes("itSkills")' id="it-skills">
 		<h2>{{labels.itSkills}}</h2>
 		<div *ngFor='let itSkill of data.itSkills' class="entry">
 			<h3 class="title with-icon" innerHtml="{{itSkill.title}}"></h3>
@@ -96,7 +96,7 @@
 		</div>
 	</div>
 
-	<div *ngIf='data.presentations' id="presentations">
+	<div *ngIf='data.presentations && !disable.includes("presentations")' id="presentations">
 		<h2>{{labels.presentations}}</h2>
 		<div *ngFor='let presentation of data.presentations' class="entry">
 			<span class="title with-icon" innerHtml="{{presentation.what}}"></span>
@@ -108,7 +108,7 @@
 		</div>
 	</div>
 
-	<div *ngIf='data.publications' id="publications">
+	<div *ngIf='data.publications && !disable.includes("publications")' id="publications">
 		<h2>{{labels.publications}}</h2>
 		<div *ngFor='let publication of data.publications' class="entry">
 			<span class="title with-icon" innerHtml="{{publication.what}}"></span>
@@ -124,7 +124,7 @@
 		</div>
 	</div>
 
-	<div *ngIf='data.projects' id="projects">
+	<div *ngIf='data.projects && !disable.includes("projects")' id="projects">
 		<h2>{{labels.projects}}</h2>
 		<div *ngFor='let project of data.projects' class="entry">
 			<h3 class="title with-icon" innerHtml="{{project.what}}"></h3>
@@ -137,7 +137,7 @@
 		</div>
 	</div>
 
-	<div *ngIf='data.languages' id="languages">
+	<div *ngIf='data.languages && !disable.includes("languages")' id="languages">
 		<h2>{{labels.languages}}</h2>
 
 		<div *ngIf='data.languages.motherTongue' class='entry'>
@@ -168,9 +168,9 @@
 			</tbody>
 		</table>
 
-		<div *ngIf='data.languages.certificates' id="language-certifications">
+		<div *ngIf='data.languages.certifications && !disable.includes("languageCertifications")' id="language-certifications">
 			<h3>{{labels.languageCertificates}}</h3>
-			<div *ngFor='let certificate of data.languages.certificates' class="entry">
+			<div *ngFor='let certificate of data.languages.certifications' class="entry">
 				<h3 class="title with-icon" innerHtml="{{certificate.what}}"></h3>
 				<span class="when" innerHtml="{{certificate.when}}"></span>
 				<span class="where" innerHtml="{{certificate.where}}"></span>
