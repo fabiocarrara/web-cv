@@ -1,4 +1,6 @@
 {
     "language": "en",
-    "disable": []
+    "disable": [
+        "footer"
+    ]
 }
