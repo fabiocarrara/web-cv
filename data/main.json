@@ -1,8 +1,4 @@
 {
     "language": "en",
-    "disable": [
-        "jobs",
-        "education",
-        "languageCertifications"
-    ]
+    "disable": []
 }

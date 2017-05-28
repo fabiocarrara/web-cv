@@ -62,6 +62,7 @@ h2 {
 }
 
 #it-skills .entry .title {
+    margin-left: 178px;
 	display: block;
 }
 
@@ -97,14 +98,14 @@ h2 {
 
 .entry .description,
 .entry .who,
-.entry .repo {
+.entry .repo,
+.entry .technologies {
     font-size: 85%;
   	margin-left: 182px;
 	display: block;
 }
 
 #it-skills .entry .description {
-	margin-left: 32px;
 	display: inline-block;
 }
 
@@ -146,8 +147,6 @@ table > thead > tr > th {
     text-align: justify;
 }
 
-/* #jobs .entry table tr > *:first-child, 
-#education .entry table tr > *:first-child */
 .entry table tr > *:first-child,
 #languages table tr > *:first-child {
 	text-align: right;
@@ -158,15 +157,6 @@ table > thead > tr > th {
 
 #language-certifications > h3 {
     margin-left: 180px;
-}
-
-#it-skills .linguaggi {
-	padding-left: 32px;
-}
-
-#it-skills .entry {
-	margin-top: 15px;
-	margin-left: 180px;
 }
 
 #presentations .entry .who {
@@ -188,6 +178,10 @@ footer {
     font-size: 85%;
 }
 
+.technologies span {
+    font-size: 100%;
+    margin-right: 4px;
+}
 /* ICONS */
 
 .with-icon:before {

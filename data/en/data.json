@@ -299,7 +299,14 @@
             "when": "May 2017",
             "who": "Daniele Formichelli, Fabio Carrara",
             "description": "A web based CV builder configurable via JSON file",
-            "ref": "https://github.com/fabiocarrara/web-cv"
+            "ref": "https://github.com/fabiocarrara/web-cv",
+            "technologies": [
+                "HTML",
+                "CSS",
+                "TypeScript",
+                "Angular 2",
+                "Bootstrap"
+            ]
         }
     ]
 }

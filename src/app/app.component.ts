@@ -23,9 +23,8 @@ export class AppComponent {
 
   async ngOnInit() {
     let main = (await this.http.get(this.dataDirectory + this.jsonMainFile).toPromise()).json();
-    let language = main.language;
     this.disable = main.disable;
-    this.labels = (await this.http.get(this.dataDirectory + language + '/' + this.jsonLabelsFile).toPromise()).json();
-    this.data = (await this.http.get(this.dataDirectory + language + '/' + this.jsonDataFile).toPromise()).json();
+    this.labels = (await this.http.get(this.dataDirectory + main.language + '/' + this.jsonLabelsFile).toPromise()).json();
+    this.data = (await this.http.get(this.dataDirectory + main.language + '/' + this.jsonDataFile).toPromise()).json();
   }
 }
