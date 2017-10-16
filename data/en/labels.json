@@ -5,8 +5,7 @@
     "contatti": "Contacts",
     "education": "Education",
     "thesis": {
-        "caption": "Thesis",
-        "title": "Title",
+        "title": "Thesis",
         "supervisors": "Supervisors",
         "abstract": "Abstract",
         "reference": "Ref."
