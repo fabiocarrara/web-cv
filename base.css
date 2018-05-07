@@ -11,6 +11,11 @@
 
 /* HEADER */
 
+h2 {
+    margin-left: 180px;
+    margin-top: 50px;
+}
+
 header small {
 	display: block;
 	margin-bottom: 20px;
@@ -30,7 +35,7 @@ header small {
 
 #foto {
 	float: left;
-	height: 200px;
+	width: 161px;
     border-radius: 5px;
 	margin-right: 18px;
 	box-sizing: border-box;
@@ -82,17 +87,29 @@ header small {
 /* FINE HEADER */
 
 #educazione .titolo-di-studio,
-#professioni .esperienza-lavorativa,
+#professione .esperienza-lavorativa,
 #lingue .certificazione,
 #informatica .competenza,
 #presentazioni .talk,
-#pubblicazioni .pub {
+#pubblicazioni .pub,
+hr {
 	clear: both;
 }
 
+hr {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#educazione .titolo-di-studio,
+#professione .esperienza-lavorativa,
+#lingue .certificazione,
+#informatica .competenza {
+    overflow: auto;
+}
 
 #educazione .titolo-di-studio .titolo,
-#professioni .esperienza-lavorativa .cosa,
+#professione .esperienza-lavorativa .cosa,
 #lingue .certificazione .cosa,
 #informatica .competenza .cosa,
 #presentazioni .talk .cosa,
@@ -120,7 +137,16 @@ header small {
     margin-left: 0px;
 }
 
-#professioni .esperienza-lavorativa .cosa:before {
+#pubblicazioni .pub .titolo:before {
+    font-family: 'Glyphicons Halflings';
+    /* content: "\e043"; /* BOOK */
+    content:"\e022"; /* FILE */
+    vertical-align: bottom;
+	font-weight: normal;
+    padding: 5px;
+}
+
+#professione .esperienza-lavorativa .cosa:before {
 	font-family: 'Glyphicons Halflings';
     /* content: "\e080"; /* > */
     content: "\e139"; /* WORK */
@@ -168,20 +194,20 @@ header small {
 
 
 #educazione .titolo-di-studio .dove,
-#professioni .esperienza-lavorativa .dove,
+#professione .esperienza-lavorativa .dove,
 #presentazioni .talk .dove {
 	float: left;
 	width: 170px;
     font-size: 0.9em;
 	text-align: right;
-	clear:left;
+	clear: left;
 	box-sizing: border-box;
 	padding-right: 5px;
-	padding-top: 3px;
+	padding-top: 2px;
 }
 
 #educazione .titolo-di-studio .dove,
-#professioni .esperienza-lavorativa .dove,
+#professione .esperienza-lavorativa .dove,
 #lingue .certificazione .dove,
 #presentazioni .talk .dove {
     font-style: italic;
@@ -189,7 +215,7 @@ header small {
 }
 
 #educazione .titolo-di-studio .dove:after,
-#professioni .esperienza-lavorativa .dove:after,
+#professione .esperienza-lavorativa .dove:after,
 #lingue .certificazione .dove:after,
 #presentazioni .talk .dove:after {
     content: "\A";
@@ -197,7 +223,7 @@ header small {
 }
 
 #educazione .titolo-di-studio .quando,
-#professioni .esperienza-lavorativa .quando,
+#professione .esperienza-lavorativa .quando,
 #lingue .certificazione .quando,
 #presentazioni .talk .quando {
 	box-sizing: border-box;
@@ -211,14 +237,21 @@ header small {
 	padding-top: 8px;
 }
 
+#presentazioni .talk .award {
+    font-size: 75%;
+  	margin-left: 182px;
+}
+
 #educazione .titolo-di-studio .descrizione,
-#professioni .esperienza-lavorativa .descrizione,
+#professione .esperienza-lavorativa .descrizione,
 #presentazioni .talk .descrizione,
+#presentazioni .talk .autori,
 #lingue .certificazione .ref {
     font-size: 85%;
   	margin-left: 182px;
 	display: block;
 }
+
 
 #informatica .competenza .descrizione {
 	margin-left: 32px;
@@ -228,7 +261,7 @@ header small {
 #educazione .titolo-di-studio .corsi,
 #educazione .titolo-di-studio .tesi,
 #educazione .titolo-di-studio .esami,
-#professioni .esperienza-lavorativa .dettagli {
+#professione .esperienza-lavorativa .dettagli {
     font-size: 85%;
     padding-top: 5px;
     box-sizing: border-box;
@@ -271,7 +304,7 @@ table > thead > tr > th {
 }
 
 #educazione .titolo-di-studio table tr > *:first-child,
-#professioni .esperienza-lavorativa table tr > *:first-child
+#professione .esperienza-lavorativa table tr > *:first-child
 {
 	text-align: right;
 	width: 176px;
@@ -280,11 +313,33 @@ table > thead > tr > th {
 }
 
 #informatica .linguaggi {
-	padding-left: 32px;
+	padding-left: 0;
 }
 
 #informatica .competenza {
-	margin-top: 15px;
+	margin-top: 5px;
+}
+
+#informatica .competenza .cosa,
+#informatica .competenza .descrizione,
+#informatica .competenza .linguaggi,
+#informatica .competenza .repo {
+    margin-left: 180px;
+}
+
+#informatica .competenza .repo {
+    font-style: normal;
+}
+
+#informatica .competenza cite {
+    box-sizing: border-box;
+	padding-right: 5px;
+    float: left;
+	width: 170px;
+    font-size: 1em;
+	text-align: right;
+    font-weight: bold;
+    padding-top: 8px;
 }
 
 #presentazioni .talk .award,
@@ -296,8 +351,57 @@ table > thead > tr > th {
 	font-style: italic;
 }
 
-#presentazioni .talk .autori:before {
+/* #presentazioni .talk .autori:before {
 	content: ' - '
+} */
+
+#revisione ul,
+#revisione h3 {
+    margin-left: 180px;
+}
+
+#revisione h3 {
+    font-size: 1.2em;
+}
+
+#pubblicazioni .pub .year {
+    box-sizing: border-box;
+	padding-right: 5px;
+    float: left;
+	width: 170px;
+    font-size: 1em;
+	text-align: right;
+    font-weight: bold;
+    padding-top: 8px;
+}
+
+#pubblicazioni .pub .year time {
+   margin-right: 5px;
+}
+
+#pubblicazioni .pub .autori,
+#pubblicazioni .pub .titolo {
+    display: block;
+}
+
+#pubblicazioni .pub .titolo {
+    padding-top: 7px;
+    font-size: 1.2em;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#pubblicazioni .pub .titolo,
+#pubblicazioni .pub .autori,
+#pubblicazioni .pub .publication,
+#pubblicazioni .pub .award,
+#pubblicazioni .pub .website {
+    margin-left: 180px;
+}
+
+#pubblicazioni .pub .autori,
+#pubblicazioni .pub .publication {
+    font-size: 0.85em;
 }
 
 #pubblicazioni .pub .number:before {
@@ -312,6 +416,13 @@ table > thead > tr > th {
 #pubblicazioni .pub .number:after,
 #pubblicazioni .pub .pages:after {
 	content: ', '
+}
+#pubblicazioni .pub .award,
+#pubblicazioni .pub .website {
+    font-size: 0.8em;
+}
+#pubblicazioni .pub .website a {
+    color: white;
 }
 
 .voto {
@@ -329,13 +440,9 @@ ol {
 	list-style-type: none;
 	padding-left: 0;
 }
-ol > li:before {
+ol > li .year:after {
 	font-weight: bold;
 	font-family: monospace;
 	content: "[" counter(list) "]";
 	counter-increment: list;
-}
-
-#informatica .competenza .repo {
-    font-style: normal;
 }

@@ -1,3 +1,6 @@
 @page {
-  size: A4;
+    size: A4;
+    @bottom-left {
+      content: counter(page) "/" counter(pages);
+    }
 }
