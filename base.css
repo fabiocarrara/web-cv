@@ -106,6 +106,7 @@ hr {
 #lingue .certificazione,
 #informatica .competenza {
     overflow: auto;
+    margin-bottom: 2px;
 }
 
 #educazione .titolo-di-studio .titolo,
