@@ -1,0 +1,23 @@
+.esami {
+    display: none;
+}
+
+#dichiarazione-sostitutiva {
+	margin-top: 60px;
+	font-size: 90%;
+	font-style: italic;
+}
+#dichiarazione-sostitutiva p {
+	margin-left: 0px;
+	text-align: justify;
+}
+
+#dichiarazione-sostitutiva .firma {
+	float: right;
+	margin-right: 80px;
+}
+
+#dichiarazione-sostitutiva .firma img {
+	width: 200px;
+	margin-left: -30px;
+}
