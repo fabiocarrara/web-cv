@@ -4,3 +4,72 @@
       content: counter(page) "/" counter(pages);
     }
 }
+
+body { width: 210mm !important; /* A4 paper size */ }
+
+#congressi .cosa,
+#seminari .seminario .cosa,
+#pubblicazioni .pub .titolo,
+#professione .esperienza-lavorativa .cosa {
+	display: inherit;
+	float: right;
+	width: 579px;
+}
+
+.attivita-responsabilita ul {
+    list-style-position: inside;
+    padding-left: 0;
+}
+
+.attivita-responsabilita ul ul { padding-left: 30px; }
+
+#educazione .titolo-di-studio .corsi * { font-size: 95%; }
+#educazione .titolo-di-studio .corsi td { text-align: left; }
+
+.voto {
+    position: relative;
+    top: -2px;
+}
+
+#lingue .certificazione .dove {
+    /* display: block;
+    margin-left: 184px; */
+    box-sizing: border-box;
+    width: 184px;
+    padding-right: 18px;
+    
+    float: left;
+    font-size: 0.9em;
+    text-align: right;
+    clear: left;
+}
+
+#pubblicazioni .pub .publication { display: inline-block; }
+
+#professione .descrizione,
+#software .repo .descrizione,
+#informatica .competenza .descrizione { text-align: justify; }
+
+#software .repo .url { display: block !important; }
+#software .repo .linguaggi {
+    display: block !important;
+    margin-top: 0 !important;
+    margin-left: 184px !important;
+}
+
+h2, h2 + hr, h3, h3 + hr {
+	page-break-inside: avoid;
+	page-break-after: avoid;
+}
+
+#revisione { page-break-inside: avoid; }
+
+#premi .premio,
+#lingue .certificazione,
+#informatica .competenza,
+#software .repo,
+#pubblicazioni .pub,
+#congressi > *, 
+#seminari .seminario { page-break-inside: avoid; }
+
+#lingue .certificazione:nth-child(3) { page-break-after: always; }

@@ -3,21 +3,22 @@
 <head>
 	<meta charset="utf-8" />
 	<title>Curriculum Vitae di Fabio Carrara (Versione Italiana)</title>
-    <!-- jQuery -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Bootstrap-->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <script src="js/bootstrap.min.js"></script>
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<!-- Bootstrap-->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<script src="js/bootstrap.min.js"></script>
 
-    <link href="print.css" rel="stylesheet" type="text/css">
+	<link href="print.css" rel="stylesheet" type="text/css" media="print">
 	<link href="base.css" rel="stylesheet" type="text/css">
+	<link href="cnr.css" rel="stylesheet" type="text/css">
 	<!-- <link href="short.css" rel="stylesheet" type="text/css"> -->
 	<script>
-		$(function(){
-			$("#informatica .linguaggi li").addClass("label").addClass("label-default");
+		$(function() {
+			$("#informatica .linguaggi li, #software .linguaggi li").addClass("label").addClass("label-default");
 			$(".award").addClass("label").addClass("label-success");
 			$("#pubblicazioni .year time").addClass("label").addClass("label-info");
-            $("#pubblicazioni .website").addClass("label").addClass("label-primary");
+			$("#pubblicazioni .website, #software .url a").addClass("label").addClass("label-primary");
 			$("#pubblicazioni .autori .nome").each(function(i, el) {
 				el.textContent = el.textContent[0] + '.'
 			});
@@ -29,20 +30,24 @@
 				var anno = $el.find('.year').text();
 				var titolo = $el.find('.titolo').text();
 				var parolaTitolo = titolo.substr(0, titolo.indexOf(' ')).toLocaleLowerCase();
-                var id = autore + anno + parolaTitolo;
-				$el.attr('id', id.trim());
+				var id = (autore + anno + parolaTitolo).trim();
+				if ($('#' + id).size() > 0) id = id + '-2'
+
+				$el.attr('id', id);
 			});
 
 			// REFS
 			$('cite.ref').each(function(i, el) {
 				var $el = $(el);
-				var refs = $el.data('ref').split(' ');
+				var refs = $el.data('ref')
+				if (!refs) return;
+				refs = refs.split(' ');
 				var text = '[';
 				for (j in refs) {
 					var refname = refs[j];
 					var $li = $('#' + refname);
-                    console.log($li);
-					var ind = $li.parent().find("li").index($li[0]) + 1;
+					console.log($li);
+					var ind = $li.closest("ol").find("li").index($li[0]) + 1;
 					console.log(refs[j] + ': ' + ind);
 					text += '<a href="#' + refname + '">' + ind + '</a>,'
 				}
@@ -54,154 +59,499 @@
 		});
 	</script>
 </head>
-<!-- TODO:
-	- h1, h2, h3 e poi nasconderli con CSS
--->
 <body class="container">
-    <header>
-        <img id="foto" src="foto.jpg" alt="Foto Fabio Carrara">
-        <h1><span class="nome">Fabio</span> <span class="cognome">Carrara</span> <small>Curriculum Vitae</small></h1>
-    </header>
+	<header>
+		<img id="foto" src="foto.jpg" alt="Foto Fabio Carrara">
+		<h1><span class="nome">Fabio</span> <span class="cognome">Carrara</span> <small>Curriculum Vitae</small></h1>
+	</header>
+	
 	<div id="dati-personali">
-        <h2>Dati Personali</h2>
+		<h2>Dati Personali</h2>
 		<div id="generalita">
 			<span class="nato-a">Empoli (FI)</span>
 			<time class="nato-il" datetime="1990/07/23">23 Luglio 1990</time>
 		</div>
 		<div id="residenza">
-            <h3>Residenza</h3>
+			<h3>Residenza</h3>
 			<span class="via">Via Jacopo Carrucci, 48</span>
 			<span class="cap">50053</span>
 			<span class="citta">Empoli (FI)</span>
 			<span class="stato">Italia</span>
-			
+
 		</div>
 		<div id="contatti">
-            <h3>Contatti</h3>
-			<a class="telefono" href="tel:+393332479082">+39 3332479082</a>
-			<a class="email" href="mailto:fabio.carrara90@gmail.com">fabio.carrara90@gmail.com</a>
+			<h3>Contatti</h3>
+			<a class="telefono" href="tel:+393332479082">+39 333 2479082</a>
+			<a class="email" href="mailto:fabio.carrara90@gmail.com">fabio.carrara90@gmail.com</a> &ndash; <a href="mailto:fabio.carrara@pec.it">fabio.carrara@pec.it</a>
 		</div>
 		<div id="misc">
 			<span class="patente">Patente di guida, categoria B.</span>
+			<span class="github"><a href="https://github.com/fabiocarrara">https://github.com/fabiocarrara</a></span>
 		</div>
 	</div>
-	<div id="educazione">
-        <h2>Educazione</h2><hr>
+	
+	<div id="dati-bibliometrici">
+		<h2>Indicatori Bibliometrici</h2>
+		<table class="table table-condensed table-striped">
+			<thead>
+				<tr>
+					<th>Indicatori Bibliometrici</th><td>Google Scholar</td><td>Scopus</td><td>Web of Science</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Citazioni</td><td>88</td><td>44</td><td>20</td>
+				</tr>
+				<tr>
+					<td>H-index</td><td>4</td><td>3</td><td>2</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<section id="professione">
+		<h2>Esperienza Professionale</h2>
+		<hr>
+		<div class="esperienza-lavorativa corrente">
+			<h3 class="cosa">Assegnista di ricerca su tematica "Analisi automatica di documentazione tecnica basata su Deep Learning"</h3>
+			<span class="quando">11/07/2018 – presente</span>
+			<span class="dove">Istituto di Scienza e Tecnologia dell’Informazione “A. Faedo” - CNR - Pisa</span>
+			<span class="descrizione">Assegno professionalizzante per lo svolgimento di attività di ricerca inerenti l’Area Scientifica "Computer Science" sulla tematica:
+			"Studio e realizzazione di soluzioni per analisi automatica di documentazione tecnica, composta da testo e immagini, utilizzando metodologie per l’analisi di immagini basate sul Machine Learning e in particolare il Deep Learning",
+			nell'ambito del progetto "ADA: Automatic Data and documents Analysis to enhance human-based processes" (Bando POR FESR 2014-2020, CUP CIPE D55F17000290009)</span>
+			<div class="dettagli panel panel-default">
+				<div class="panel-heading">Dettagli</div>
+				<table class="table table-condensed">
+					<tbody>
+						<tr>
+							<th>Attività e<br>Responsabilità</th>
+							<td class="attivita-responsabilita">Ricerca e implementazione di soluzioni per l'analisi automatica di dati documentali (testo ed immagini) allo scopo di migliorare i processi di gestione dei suddetti.
+							Nell'ambito del progetto si è contribuito alla stesura dei requisiti e architettura software, con enfasi sul componente "Image Analysis" responsabile dell’analisi e dell’interpretazione delle immagini presenti nei documenti archiviati nel sistema.
+							È stata svolta un'attività di ricerca sull'apprendimento ed estrazione mediante reti neurali convoluzionali (CNN) profonde di descrittori globali di immagini in grado di codificare e rappresentare relazioni spaziali tra oggetti.</td>
+						</tr>
+						<!-- <tr><th>Competenze e<br>Obiettivi</th><td class="competenze-obiettivi">competenze tecniche, gestione del tempo, stesura di trattati scientifici.</td></tr> -->
+						<tr>
+							<th>Risultati Scientifici</th>
+							<td>Pubblicazioni dei seguenti articoli su conferenza: <cite class="ref" data-ref="messina2018learning"></cite></td>
+						</tr>
+						<tr>
+							<th>Responsabile</th>
+							<td class="responsabile">Dott. Giuseppe Amato &ndash; ISTI CNR, Pisa</td>
+						</tr>
+						<tr>
+							<th>Rif.</th>
+							<td class="ref"><i>Bando</i> ISTI 010/2018 - PI &mdash; <i>Atto di Conferimento</i> prot. n. 2554 del 03/07/2018</td>
+						</tr>
+						<!-- OK! -->
+						<tr>
+							<th>Carica</th>
+							<td class="carica">Assegnista di ricerca presso ISTI CNR - Laboratorio NeMIS (Network Multimedia and Information Systems)</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="esperienza-lavorativa">
+			<h3 class="cosa">Assegnista di ricerca su tematica "Analisi automatica di dati visuali"</h3>
+			<span class="quando">11/07/2016 &ndash; 10/07/2018</span>
+			<span class="dove">Istituto di Scienza e Tecnologia dell’Informazione “A. Faedo” - CNR - Pisa</span>
+			<span class="descrizione">Assegno professionalizzante per lo svolgimento di attività di ricerca con tema "Analisi automatica di dati visuali" nell'ambito del progetto "SmartNews: Social Sensing for Breaking News" (Bando FAR-FAS 2014, CUP CIPE D58C15000270008)</span>
+			<div class="dettagli panel panel-default">
+				<div class="panel-heading">Dettagli</div>
+				<table class="table table-condensed">
+					<tbody>
+						<tr>
+							<th>Attività e<br>Responsabilità</th>
+							<td class="attivita-responsabilita">Ricerca e implementazione di soluzioni per l'analisi automatica di dati visuali provenienti da social network (eg. Twitter, Facebook) allo scopo di aiutare l'individuazione di <em>breaking news</em> e la ricerca di informazioni per la stesura di articoli giornalistici. In dettaglio:
+								<ul>
+									<li>
+										Ricerca nell’ambito del cross-media learning per la sentiment analysis di immagini. È stato sviluppato un approccio che permette di creare predittori di polarità emotiva per immagini basati su reti neurali convoluzionali profonde utilizzando dati raccolti dai social network ed annotati in maniera automatica. L’approccio si basa sul trasferire le informazioni estratte in maniera automatica dal testo che accompagna le immagini sui social network alle immagini stesse, quindi senza necessità di supervisione. Sono stati condotti esperimenti per verificare l’efficacia dei modelli ottenuti e sono stati ottenuti risultati migliori dataset pubblici in termini di accuratezza rispetto allo stato dell’arte basati su dati etichettati manualmente.
+									</li>
+									<li>
+										Ricerca nell’ambito dell’indicizzazione di feature visuali mediante tecniche basate sulle permutazioni con indici full-text. È stata studiata l’applicazione della tecnica Deep Permutations e Surrogate Text Representation a particolari feature visuali, denominate RMAC, ottimizzate per content-based image retrieval. Sono state implementate e ottimizzate le trasformazioni matematiche che permettono di generare una permutazione dai valori delle features visuali, ed è stata definita una funzione di similarità tra queste ultime basata sul prodotto scalare. Sono stati condotti esperimenti per analizzare il trade-off tra efficacia (in termini di qualità dei risultati) ed efficienza (in termini di tempo di query) che nasce dall’approssimazione delle permutazioni tramite una loro troncatura ai soli primi K elementi.
+									</li>
+									<li>
+										Ricerca nell’ambito della robustezza e della sicurezza di classificatori di immagini basati su reti neurali profonde. Sono stati studiati gli attacchi ai classificatori mediante l’utilizzo di immagini avversarie, immagini manipolate impercettibilmente in maniera malevola affinché il classificatore sia indotto a predire una classe errata con alta confidenza. È stato delineato un approccio al rilevamento di immagini avversarie basato su classificatori kNN definiti sulle attivazioni intermedie delle reti neurali. L’approccio proposto è stato valutato con esperimenti su immagini avversarie generate dal dataset pubblico ILSVRC'12 (subset di ImageNet). Dai risultati si è concluso che è possibile filtrare con successo immagini avversarie utilizzando l’approccio proposto e che la scelta della soglia permette di controllare l’aggressività del filtraggio.
+									</li>
+									<li>
+										Aver implementato i seguenti servizi HTTP REST per l’analisi delle immagini:
+										<ul>
+											<li><strong>servizio di sentiment analysis</strong>, che permette di predire la polarità emozionale di una o più immagini date in input; il classificatore sentimentale è stato modellato come una rete neurale convoluzionale ed allenato con la libreria Caffe per Python (pycaffe);
+											</li>
+											<li><strong>servizio di annotazione generica</strong>, che permette di annotare automaticamente il contenuto di una o più immagini con uno o più termini generici provenienti dal dataset pubblico OpenImages; è stato integrato un annotatore di terze parti pre-allenato sul medesimo dataset mediante l’utilizzo della libreria Tensorflow per Python;
+											</li>
+											<li><strong>servizio di estrazione di features visuali, indicizzazione e ricerca per similarità</strong>, che consente di estrarre rappresentazioni numeriche di immagini contenenti l’informazione visuale semantica, utilizzate poi per l’indicizzazione e la ricerca per similarità; è stato integrato un estrattore di terze parti pre-allenato mediante l’utilizzo della libreria Tensorflow per Python; le rappresentazioni numeriche delle immagini sono indicizzate con il motore di ricerca full-text Lucene, implementando la tecnica Deep Permutations per la ricerca approssimata su larga scala e la tecnica della Surrogate Text Representation.
+											</li>
+											<li><strong>servizio di clustering</strong>, che permette di raggruppare immagini in sottogruppi contenenti immagini visivamente e semanticamente simili; è stato implementato un algoritmo di clustering gerarchico agglomerativo basato sulle features visuali che crea gruppi di immagini simili con un approccio bottom-up;
+											</li>
+										</ul>
+										Le interfacce HTTP REST di tutti i servizi sopraelencati sono stati implementati in Python mediante l’utilizzo della libreria Flask.
+									</li>
+								</ul>
+								<!-- sono state sviluppate soluzioni per l'annotazione automatica di immagini, ricerca per similarità tra immagini, predizione del sentimento degli utenti da dati multimediali e clustering visuale basate su reti neurali convoluzionali.--></td>
+						</tr>
+						<!-- <tr><th>Competenze e<br>Obiettivi</th><td class="competenze-obiettivi">competenze tecniche, gestione del tempo, stesura di trattati scientifici.</td></tr> -->
+						<!-- TODO amato2018large non ha ACK smartnews, carrara2018adversarial non è sul sito del progetto -->
+						<tr>
+							<th>Risultati Scientifici</th>
+							<td>Pubblicazione di articoli su rivista internazionale <cite class="ref" data-ref="carrara2018adversarial"></cite> e su conferenze internazionali <cite class="ref" data-ref="carrara2018adversarial-2 amato2018large-scale vadicamo2017cross-media carrara2017detecting amato2017efficient"></cite>. Stesura di relazioni di progetto <cite class="ref" data-ref="amato2018smart"></cite>.</td>
+						</tr>
+						<tr>
+							<th>Responsabile</th>
+							<td class="responsabile">Dott. Fabrizio Falchi &ndash; ISTI CNR, Pisa</td>
+						</tr>
+
+						<tr>
+							<th>Rif.</th>
+							<td class="ref"><i>Bando</i> ISTI 003/2016 - PI
+								<!-- prot. n. 2154 del 01/06/2016 -->&mdash; <i>Atto di Conferimento</i> prot. n. 2654 del 06/07/2016 &mdash; <i>Rinnovo</i> prot. n. 3096 del 30/06/2017</td>
+						</tr>
+						<tr>
+							<th>Carica</th>
+							<td class="carica">Assegnista di ricerca presso ISTI CNR - Laboratorio NeMIS (Network Multimedia and Information Systems)<br>
+							Team Leader su OO4 (News Management Tool - Visual Content Mining) e OO5 (Platform integration and user testing) nell'ambito del progetto SmartNews</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="esperienza-lavorativa">
+			<h3 class="cosa">Borsista di dottorato di ricerca su tematica "Rilevamento e riconoscimento visuale automatico di oggetti"</h3>
+			<span class="quando">01/11/2015 – 01/07/2016</span>
+			<!-- <span class="dove">Istituto di Scienza e Tecnologia dell’Informazione “A.Faedo” - CNR - Pisa</span> -->
+			<span class="dove">Università di Pisa</span>
+			<span class="descrizione">Vincitore di Borsa di Dottorato ISTI "A. Faedo" CNR per attività di ricerca su "Rilevamento e Riconoscimento Visuale Automatico di Oggetti"</span>
+			<div class="dettagli panel panel-default">
+				<div class="panel-heading">Dettagli</div>
+				<table class="table table-condensed">
+					<tbody>
+						<tr>
+							<th>Attività e<br>Responsabilità</th>
+							<td class="attivita-responsabilita">Ricerca ed implementazione di soluzioni per il riconoscimento visuale automatico di oggetti ed indicizzazione di immagini. In particolare, sono state studiate ed adottate tecniche basate su Deep Learning per l'implementazione di un sistema di monitoraggio visuale dello stato di occupazione di parcheggi. Sono state progettate ed allenate reti neurali convoluzionali miniaturizzate per i sistemi embedded (dotati di telecamera e capacità di calcolo e comunicazione) atti al monitoraggio dei parcheggi. È stata effettuata una sperimentazione su una sezione del parcheggio dell'Area di Ricerca del CNR di Pisa per validare l'approccio utilizzato. Successivamente è stata condotta un'attività di ricerca sul recupero cross-modale di immagini tramite descrittori visuali estratti da reti convoluzionali profonde. L'approccio sviluppato permette di cercare in database di immagini non etichettate tramite query testuale attraverso una trasformazione di tale query in un descrittore visuale. Tale trasformazione è stata implementata mediante reti neurali profonde e validata con dataset pubblici (Microsoft COCO).</td>
+						</tr>
+						<tr>
+							<th>Risultati Scientifici</th>
+							<td>Pubblicazione di articoli su rivista internazionale <cite class="ref" data-ref="carrara2017picture amato2017deep"></cite> e su conferenza <cite class="ref" data-ref="amato2016car"></cite>. Stesura di relazioni tecniche <cite class="ref" data-ref="carrara2016picture amato2015smart"></cite>.</td>
+						</tr>
+						<tr>
+							<th>Rif.</th>
+							<td class="ref">Associatura ad ISTI CNR dal 22/01/2016 (prot. n. 192 del 22/01/2016) al 07/07/2016</td>
+						</tr>
+						<!-- TODO Uni Prot. -->
+						<tr>
+							<th>Carica</th>
+							<td class="carica">Dottorando con borsa &ndash; Associato (Graduate Fellow) presso ISTI CNR - Laboratorio NeMIS (Network Multimedia and Information Systems)</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="esperienza-lavorativa">
+			<h3 class="cosa">Collaboratore di ricerca</h3>
+			<span class="quando">15/07/2015 – 14/08/2015</span>
+			<span class="dove">Istituto di Scienza e Tecnologia dell’Informazione “A. Faedo” - CNR - Pisa</span>
+			<span class="descrizione">Contratto di prestazione d’opera in regime di lavoro autonomo occasionale</span>
+			<div class="dettagli panel panel-default">
+				<div class="panel-heading">Dettagli</div>
+				<table class="table table-condensed">
+					<tbody>
+						<tr>
+							<th>Attività e<br>Responsabilità</th>
+							<td class="attivita-responsabilita">Studio e ricerca sulla problematica dell’identificazione e riconoscimento visuale automatico di oggetti da sorgenti multimediali. In particolare, è stato effettuato uno studio delle tecniche di apprendimento automatico e modellazione dello sfondo di immagini (background subtraction) per poter identificare oggetti che compaiono nella scena, e successivamente riconoscerli automaticamente tramite algoritmi di estrazione e matching di local features. L’attività di ricerca ha preso in esame lo stato dell’arte ed ha identificato direzioni da seguire per migliorare le tecniche esistenti e la loro integrazione. Sono stati effettuati esperimenti su dataset pubblici per valutare oggettivamente i risultati ottenuti.</td>
+						</tr>
+						<tr>
+							<th>Risultati Scientifici</th>
+							<td>Pubblicazione dei seguenti articoli su conferenza: <cite class="ref" data-ref="carrara2015semiautomatic carrara2015efficient"></cite></td>
+						</tr>
+						<tr>
+							<th>Rif.</th>
+							<td class="ref"><i>Avviso</i> n. 07/2015 prot. n. 1943 del 05/05/2015 &mdash; <i>Contratto</i> prot. n. 2355 del 04/06/2015, n. 2859 del 08/07/2015</td>
+						</tr>
+						<tr>
+							<th>Carica</th>
+							<td class="carica">Collaboratore Coordinato e Continuativo</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</section>
+
+	<section id="educazione">
+		<h2>Istruzione e Formazione</h2>
+		<hr>
 		<div class="titolo-di-studio corrente">
 			<h3 class="titolo">Corso di Dottorato di Ricerca in Ingegneria dell'Informazione</h3>
 			<span class="quando">2015 - 2018 (previsto)</span>
 			<span class="dove">Università di Pisa</span>
-			<span class="descrizione">Titolo da conseguire, vincitore di Borsa ISTI A.Faedo CNR per attività di ricerca su ‘Rilevamento e Riconoscimento Visuale Automatico di Oggetti’</span>
-            <div class="corsi panel panel-default">
-                <div class="panel-heading">Corsi di Dottorato Frequentati</div>
-                <table class="table table-condensed table-striped">
-                    <thead>
-                        <tr>
-                            <th>Corsi di Dottorato</th>
-                            <th class="titolo-corso">Titolo Corso</th>
-                            <th class="tenuto-da">Tenuto Da</th>
-                            <th class="durata">Durata</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td></td>
-                            <td class="titolo-corso">Game Theory and Optimization in communications and Networking</td>
-                            <td class="tenuto-da">M. Luise, L.Sanguinetti</td>
-                            <td class="durata">16h (4 CFU)</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td class="titolo-corso">Machine Learning Techniques and Selected Applications for Big Data</td>
-                            <td class="tenuto-da">M. Stewin</td>
-                            <td class="durata">20h (5 CFU)</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td class="titolo-corso">Signal Processing and Mining of Big Data: Biological Data as Case Study</td>
-                            <td class="tenuto-da">G. Coro</td>
-                            <td class="durata">20h (5 CFU)</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td class="titolo-corso">Multi-modal Registration of Visual Data</td>
-                            <td class="tenuto-da">M. Corsini</td>
-                            <td class="durata">15h (4 CFU)</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td class="titolo-corso">Academic Writing and Presentation Skills</td>
-                            <td class="tenuto-da">J. Spataro</td>
-                            <td class="durata">30h (4 CFU)</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td class="titolo-corso">Linked Open Data: a paradigm for the Semantic Web</td>
-                            <td class="tenuto-da">A. Lo Duca</td>
-                            <td class="durata">12h (3 CFU)</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td class="titolo-corso">DeepLearn 2017 - Summer School</td>
-                            <td class="tenuto-da"></td>
-                            <td class="durata">50h (10 CFU)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+			<span class="descrizione">Titolo da conseguire (tesi sotto revisione). Vincitore di Borsa ISTI "A. Faedo" CNR per attività di ricerca su "Rilevamento e Riconoscimento Visuale Automatico di Oggetti"</span>
+			<div class="panel panel-default">
+				<div class="panel-heading">Tesi di Dottorato</div>
+				<table class="tesi table table-condensed">
+					<tbody>
+						<tr>
+							<th>Titolo Tesi</th>
+							<td class="titolo-tesi">Deep Learning for Image Classification and Retrieval: Analysis and Solutions to Current Limitations</td>
+						</tr>
+						<tr>
+							<th>Relatori</th>
+							<td class="relatori-tesi">Prof. Francesco Marcelloni, Dr. Giuseppe Amato, Dr. Claudio Gennaro</td>
+						</tr>
+						<tr>
+							<th>Abstract</th>
+							<td class="abstract text-justify">The large diffusion of cheap cameras and smartphones led to an exponential daily production of digital visual data, such as images and videos. In this context, most of the produced data lack manually assigned metadata needed for their manageability in large-scale scenarios, thus shifting the attention to the automatic understanding of the visual content. Recent developments in Computer Vision and Artificial Intelligence empowered machines with high-level vision perception enabling the automatic extraction of high-quality information from raw visual data. Specifically, Convolutional Neural Networks (CNNs) provided a way to automatically learn effective representations of images and other visual data showing impressive results in vision-based tasks, such as image recognition and retrieval. In this thesis, we investigated and enhanced the usability of CNNs for visual data management. First, we identify three main limitations encountered in the adoption of CNNs and propose general solutions that we experimentally evaluated in the context of image classification. We proposed miniaturized architectures to decrease the usually high computational cost of CNNs and enable edge inference in low-powered embedded devices. We tackled the problem of manually building huge training sets for models by proposing an automatic pipeline for training classifiers based on cross-media learning and Web-scraped weakly-labeled data. We analyzed the robustness of CNNs representations to out-of-distribution data, specifically the vulnerability to adversarial examples, and proposed a detection method to discard spurious classifications provided by the model. Secondly, we focused on the integration of CNN-based Content-based Image Retrieval (CBIR) in the most commonly adopted search paradigm, that is, textual search. We investigated solutions to bridge the gap between image search and highly-developed textual search technologies by reusing both the front-end (text-based queries) and the back-end (distributed and scalable inverted indexes). We proposed a cross-modal image retrieval approach which enables textual-based image search on unlabeled collections by learning a mapping from textual to high-level visual representations. Finally, we formalized, improved, and proposed novel surrogate text representations, i.e., text transcriptions of visual representations that can be indexed and retrieved by available textual search engines enabling CBIR without specialized indexes.</td>
+						</tr>
+						<tr>
+							<th>URL</th>
+							<td class="ref"><a class="repo label label-primary" href="https://github.com/fabiocarrara/phd-thesis" target="_blank">https://github.com/fabiocarrara/phd-thesis</a></td>
+						</tr>
+					</tbody>
+				</table>
+			
+				<div class="panel-heading">Corsi di Dottorato Frequentati</div>
+				<table class="corsi table table-condensed table-striped">
+					<thead>
+						<tr>
+							<th>Corsi Frequentati</th>
+							<th class="titolo-corso">Titolo Corso</th>
+							<th class="tenuto-da">Tenuto Da</th>
+							<th class="durata">Durata</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td></td>
+							<td class="titolo-corso">Game Theory and Optimization in communications and Networking</td>
+							<td class="tenuto-da">M. Luise, L.Sanguinetti</td>
+							<td class="durata">16h (4 CFU)</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="titolo-corso">Machine Learning Techniques and Selected Applications for Big Data</td>
+							<td class="tenuto-da">M. Stewin</td>
+							<td class="durata">20h (5 CFU)</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="titolo-corso">Signal Processing and Mining of Big Data: Biological Data as Case Study</td>
+							<td class="tenuto-da">G. Coro</td>
+							<td class="durata">20h (5 CFU)</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="titolo-corso">Multi-modal Registration of Visual Data</td>
+							<td class="tenuto-da">M. Corsini</td>
+							<td class="durata">15h (4 CFU)</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="titolo-corso">Academic Writing and Presentation Skills</td>
+							<td class="tenuto-da">J. Spataro</td>
+							<td class="durata">30h (4 CFU)</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td class="titolo-corso">Linked Open Data: a paradigm for the Semantic Web</td>
+							<td class="tenuto-da">A. Lo Duca</td>
+							<td class="durata">12h (3 CFU)</td>
+						</tr>
+						<tr>
+							<td>17/07/2017 - 21/07/2017</td>
+							<td class="titolo-corso">DeepLearn 2017 - Summer School - Deusto Bio, Bilbao (Spain)</td>
+							<td class="tenuto-da"></td>
+							<td class="durata">50h (10 CFU)</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="tesi panel panel-default">
+				<div class="panel-heading">Periodo all'estero</div>
+				<table class="table table-condensed">
+					<tbody>
+						<tr>
+							<th>Periodo all'estero (18/2/2018 - 7/3/2018)</th>
+							<td>Visita e collaborazione con il laboratorio <em>Data Intensive Systems and Applications</em> (DISA), Faculty of Informatics, Masaryk University, Brno, Repubblica Ceca, sotto la supervisione del Prof. Pavel Zezula. È stata svolta un'attività di ricerca sul tema del riconoscimento e segmentazione di azioni in dati motion capture (mocap) utilizzando tecniche di Deep Learning, in particolare reti neurali ricorrenti (RNN). <!-- We proposed an LSTM-based architecture to segment actions by predicting their beginnings and endings in long sequences of mocap data, and we evaluate its ability to do early action prediction in live streams of data. Our method outperforms state-of-the-art approaches for action segmentation on the marker-based HDM-05 dataset in both effectiveness and efficiency. The activity produced [J2] which have been submitted to international journal.-->
+                            È stato redatto un'articolo sottomesso a rivista internazionale <cite class="ref" data-ref="carrara2018real-time"></cite>.</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-		
+
 		<div class="titolo-di-studio">
 			<h3 class="titolo">Abilitazione all'esercizio della professione di Ingegnere dell'Informazione</h3>
-			<span class="quando todo">2015</span>
+			<span class="quando">2015</span>
 			<span class="dove">Università di Pisa</span>
 			<span class="descrizione">Ha conseguito l’abilitazione alla professione di Ingegnere dell’Informazione, Sezione A</span>
+			<div class="dettagli panel panel-default">
+				<div class="panel-heading">Rif.</div>
+				<table class="table table-condensed">
+					<tbody>
+						<tr>
+							<th>Rif.</th>
+							<td class="ref">Certificato N. 20163278023 del 1 Maggio 2017</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 		</div>
-		
+
 		<div class="titolo-di-studio">
-			<h3 class="titolo">Laurea Magistrale in Ingegneria Informatica (Computer Engineering)</h3>
+			<h3 class="titolo">Laurea Magistrale in Computer Engineering</h3>
 			<span class="quando">2012 - 2015</span>
 			<span class="voto label label-info">110 e Lode / 110</span>
 			<span class="dove">Università di Pisa</span>
 			<span class="data">20 Febbraio 2015</span>
 			<span class="descrizione">Ha conseguito la Laurea Magistrale in Computer Engineering (Ingegneria Informatica, con corsi ed esami sostenuti in lingua inglese) presso l’Università di Pisa in data 20 Febbraio 2015</span>
 			<div class="tesi panel panel-default">
-                <div class="panel-heading">Tesi di Laurea</div>
-                <table class="table table-condensed">
-                    <tbody>
-                        <tr><th>Titolo</th> <td class="titolo-tesi">Design and implementation of a system for incremental real-time visual object detection and autonomous recognition <cite class="ref" data-ref="carrara2015design"></cite></td></tr>
-                        <tr><th>Relatori</th> <td class="relatori-tesi">Dott. Giuseppe Amato, Dott. Claudio Gennaro, Prof. Francesco Marcelloni</td></tr>
-                        <tr><th>Abstract</th> <td class="abstract text-justify">In this work, a system for incremental real-time visual object detection and autonomous recognition is presented. Object detection is based on a novel interest point-based background subtraction method. Objects are incrementally learnt by collecting observations in real-time. Experiments have been performed on publicly available datasets to evaluate the detection task and the ability of the system to build good clusters of observations.</td></tr>
-                        <tr><th>Rif.</th> <td class="ref">Diploma n. 293222, Pisa, 15 Settembre 2015</td></tr>
-                    </tbody>
-                </table>
-            </div>
-			
+				<div class="panel-heading">Tesi di Laurea</div>
+				<table class="table table-condensed">
+					<tbody>
+						<tr>
+							<th>Titolo Tesi</th>
+							<td class="titolo-tesi">Design and implementation of a system for incremental real-time visual object detection and autonomous recognition <cite class="ref" data-ref="carrara2015design"></cite></td>
+						</tr>
+						<tr>
+							<th>Relatori</th>
+							<td class="relatori-tesi">Dott. Giuseppe Amato, Dott. Claudio Gennaro, Prof. Francesco Marcelloni</td>
+						</tr>
+						<tr>
+							<th>Abstract</th>
+							<td class="abstract text-justify">In this work, a system for incremental real-time visual object detection and autonomous recognition is presented. Object detection is based on a novel interest point-based background subtraction method. Objects are incrementally learnt by collecting observations in real-time. Experiments have been performed on publicly available datasets to evaluate the detection task and the ability of the system to build good clusters of observations.</td>
+						</tr>
+						<tr>
+							<th>Rif.</th>
+							<td class="ref">Diploma n. 293222, Pisa, 15 Settembre 2015</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 			<div class="esami panel panel-default">
 				<div class="panel-heading">Esami sostenuti</div>
 				<table class="table table-condensed table-striped">
 					<thead>
-						<tr><th>Esami sostenuti</th><th>Anno</th><th>Attività Didattiche</th><th>CFU</th><th>Voto</th><th>Data Esame</th></tr>
+						<tr>
+							<th>Esami sostenuti</th>
+							<th>Anno</th>
+							<th>Attività Didattiche</th>
+							<th>CFU</th>
+							<th>Voto</th>
+							<th>Data Esame</th>
+						</tr>
 					</thead>
 					<tbody>
-						<tr><td></td><td>1</td><td><span class="label label-default codice-esame">584II</span> ADVANCED TOPICS IN COMPUTER SYSTEMS AND NETWORKS</td>			<td> 9</td>	<td> 30</td><td>07/06/2013</td></tr>
-						<tr><td></td><td>1</td><td><span class="label label-default codice-esame">588II</span> COMPUTER ARCHITECTURE</td>									<td> 9</td>	<td> 27</td><td>20/06/2013</td></tr>
-						<tr><td></td><td>1</td><td><span class="label label-default codice-esame">589II</span> CONCURRENT AND DISTRIBUTED SYSTEMS</td>						<td> 9</td>	<td> 28</td><td>28/05/2013</td></tr>
-						<tr><td></td><td>1</td><td><span class="label label-default codice-esame">598II</span> ELECTRONICS AND COMMUNICATIONS SYSTEMS</td>					<td> 9</td>	<td> 27</td><td>22/02/2013</td></tr>
-						<tr><td></td><td>1</td><td><span class="label label-default codice-esame">595II</span> INTELLIGENT SYSTEMS</td>										<td> 6</td>	<td> 29</td><td>29/07/2013</td></tr>
-						<tr><td></td><td>1</td><td><span class="label label-default codice-esame">592II</span> PERFORMANCE EVALUATION OF COMPUTER SYSTEMS AND NETWORKS</td>	<td> 9</td>	<td> 30</td><td>22/01/2013</td></tr>
-						<tr><td></td><td>1</td><td><span class="label label-default codice-esame">591II</span> SECURITY IN NETWORKED COMPUTING SYSTEMS</td>					<td> 9</td>	<td> 30</td><td>08/07/2013</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">583II</span> ADVANCED NETWORK ARCHITECTURES AND WIRELESS SYSTEMS</td>		<td> 9</td>	<td> 30</td><td>27/03/2014</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">585II</span> AUTOMATED SYSTEMS AND ROBOTICS</td>							<td> 6</td>	<td> 30</td><td>24/01/2014</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">609ZW</span> FINAL EXAMINATION</td>										<td>18</td>	<td>30L</td><td>20/02/2015</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">596II</span> INFORMATION SYSTEMS AND SOFTWARE SYSTEMS ENGINEERING</td>		<td>12</td>	<td>30L</td><td>09/07/2014</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">594II</span> MOBILE AND PERVASIVE SYSTEMS</td>								<td> 6</td>	<td> 30</td><td>09/06/2014</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">597II</span> ENTERPRISE INFORMATION MANAGEMENT</td>						<td> 9</td>	<td> 30</td><td>30/06/2014</td></tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td><span class="label label-default codice-esame">584II</span> ADVANCED TOPICS IN COMPUTER SYSTEMS AND NETWORKS</td>
+							<td> 9</td>
+							<td> 30</td>
+							<td>07/06/2013</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td><span class="label label-default codice-esame">588II</span> COMPUTER ARCHITECTURE</td>
+							<td> 9</td>
+							<td> 27</td>
+							<td>20/06/2013</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td><span class="label label-default codice-esame">589II</span> CONCURRENT AND DISTRIBUTED SYSTEMS</td>
+							<td> 9</td>
+							<td> 28</td>
+							<td>28/05/2013</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td><span class="label label-default codice-esame">598II</span> ELECTRONICS AND COMMUNICATIONS SYSTEMS</td>
+							<td> 9</td>
+							<td> 27</td>
+							<td>22/02/2013</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td><span class="label label-default codice-esame">595II</span> INTELLIGENT SYSTEMS</td>
+							<td> 6</td>
+							<td> 29</td>
+							<td>29/07/2013</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td><span class="label label-default codice-esame">592II</span> PERFORMANCE EVALUATION OF COMPUTER SYSTEMS AND NETWORKS</td>
+							<td> 9</td>
+							<td> 30</td>
+							<td>22/01/2013</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td><span class="label label-default codice-esame">591II</span> SECURITY IN NETWORKED COMPUTING SYSTEMS</td>
+							<td> 9</td>
+							<td> 30</td>
+							<td>08/07/2013</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">583II</span> ADVANCED NETWORK ARCHITECTURES AND WIRELESS SYSTEMS</td>
+							<td> 9</td>
+							<td> 30</td>
+							<td>27/03/2014</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">585II</span> AUTOMATED SYSTEMS AND ROBOTICS</td>
+							<td> 6</td>
+							<td> 30</td>
+							<td>24/01/2014</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">609ZW</span> FINAL EXAMINATION</td>
+							<td>18</td>
+							<td>30L</td>
+							<td>20/02/2015</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">596II</span> INFORMATION SYSTEMS AND SOFTWARE SYSTEMS ENGINEERING</td>
+							<td>12</td>
+							<td>30L</td>
+							<td>09/07/2014</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">594II</span> MOBILE AND PERVASIVE SYSTEMS</td>
+							<td> 6</td>
+							<td> 30</td>
+							<td>09/06/2014</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">597II</span> ENTERPRISE INFORMATION MANAGEMENT</td>
+							<td> 9</td>
+							<td> 30</td>
+							<td>30/06/2014</td>
+						</tr>
 					</tbody>
 				</table>
 			</div>
 		</div>
-		
+
 		<div class="titolo-di-studio">
 			<h3 class="titolo">Laurea in Ingegneria dell’Informazione</h3>
 			<span class="quando">2009 - 2012</span>
@@ -209,48 +559,220 @@
 			<span class="dove">Università di Pisa</span>
 			<span class="data">4 Ottobre 2012</span>
 			<span class="descrizione">Ha conseguito la laurea in Ingegneria Informatica presso l’Università degli Studi di Pisa in data 4 Ottobre 2012</span>
-			
 			<div class="tesi panel panel-default">
-                <div class="panel-heading">Tesi di Laurea</div>
-                <table class="table table-condensed">
-                    <tbody>
-                        <tr><th>Titolo</th> <td class="titolo-tesi">Sonificazione con PureData per Android: dai sensori ai segnali al suono</td></tr>
-                        <tr><th>Relatori</th> <td class="relatori-tesi">Prof. Marco Avvenuti, Ing. Mario G. C. A. Cimino, Ing. Daniel Cesarini</td></tr>
-                        <tr><th>Abstract</th> <td class="abstract text-justify">Grazie all’avvento del pervasive computing, che vede un sempre maggior numero di dispositivi di calcolo inseriti nella vita quotidiana, sono possibili applicazioni che interagiscono con l’ambiente circostante e con l’uomo, attraverso l’elaborazione e lo scambio di molte informazioni. Ne sono un esempio dispositivi come smartphones e tablets, che mettono a disposizione potenza di calcolo e sensori mobili. La loro diffusione ha permesso agli sviluppatori di rendere fruibili queste applicazioni, dette context-aware. Il potente sistema uditivo umano permette la ricezione di informazioni veicolate attraverso il suono, anche quando questo non è formato da fonemi. È possibile sfruttare questa proprietà per trasmettere informazioni tramite la sonificazione, cioè la generazione di suono parametrica. Questa tesi propone uno strumento di sonificazione e di analisi di dati utilizzabile da applicazioni mobili sviluppate su Android. Il software chiave che offre questi servizi è Pure Data, ambiente di programmazione per l’elaborazione di segnali digitali, con enfasi sui segnali sonori.</td></tr>
-                        <tr><th>Rif.</th> <td class="ref">Diploma n. 271883, Pisa, 19 Febbraio 2013</td></tr>
-                    </tbody>
-                </table>
-            </div>
+				<div class="panel-heading">Tesi di Laurea</div>
+				<table class="table table-condensed">
+					<tbody>
+						<tr>
+							<th>Titolo Tesi</th>
+							<td class="titolo-tesi">Sonificazione con PureData per Android: dai sensori ai segnali al suono</td>
+						</tr>
+						<tr>
+							<th>Relatori</th>
+							<td class="relatori-tesi">Prof. Marco Avvenuti, Ing. Mario G. C. A. Cimino, Ing. Daniel Cesarini</td>
+						</tr>
+						<tr>
+							<th>Abstract</th>
+							<td class="abstract text-justify">Grazie all’avvento del pervasive computing, che vede un sempre maggior numero di dispositivi di calcolo inseriti nella vita quotidiana, sono possibili applicazioni che interagiscono con l’ambiente circostante e con l’uomo, attraverso l’elaborazione e lo scambio di molte informazioni. Ne sono un esempio dispositivi come smartphones e tablets, che mettono a disposizione potenza di calcolo e sensori mobili. La loro diffusione ha permesso agli sviluppatori di rendere fruibili queste applicazioni, dette context-aware. Il potente sistema uditivo umano permette la ricezione di informazioni veicolate attraverso il suono, anche quando questo non è formato da fonemi. È possibile sfruttare questa proprietà per trasmettere informazioni tramite la sonificazione, cioè la generazione di suono parametrica. Questa tesi propone uno strumento di sonificazione e di analisi di dati utilizzabile da applicazioni mobili sviluppate su Android. Il software chiave che offre questi servizi è Pure Data, ambiente di programmazione per l’elaborazione di segnali digitali, con enfasi sui segnali sonori.</td>
+						</tr>
+						<tr>
+							<th>Rif.</th>
+							<td class="ref">Diploma n. 271883, Pisa, 19 Febbraio 2013</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 			<div class="esami panel panel-default">
 				<div class="panel-heading">Esami Sostenuti</div>
 				<table class="table table-condensed table-striped">
 					<thead>
-						<tr><th>Esami sostenuti</th><th>Anno</th><th>Attività Didattiche</th><th>CFU</th><th>Voto</th><th>Data Esame</th></tr>
+						<tr>
+							<th>Esami sostenuti</th>
+							<th>Anno</th>
+							<th>Attività Didattiche</th>
+							<th>CFU</th>
+							<th>Voto</th>
+							<th>Data Esame</th>
+						</tr>
 					</thead>
 					<tbody>
-						<tr><td></td><td>1</td><td><span class="label label-default codice-esame">591AA</span> ALGEBRA LINEARE E ANALISI MATEMATICA II</td>	<td>12</td>	<td>30L</td><td>06/07/2010</td></tr>
-						<tr><td></td><td>1</td><td><span class="label label-default codice-esame">226II</span> ALGORITMI E BASI DI DATI</td>					<td>12</td>	<td>30L</td><td>08/07/2010</td></tr>
-						<tr><td></td><td>1</td><td><span class="label label-default codice-esame">004AA</span> ANALISI MATEMATICA I</td>						<td>12</td>	<td>30L</td><td>22/01/2010</td></tr>
-						<tr><td></td><td>1</td><td><span class="label label-default codice-esame">011BB</span> FISICA GENERALE I</td>						<td>12</td>	<td>30L</td><td>14/06/2010</td></tr>
-						<tr><td></td><td>1</td><td><span class="label label-default codice-esame">061II</span> FONDAMENTI DI INFORMATICA</td>				<td> 6</td>	<td> 30</td><td>08/02/2010</td></tr>
-						<tr><td></td><td>1</td><td><span class="label label-default codice-esame">064II</span> PROGRAMMAZIONE A OGGETTI</td>					<td> 6</td>	<td> 30</td><td>08/02/2010</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">078II</span> CALCOLATORI ELETTRONICI</td>					<td> 9</td>	<td> 30</td><td>27/06/2011</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">173AA</span> CALCOLO NUMERICO</td>							<td> 6</td>	<td> 30</td><td>02/03/2011</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">116II</span> ECONOMIA E ORGANIZZAZIONE AZIENDALE</td>		<td> 6</td>	<td> 30</td><td>24/06/2011</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">073II</span> ELETTROTECNICA</td>							<td> 6</td>	<td> 28</td><td>18/03/2011</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">077II</span> FONDAMENTI DI AUTOMATICA</td>					<td> 9</td>	<td> 27</td><td>08/07/2011</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">546II</span> PROGRAMMAZIONE</td>							<td> 6</td>	<td> 23</td><td>25/02/2011</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">074II</span> RETI LOGICHE</td>								<td> 9</td>	<td> 28</td><td>16/02/2011</td></tr>
-						<tr><td></td><td>2</td><td><span class="label label-default codice-esame">170AA</span> RICERCA OPERATIVA</td>						<td> 9</td>	<td>30L</td><td>09/06/2011</td></tr>
-						<tr><td></td><td>3</td><td><span class="label label-default codice-esame">075II</span> COMUNICAZIONI NUMERICHE</td>					<td> 9</td>	<td> 30</td><td>08/06/2012</td></tr>
-						<tr><td></td><td>3</td><td><span class="label label-default codice-esame">076II</span> ELETTRONICA DIGITALE</td>						<td> 9</td>	<td> 29</td><td>03/07/2012</td></tr>
-						<tr><td></td><td>3</td><td><span class="label label-default codice-esame">304II</span> INGEGNERIA DEL SOFTWARE</td>					<td> 9</td>	<td> 30</td><td>03/02/2012</td></tr>
-						<tr><td></td><td>3</td><td><span class="label label-default codice-esame">080II</span> PROGETTAZIONE WEB</td>						<td> 6</td>	<td> 29</td><td>13/06/2012</td></tr>
-						<tr><td></td><td>3</td><td><span class="label label-default codice-esame">247ZZ</span> PROVA DI LINGUA INGLESE</td>					<td> 3</td>	<td> ID</td><td>26/09/2009</td></tr>
-						<tr><td></td><td>3</td><td><span class="label label-default codice-esame">304ZZ</span> PROVA FINALE</td>								<td> 3</td>	<td> 30</td><td>04/10/2012</td></tr>
-						<tr><td></td><td>3</td><td><span class="label label-default codice-esame">545II</span> RETI INFORMATICHE</td>						<td> 9</td>	<td> 30</td><td>16/01/2012</td></tr>
-						<tr><td></td><td>3</td><td><span class="label label-default codice-esame">544II</span> SISTEMI OPERATIVI</td>						<td> 9</td>	<td> 30</td><td>11/01/2012</td></tr>
-	<!--
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td><span class="label label-default codice-esame">591AA</span> ALGEBRA LINEARE E ANALISI MATEMATICA II</td>
+							<td>12</td>
+							<td>30L</td>
+							<td>06/07/2010</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td><span class="label label-default codice-esame">226II</span> ALGORITMI E BASI DI DATI</td>
+							<td>12</td>
+							<td>30L</td>
+							<td>08/07/2010</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td><span class="label label-default codice-esame">004AA</span> ANALISI MATEMATICA I</td>
+							<td>12</td>
+							<td>30L</td>
+							<td>22/01/2010</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td><span class="label label-default codice-esame">011BB</span> FISICA GENERALE I</td>
+							<td>12</td>
+							<td>30L</td>
+							<td>14/06/2010</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td><span class="label label-default codice-esame">061II</span> FONDAMENTI DI INFORMATICA</td>
+							<td> 6</td>
+							<td> 30</td>
+							<td>08/02/2010</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>1</td>
+							<td><span class="label label-default codice-esame">064II</span> PROGRAMMAZIONE A OGGETTI</td>
+							<td> 6</td>
+							<td> 30</td>
+							<td>08/02/2010</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">078II</span> CALCOLATORI ELETTRONICI</td>
+							<td> 9</td>
+							<td> 30</td>
+							<td>27/06/2011</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">173AA</span> CALCOLO NUMERICO</td>
+							<td> 6</td>
+							<td> 30</td>
+							<td>02/03/2011</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">116II</span> ECONOMIA E ORGANIZZAZIONE AZIENDALE</td>
+							<td> 6</td>
+							<td> 30</td>
+							<td>24/06/2011</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">073II</span> ELETTROTECNICA</td>
+							<td> 6</td>
+							<td> 28</td>
+							<td>18/03/2011</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">077II</span> FONDAMENTI DI AUTOMATICA</td>
+							<td> 9</td>
+							<td> 27</td>
+							<td>08/07/2011</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">546II</span> PROGRAMMAZIONE</td>
+							<td> 6</td>
+							<td> 23</td>
+							<td>25/02/2011</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">074II</span> RETI LOGICHE</td>
+							<td> 9</td>
+							<td> 28</td>
+							<td>16/02/2011</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>2</td>
+							<td><span class="label label-default codice-esame">170AA</span> RICERCA OPERATIVA</td>
+							<td> 9</td>
+							<td>30L</td>
+							<td>09/06/2011</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>3</td>
+							<td><span class="label label-default codice-esame">075II</span> COMUNICAZIONI NUMERICHE</td>
+							<td> 9</td>
+							<td> 30</td>
+							<td>08/06/2012</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>3</td>
+							<td><span class="label label-default codice-esame">076II</span> ELETTRONICA DIGITALE</td>
+							<td> 9</td>
+							<td> 29</td>
+							<td>03/07/2012</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>3</td>
+							<td><span class="label label-default codice-esame">304II</span> INGEGNERIA DEL SOFTWARE</td>
+							<td> 9</td>
+							<td> 30</td>
+							<td>03/02/2012</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>3</td>
+							<td><span class="label label-default codice-esame">080II</span> PROGETTAZIONE WEB</td>
+							<td> 6</td>
+							<td> 29</td>
+							<td>13/06/2012</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>3</td>
+							<td><span class="label label-default codice-esame">247ZZ</span> PROVA DI LINGUA INGLESE</td>
+							<td> 3</td>
+							<td> ID</td>
+							<td>26/09/2009</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>3</td>
+							<td><span class="label label-default codice-esame">304ZZ</span> PROVA FINALE</td>
+							<td> 3</td>
+							<td> 30</td>
+							<td>04/10/2012</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>3</td>
+							<td><span class="label label-default codice-esame">545II</span> RETI INFORMATICHE</td>
+							<td> 9</td>
+							<td> 30</td>
+							<td>16/01/2012</td>
+						</tr>
+						<tr>
+							<td></td>
+							<td>3</td>
+							<td><span class="label label-default codice-esame">544II</span> SISTEMI OPERATIVI</td>
+							<td> 9</td>
+							<td> 30</td>
+							<td>11/01/2012</td>
+						</tr>
+						<!--
 	3	212ZW - LIBERA SCELTA PER RICONOSCIMENTI					15	Pianificata	 		
 	3	212ZW - LIBERA SCELTA PER RICONOSCIMENTI					3	OTT - 05/09/2012
 	-->
@@ -258,7 +780,7 @@
 				</table>
 			</div>
 		</div>
-		
+
 		<div class="titolo-di-studio">
 			<h3 class="titolo">Maturità Scientifica</h3>
 			<span class="quando">2004 - 2009</span>
@@ -266,100 +788,119 @@
 			<span class="dove">Empoli - FI</span>
 			<span class="descrizione">Ottenuta al Liceo Scientifico Il Pontormo, Via Raffaello Sanzio, 159, 50053 Empoli FI</span>
 		</div>
-	</div>
-	<div id="professione">
-        <h2>Esperienze Lavorative</h2><hr>
-		<div class="esperienza-lavorativa corrente">
-			<h3 class="cosa">Assegnista di ricerca su tematica "Analisi automatica di dati visuali"</h3>
-			<span class="quando">11/07/2016 – presente</span>
-			<span class="dove">Istituto di Scienza e Tecnologia dell’Informazione “A.Faedo” - CNR - Pisa</span>
-			<span class="descrizione">Assegno professionalizzante per lo svolgimento di attività di ricerca con tema "Analisi automatica di dati visuali" nell'ambito del progetto "SmartNews: Social Sensing for Breaking News" (Bando FAR-FAS 2014, CUP D58C15000270008)</span>
-			<div class="dettagli panel panel-default">
-				<div class="panel-heading">Dettagli</div>
-				<table class="table table-condensed">
-					<tbody>
-						<tr><th>Attività e<br>Responsabilità</th><td class="attivita-responsabilita">Ricerca e implementazione di soluzioni per l'analisi automatica di dati visuali provenienti da social network (eg. Twitter, Facebook) allo scopo di aiutare l'individuazione di <em>breaking news</em> e la ricerca di informazioni per la stesura di articoli giornalistici. In particolare, si stanno sviluppando soluzioni per l'annotazione di automatica immagini, ricerca per similarità tra immagini, predizione del sentimento degli utenti da dati multimediali e clustering visuale basate su reti neurali convoluzionali.</td></tr>
-						<!-- <tr><th>Competenze e<br>Obiettivi</th><td class="competenze-obiettivi">competenze tecniche, gestione del tempo, stesura di trattati scientifici.</td></tr> -->
-						<tr><th>Responsabile</th><td class="responsabile">Dott. Fabrizio Falchi</td></tr>
-						<tr><th>Rif.</th><td class="ref">Bando ISTI 003/2016 - PI prot. n. 2154 del 01/06/2016, prot. n. 2654 del 06/07/2016</td></tr>
-						<tr><th>Carica</th><td class="carica">assegnista di ricerca</td></tr>
-					</tbody>
-				</table>
-			</div>
+	</section>
+
+	<section id="premi">
+		<h2>Premi e Riconoscimenti</h2>
+		<hr>
+		<div class="premio">
+			<h3 class="cosa">Premio ISTI YRA: Young Researcher Award - Edizione 2018</h3>
+			<span class="quando">2 Maggio 2018</span>
+			<span class="dove">ISTI CNR - Pisa</span>
+			<span class="ref">Premio di 1000 EUR per giovani ricercatori, categoria Young (sotto i 32 anni). Prot. n. 1720 del 27/04/2018</span>
 		</div>
-		
-		<div class="esperienza-lavorativa">
-			<h3 class="cosa">Collaboratore di ricerca</h3>
-			<span class="quando">15/07/2015 – 14/08/2015</span>
-			<span class="dove">Istituto di Scienza e Tecnologia dell’Informazione “A.Faedo” - CNR - Pisa</span>
-			<span class="descrizione">Contratto di prestazione d’opera in regime di lavoro autonomo occasionale</span>
-			<div class="dettagli panel panel-default">
-				<div class="panel-heading">Dettagli</div>
-				<table class="table table-condensed">
-					<tbody>
-						<tr><th>Attività e<br>Responsabilità</th><td class="attivita-responsabilita">Studio e ricerca sulla problematica dell’identificazione e riconoscimento visuale automatico di oggetti da sorgenti multimediali. In particolare, studio delle tecniche di apprendimento automatico e modellazione dello sfondo delle immagini per poter identificare oggetti che compaiono nella scena, e successivamente riconoscerli automaticamente, L’attività di ricerca ha preso in esame lo stato dell’arte e ha identificato direzioni da seguire per migliorare le tecniche esistenti. Sono stati effettuati esperimenti per valutare oggettivamente i risultati ottenuti.</td></tr>
-						<!-- <tr><th>Competenze e<br>Obiettivi</th><td class="competenze-obiettivi">Competenze tecniche, gestione del tempo, stesura di trattati scientifici.</td></tr> -->
-						<tr><th>Rif.</th><td class="ref">prot. n. 2355 del 04/06/2015, n. 2859 del 08/07/2015</td></tr>
-						<tr><th>Carica</th><td class="carica">collaboratore coordinato e continuativo</td></tr>
-					</tbody>
-				</table>
-			</div>
+		<div class="premio">
+			<h3 class="cosa">ISTI GYM: Grant for Young Mobility - Edizione 2017</h3>
+			<span class="quando">Maggio 2017</span>
+			<span class="dove">ISTI CNR - Pisa</span>
+			<span class="ref">Finanziamento di 3000 EUR per mobilità e collaborazioni con enti di ricerca e università straniere.<br>Comunicato su ISTI-News: <a href="https://www.isti.cnr.it/news/yawards-gym.php">https://www.isti.cnr.it/news/yawards-gym.php</a></span>
 		</div>
-	</div>
-	<div id="lingue">
-		<h2>Certificazioni Linguistiche</h2><hr>
-		<div class="certificazione todo">
-			<h3 class="cosa">Certificazione di Lingua Inglese (Livello C1)</h3>
-			<span class="quando">Maggio 2016</span>
-			<span class="dove">Pisa</span>
-			<span class="ref todo">Attestato di frequenza e profitto</span>
+		<div class="premio">
+			<h3 class="cosa">Best Italian Paper Award - ISCC 2016</h3>
+			<span class="quando">30 Giugno 2016</span>
+			<span class="dove">Università degli Studi<br>di Messina</span>
+			<span class="ref">Per l'articolo "Car Parking Occupancy Detection Using Smart Camera Networks and Deep Learning" <cite class="ref" data-ref="amato2016car"></cite> presentato alla conferenza 21th IEEE
+Symposium on Computers and Communications (ISCC).<br>Comunicato su: <a href="http://iscc2016.unime.it/award">http://iscc2016.unime.it/award</a></span>
 		</div>
-		
+	</section>
+
+	<h2>Competenze Personali</h2>
+	<hr>
+	<section id="lingue">
+		<h3>Competenze Linguistiche</h3>
+		<span class="lingua-madre">Italiano</span>
+		<div class="lingue panel panel-default">
+			<div class="panel-heading">Lingue Straniere</div>
+			<table class="table table-condensed table-striped">
+				<thead>
+					<tr>
+						<th>Lingue Straniere</th>
+						<th colspan="2">Comprensione</th>
+						<th colspan="2">Parlato</th>
+						<th rowspan="2">Produzione Scritta</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td>Ascolto</td>
+						<td>Lettura</td>
+						<td>Interazione</td>
+						<td>Produzione Orale</td>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Inglese</td>
+						<td>C1</td>
+						<td>C1</td>
+						<td>B2</td>
+						<td>B2</td>
+						<td>C1</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
 		<div class="certificazione">
-			<h3 class="cosa">Corso di Lingua Inglese in madrelingua (Livello B2 - Upper Intermediate)</h3>
+			<h4 class="cosa">Certificazione di Inglese Accademico (Livello C1)</h4>
+			<span class="quando">Giugno 2016</span>
+			<span class="dove">Centro Linguistico d'Ateneo (CLI) Pisa</span>
+			<span class="ref">Attestato di frequenza e profitto N. 00776/17_IT</span>
+		</div>
+
+		<div class="certificazione">
+			<h4 class="cosa">Corso di Lingua Inglese in madrelingua (Livello B2 - Upper Intermediate)</h4>
 			<span class="quando">Luglio 2005</span>
-			<span class="dove">Edinburgh Napier University (UK)</span>
-			<span class="ref todo">Attestato di frequenza</span>
+			<span class="dove">Edinburgh Napier University (Scotland, UK)</span>
+			<span class="ref">Durata: 11/07/05 - 27/07/05. Attestato di frequenza</span>
 		</div>
-		
+
 		<div class="certificazione">
-			<h3 class="cosa">Certificazione di Lingua Inglese (Livello A2 - Key English Test)</h3>
+			<h4 class="cosa">Certificazione di Lingua Inglese (Livello A2 - Key English Test)</h4>
 			<span class="quando">Maggio 2004</span>
 			<span class="dove">Firenze</span>
-			<span class="ref todo">Certificato di idoneità n. 0011783250 rilasciato dalla University of Cambridge, il 5 Luglio 2004, Firenze</span>
+			<span class="ref">Certificato di idoneità n. 0011783250 rilasciato dalla University of Cambridge, il 5 Luglio 2004, Firenze</span>
 		</div>
-	</div>
-	<div id="informatica">
-        <h2>Competenze Informatiche</h2><hr>
+	</section>
+	<section id="informatica">
+		<h3>Competenze Informatiche</h3>
 		<div class="competenza">
-            <cite class="ref" data-ref="vadicamo2017cross-media carrara2017detecting amato2017efficient amato2017deep amato2016car carrara2016picture"></cite>
-			<h3 class="cosa">Deep Learning per Image Representation, Understanding e Retrieval </h3>
-			<span class="descrizione">Ottima conoscenza di <em>reti neurali</em>, <em>reti neurali convoluzionali</em>, <em>spazi metrici e vettoriali</em></span>
+			<cite class="ref">[1-12,15-17]</cite>
+			<h4 class="cosa">Deep Learning per Image Representation, Understanding e Retrieval </h4>
+			<span class="descrizione">Ottima conoscenza di <em>reti neurali</em>, <em>reti neurali convoluzionali</em>, <em>spazi metrici e vettoriali</em>. Esperienza con dati multimediali quali immagini, testo, time series, dati motion capture.</span>
 			<ul class="linguaggi">
 				<li>Caffe (Python)</li>
 				<li>numpy, scikit, matplotlib, pandas (Python)</li>
 				<li>Bash</li>
 				<li>Keras (Python)</li>
-                <li>PyTorch (Python)</li>
+				<li>PyTorch (Python)</li>
 				<li>TensorFlow (Python)</li>
 				<li>OpenCV (Python, Java)</li>
 				<li>Torch (Lua)</li>
 			</ul>
 		</div>
-		
+
 		<div class="competenza">
-            <cite class="ref" data-ref="carrara2015semiautomatic carrara2015efficient"></cite>
-			<h3 class="cosa">Computer Vision e Image Processing</h3>
-			<span class="descrizione">Ottima conoscenza di <em>local features detector e descriptor (FAST, SURF, SIFT, ORB, LBP)</em>, <em>algoritmi di background subtraction</em>, <em>object detection and recognition</em>, <em>registrazione 2D, basati su local features e trasformazioni omografiche</em>, <em>face detection e recognition basati su local features</em></span>
-            <a class="repo label label-primary" href="https://github.com/danyf90/FaceRecognizer">https://github.com/danyf90/FaceRecognizer</a>
+			<cite class="ref" data-ref="carrara2015semiautomatic carrara2015efficient"></cite>
+			<h4 class="cosa">Computer Vision e Image Processing</h4>
+			<span class="descrizione">Ottima conoscenza di <em>local features detector e descriptor (FAST, SURF, SIFT, ORB, LBP)</em>, <em>algoritmi di background subtraction</em>, <em>object detection and recognition</em>, <em>registrazione 2D, basati su local features e trasformazioni omografiche</em>, <em>face detection e recognition basati su local features</em>.</span>
 			<ul class="linguaggi">
 				<li>OpenCV (Python, C/C++, Java)</li>
 				<li>MATLAB</li>
 			</ul>
 		</div>
-		
+
 		<div class="competenza">
-			<h3 class="cosa">Linux OS e Web development</h3>
+			<h4 class="cosa">Linux OS e Web development</h4>
 			<span class="descrizione">Ottima conoscenza di <em>sistemi Linux Debian-based</em>. Buona conoscenza di tecnologie web front-end e back-end.</span>
 			<ul class="linguaggi">
 				<li>HTML5</li>
@@ -369,15 +910,16 @@
 				<li>AngularJS</li>
 				<li>jQuery</li>
 				<li>Ubuntu (Linux)</li>
-                                <li>Flask (Python)</li>
+				<li>Flask (Python)</li>
 				<li>Apache</li>
 				<li>PHP</li>
 				<li>SQL (MySQL)</li>
 			</ul>
 		</div>
-		
+
 		<div class="competenza">
-			<h3 class="cosa">Software di Editing Multimediale <!--<cite class="ref" data-ref="carrara2015design"></cite>--></h3>
+			<h4 class="cosa">Software di Editing Multimediale
+				<!-- <cite class="ref" data-ref="carrara2015design"></cite> --></h4>
 			<span class="descrizione">Ottima conoscenza delle rappresentazioni digitali di audio e immagini. Buona conoscenza di software di manipolazione immagini e processing/editing/generazione audio.</span>
 			<ul class="linguaggi">
 				<li>Ardour</li>
@@ -388,9 +930,9 @@
 				<li>OpenShot</li>
 			</ul>
 		</div>
-		
+
 		<div class="competenza">
-			<h3 class="cosa">Preparazione documenti scientifici</h3>
+			<h4 class="cosa">Preparazione documenti scientifici</h4>
 			<span class="descrizione">Ottima conoscenza di programmi e linguaggi per la preparazione e stesura di documenti scientifici.</span>
 			<ul class="linguaggi">
 				<li>LaTeX / BibTeX</li>
@@ -398,184 +940,609 @@
 				<li>MS Office</li>
 			</ul>
 		</div>
-	</div>
-	<div id="presentazioni">
-        <h2>Presentazioni Orali</h2><hr>
-        <div class="talk">
-			<span class="cosa">VSM (ICCV 2017): 5th Workshop on Web-scale Vision and Social Media (VSM), ICCV 2017</span>
-            <span class="quando">22 - 29 October, 2017</span>
-			<span class="dove">Venice, Italy</span>
-			<span class="descrizione">Cross-Media Learning for Image Sentiment Analysis in the Wild</span>
-            <span class="autori">Lucia Vadicamo, Fabio Carrara, Andrea Cimino, Stefano Cresci, Felice Dell'Orletta Fabrizio Falchi, and Maurizio Tesconi</span>
-		</div>
-        
-        <div class="talk">
-			<span class="cosa">CBMI 2017: 15th International Workshop on Content-Based Multimedia Indexing</span>
-            <span class="quando">19 - 21 June, 2017</span>
-			<span class="dove">Firenze, Italy</span>
-			<span class="descrizione">Detecting adversarial example attacks to deep neural networks</span>
-            <span class="autori">Fabio Carrara, Fabrizio Falchi, Roberto Caldelli, Giuseppe Amato, Roberta Fumarola, and Rudy Becarelli</span>
-		</div>
-        
-        <div class="talk">
-			<span class="cosa">ICMR 2017: ACM International Conference on Multimedia Retrieval</span>
-            <span class="quando">6 - 9 June, 2017</span>
-			<span class="dove">Bucharest, Romania</span>
-			<span class="descrizione">Efficient Indexing of Regional Maximum Activations of Convolutions using Full-Text Search Engines</span>
-            <span class="autori">Giuseppe Amato, Fabio Carrara, Fabrizio Falchi, and Claudio Gennaro</span>
-		</div>
-        
-		<div class="talk">
-			<span class="cosa">ISCC 2016: The Twenty-First IEEE Symposium on Computers and Communications</span>
-            <span class="quando">27 - 30 June, 2016</span>
-			<span class="dove">Messina, Italy</span>
-			<span class="descrizione">Car Parking Occupancy Detection Using Smart Camera Networks and Deep Learning</span>
-            <span class="autori">Giuseppe Amato, Fabio Carrara, Fabrizio Falchi, Claudio Gennaro, and Claudio Vairo</span>
-            <span class="award">Best Italian Paper Award</span>
-		</div>
-        
-		<div class="talk">
-			<span class="cosa">SISAP 2015: 8th International Conference on Similarity Search and Applications</span>
-            <span class="quando">12-14 Ottobre 2015</span>
-			<span class="dove">Glagow, Scotland, UK</span>
-			<span class="descrizione">Semiautomatic Learning of 3D Objects from Video Streams</span>
-			<span class="autori">Fabio Carrara, Fabrizio Falchi, and Claudio Gennaro</span>
-		</div>
-	</div>
-	<div id="revisione">
-        <h2>Attività di revisione</h2><hr>
-        <h3>Riviste Internazionali</h3>
-		<ul class="riviste">
-            <li>Signal Processing: Image Communication (Elsevier, ISSN: 0923-5965)</li>
-			<li>Information Systems (Elsevier, ISSN: 0306-4379)</li>
-		</ul>
-        <h3>Atti di convegno</h3>
-		<ul class="conferenze">
-			<li>IEEE Symposium on Computers and Communications (ISCC 2016)</li>
-		</ul>
-	</div>
-    <h2>Pubblicazioni</h2><hr>
+	</section>
+
+	<ul id="software">
+		<h2>Software e Datasets</h2>
+		<hr>
+		<p>Ha sviuppato o contribuito ai seguenti software e dataset:</p>
+		<li class="repo">
+			<span class="titolo">GW Glitches Detector</span>
+			<span class="descrizione">Software per il rivelamento di disturbi noti (glitches) nel segnale di rilevatori di onde gravitazionali attraverso modelli Deep Learning basati su reti convoluzionali. Il software riproduce i risultati dell'articolo <q>Razzano, M., &amp; Cuoco, E. (2018). Image-based deep learning for classification of noise transients in gravitational wave detectors. Classical and Quantum Gravity, 35(9), 095016</q> ed introduce un modello alternativo di rete neurale convoluzionale monodimensionale che migliora l'efficienza dell'approccio.</span>
+			<span class="url"><a href="https://github.com/fabiocarrara/gw-glitches">https://github.com/fabiocarrara/gw-glitches</a></span>
+			<ul class="linguaggi">
+				<li>PyTorch (Python)</li>
+				<li>numpy, scikit (Python)</li>
+			</ul>
+		</li>
+		<li class="repo">
+			<span class="titolo">Adversarial Images Detection</span>
+			<span class="descrizione">Software per il rilevamento di immagini avversarie per modelli implementati tramite reti neurali profonde basato sull'analisi delle attivazioni interne (o features) del modello. Il software riproduce i risultati presentati in <cite class="ref" data-ref="carrara2018adversarial-2"></cite>.</span>
+			<span class="url"><a href="https://github.com/fabiocarrara/features-adversarial-det">https://github.com/fabiocarrara/features-adversarial-det</a></span>
+			<ul class="linguaggi">
+				<li>PyTorch (Python)</li>
+				<li>TensorFlow (Python)</li>
+				<li>numpy, scikit, matplotlib, pandas (Python)</li>
+				<li>Bash</li>
+			</ul>
+		</li>
+		<li class="repo">
+			<span class="titolo">DeepRaspiFace<!--: Face Verification and Recognition with Deep Learning on Raspberry PI--></span>
+			<span class="descrizione">Software per il riconoscimento e autenticazione facciale basato su features visuali estratte con reti neurali convoluzionali. Sono forniti inoltre i modelli sviluppati in <cite class="ref" data-ref="amato2018facial-based"></cite> per la riproducibilità degli esperimenti e il software installato sui dispositivi Raspberry Pi 3 che implementano il sistema di riconoscimento.</span>
+			<span class="url"><a href="https://github.com/fabiocarrara/deep-raspi-face">https://github.com/fabiocarrara/deep-raspi-face</a></span>
+			<!-- TODO aggiorna README -->
+			<ul class="linguaggi">
+				<li>Caffe (Python)</li>
+				<li>OpenCV (Python)</li>
+				<li>numpy, scikit (Python)</li>
+				<li>Raspberry Pi 3</li>
+			</ul>
+		</li>
+		<li class="repo">
+			<span class="titolo">Relation Networks on CLEVR Images</span>
+			<span class="descrizione">Contributo alla stesura del software per l'implementazione di Relation Networks, una rete neurale profonda specializzata alla codifica di informazioni relazionali. Il software riproduce i risultati dell'articolo <q>Santoro, A., Raposo, D., Barrett, D. G., Malinowski, M., Pascanu, R., Battaglia, P., &amp; Lillicrap, T. (2017). A simple neural network module for relational reasoning. In Advances in neural information processing systems (pp. 4967-4976).</q> sul dataset pubblico di immagini sintetiche CLEVR ed è stato utilizzato per gli esperimenti presentati in <cite class="ref" data-ref="messina2018learning"></cite>.</span>
+			<span class="url"><a href="https://github.com/mesnico/RelationNetworks-CLEVR">https://github.com/mesnico/RelationNetworks-CLEVR</a></span>
+			<ul class="linguaggi">
+				<li>PyTorch (Python)</li>
+				<li>numpy, scikit (Python)</li>
+			</ul>
+		</li>
+		<li class="repo">
+			<span class="titolo">MoCap Action Segmentation</span>
+			<span class="descrizione">Software per il riconoscimento e segmentazione automatica ed efficiente di azioni in dati motion caption (dataset HDM-05) basato su Deep Learning, in particolare su reti neurali ricorrenti con cella LSTM (Long Short-term Memory). Riproduce gli esperimenti presentati in <cite class="ref" data-ref="carrara2018real-time"></cite>.</span>
+			<span class="url"><a href="https://github.com/fabiocarrara/mocap">https://github.com/fabiocarrara/mocap</a></span>
+			<ul class="linguaggi">
+				<li>PyTorch (Python)</li>
+				<li>numpy, scikit, matplotlib (Python)</li>
+			</ul>
+		</li>
+		<li class="dataset">
+			<span class="titolo">CNRPark-EXT<!--: Parking Lot Occupancy Detection with Convolutional Neural Networks--></span>
+			<span class="descrizione">Collezione di circa 150.000 immagini etichettate per il rilevamento dello stato di occupazione di parcheggi per auto. Utilizzato e pubblicato in <cite class="ref" data-ref="amato2017deep amato2016car"></cite>.</span>
+			<span class="url"><a href="http://cnrpark.it">http://cnrpark.it</a></span>
+		</li>
+		<li class="repo">
+			<span class="titolo">DeepParking<!--: Parking Lot Occupancy Detection with Convolutional Neural Networks--></span>
+			<span class="descrizione">Software per il rilevamento visuale dell'occupazione di parcheggi mediante reti neurali convoluzionali. Riproduce i risultati pubblicati in <cite class="ref" data-ref="amato2017deep amato2016car"></cite>.</span>
+			<span class="url"><a href="https://github.com/fabiocarrara/deep-parking">https://github.com/fabiocarrara/deep-parking</a></span>
+			<ul class="linguaggi">
+				<li>Caffe (Python)</li>
+				<li>numpy, scikit (Python)</li>
+			</ul>
+		</li>
+		<li class="dataset">
+			<span class="titolo">T4SA: Twitter for Sentiment Analysis<!--: Parking Lot Occupancy Detection with Convolutional Neural Networks--></span>
+			<span class="descrizione">Collezione di circa 3 milioni di tweet con immagini (testo ed immagini associate) etichettate in base alla polarità del sentimento testuale. Utilizzato e pubblicato in <cite class="ref" data-ref="vadicamo2017cross-media"></cite>.</span>
+			<span class="url"><a href="http://t4sa.it">http://t4sa.it</a></span>
+		</li>
+		<li class="repo">
+			<span class="titolo">Pyffe</span>
+			<span class="descrizione">Libreria Python per la gestione e il monitoraggio di esperimenti di classificazione di immagini implementati tramite Caffe con interfaccia Python. Utilizzata in <cite class="ref" data-ref="amato2017deep vadicamo2017cross-media amato2016car"></cite>.</span>
+			<span class="url"><a href="https://github.com/fabiocarrara/pyffe">https://github.com/fabiocarrara/pyffe</a></span>
+			<ul class="linguaggi">
+				<li>Caffe (Python)</li>
+				<li>numpy, scikit, matplotlib (Python)</li>
+			</ul>
+		</li>
+		<li class="repo">
+			<span class="titolo">Web CV</span>
+			<span class="descrizione">Template per Curriculum Vitae implementato con tecnologie Web.</span>
+			<span class="url"><a href="https://github.com/fabiocarrara/web-cv">https://github.com/fabiocarrara/web-cv</a></span>
+			<ul class="linguaggi">
+				<li>HTML5</li>
+				<li>CSS3</li>
+				<li>jQuery</li>
+				<li>JavaScript</li>
+				<li>Bootstrap</li>
+			</ul>
+		</li>
+		<li class="repo">
+			<span class="titolo">Tesi di Dottorato</span>
+			<span class="descrizione">Tesi di Dottorato redatta in LaTeX e Asymptote (2D e 3D graphics).</span>
+			<span class="url"><a href="https://github.com/fabiocarrara/phd-thesis">https://github.com/fabiocarrara/phd-thesis</a></span>
+			<!-- TODO make public -->
+			<ul class="linguaggi">
+				<li>LaTeX</li>
+				<li>Asymptote</li>
+				<li>GNU make</li>
+				<li>Bash</li>
+			</ul>
+		</li>
+		<li class="repo">
+			<span class="titolo">VIR</span>
+			<span class="descrizione">Contributo allo sviluppo della libreria Visual Information Retrieval (VIR) per il recupero e classificazione di immagini sulla base del loro contenuto visivo. Include funzionalità di matching di feature locali (per es. SIFT, ORB), RANSAC, confronto di feature di immagini (per es. CNN features, MPEG-7), classificazione kNN e tecniche di aggregazione di feature locali (per es. Bag-of-Words, VLAD, Fisher Vector). In particolare è stata prodotta documentazione di codice esistente ed è stato sviluppato un modulo per l'analisi della distribuzione delle distanze utilizzato in <cite class="ref" data-ref="carrara2015design"></cite>.</span>
+			<span class="url"><a href="https://github.com/ffalchi/it.cnr.isti.vir">https://github.com/ffalchi/it.cnr.isti.vir</a></span>
+			<ul class="linguaggi">
+				<li>Java</li>
+			</ul>
+		</li>
+		<li class="repo">
+			<span class="titolo">Android Face Recognizer</span>
+			<span class="descrizione">Contributo alla stesura di una applicazione Android per il riconoscimento facciale basato su local features, sviluppata nell'ambito di un progetto universitario per il corso di Multimedia Information Management.</span>
+			<span class="url"><a href="https://github.com/danyf90/FaceRecognizer">https://github.com/danyf90/FaceRecognizer</a></span>
+			<ul class="linguaggi">
+				<li>Java + JNI</li>
+				<li>OpenCV (C/C++, Java)</li>
+				<li>MATLAB</li>
+			</ul>
+		</li>
+	</ul>
 	<ol id="pubblicazioni">
-        <li class="pub">
-			<span class="year"><time>2017</time></span>
-			<span class="titolo">Cross-Media Learning for Image Sentiment Analysis in the Wild</span>
-			<span class="autori">
-                Vadicamo, <span class="nome">Lucia</span>;
+		<h2>Pubblicazioni</h2>
+		<hr>
+		<h3>Riviste Scientifiche Internazionali</h3>
+		<!-- <li class="pub">
+		    <span class="year"><time>2019</time></span>
+		    <span class="titolo">Real-Time Action Detection and Prediction in Human Motion Streams</span>
+		    <span class="autori">
                 Carrara, <span class="nome">Fabio</span>;
-                Cimino, <span class="nome">Andrea</span>;
-                Cresci, <span class="nome">Stefano</span>;
-                Dell'Orletta, <span class="nome">Felice</span>;
-                Falchi, <span class="nome">Fabrizio</span>;
-                Tesconi, <span class="nome">Maurizio</span>
+                Elias, <span class="nome">Petr</span>;
+                Sedmidubsky, <span class="nome">Jan</span>;
+                Zezula, <span class="nome">Pavel</span>
             </span>
-			<cite class="publication">Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (ICCV)</cite>
-			<span class="pages">308-317</span>
-			<span class="publisher">IEEE</span><br>
-            <span class="website"><a href="http://t4sa.it">http://t4sa.it</a></span>
-		</li>
-        <li class="pub">
-			<span class="year"><time>2017</time></span>
-			<span class="titolo">Detecting adversarial example attacks to deep neural networks</span>
+		    <cite class="publication">Multimedia Tools and Applications</cite>
+		    <span class="pages">-</span>
+		    <span class="publisher"></span>
+            <span class="website"><a href="http://">http://</a></span>
+	    </li> -->
+		<li class="pub journal">
+			<span class="year"><time>2018</time></span>
+			<span class="titolo">Adversarial image detection in deep neural networks</span>
 			<span class="autori">
-                Carrara, <span class="nome">Fabio</span>;
-                Falchi, <span class="nome">Fabrizio</span>;
-                Caldelli, <span class="nome">Roberto</span>;
-                Amato, <span class="nome">Giuseppe</span>;
-                Fumarola, <span class="nome">Roberta</span>;
-                Becarelli, <span class="nome">Rudy</span>
-            </span>
-			<cite class="publication">Proceedings of the 15th International Workshop on Content-Based Multimedia Indexing (CBMI)</cite>
-			<span class="pages">38</span>
-			<span class="publisher">ACM</span><br>
-            <span class="website"><a href="http://deepfeatures.org/adversarials/">http://deepfeatures.org/adversarials/</a></span>
+                Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Caldelli, <span class="nome">Roberto</span>; Amato, <span class="nome">Giuseppe</span>; Becarelli, <span class="nome">Rudy</span>
+			</span>
+			<cite class="publication">(IN PRESS) Multimedia Tools and Applications</cite>,
+			<!-- <span class="pages">1-21</span> -->
+			<span class="publisher">Springer US</span>
+			<span class="citazioni">1 (Google Scholar)</span>			
 		</li>
-        <li class="pub">
+		<li class="pub journal">
 			<span class="year"><time>2017</time></span>
-			<span class="titolo">Efficient Indexing of Regional Maximum Activations of Convolutions using Full-Text Search Engines</span>
+			<span class="titolo">Picture it in your mind: Generating high level visual representations from textual descriptions</span>
 			<span class="autori">
-                Amato, <span class="nome">Giuseppe</span>;
-                Carrara, <span class="nome">Fabio</span>;
-                Falchi, <span class="nome">Fabrizio</span>;
-                Gennaro, <span class="nome">Claudio</span>
-            </span>
-			<cite class="publication">Proceedings of the 2017 ACM on International Conference on Multimedia Retrieval (ICMR)</cite>
-			<span class="pages">420-423</span>
-			<span class="publisher">ACM</span>
+                Carrara, <span class="nome">Fabio</span>; Esuli, <span class="nome">Andrea</span>; Fagni, <span class="nome">Tiziano</span>; Falchi, <span class="nome">Fabrizio</span>; Moreo, <span class="nome">Alejandro</span> <span class="nome">Fernández</span>
+			</span>
+			<cite class="publication">Information Retrieval Journal</cite>
+			<span class="number">21(2)</span>
+			<span class="pages">208-229</span>
+			<span class="publisher">Springer Netherlands</span>
+			<span class="citazioni">10 (Google Scholar) &ndash; 1 (Scopus)</span>
 		</li>
-		<li class="pub">
+		<li class="pub journal">
 			<span class="year"><time>2017</time></span>
 			<span class="titolo">Deep learning for decentralized parking lot occupancy detection</span>
 			<span class="autori">
-                Amato, <span class="nome">Giuseppe</span>;
-                Carrara, <span class="nome">Fabio</span>;
-                Falchi, <span class="nome">Fabrizio</span>;
-                Gennaro, <span class="nome">Claudio</span>;
-                Meghini, <span class="nome">Carlo</span>;
-                Vairo <span class="nome">Claudio</span>
-            </span>
+                Amato, <span class="nome">Giuseppe</span>; Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span>; Meghini, <span class="nome">Carlo</span>; Vairo <span class="nome">Claudio</span>
+			</span>
 			<cite class="publication">Expert Systems with Applications</cite>
 			<span class="number">72</span>
 			<span class="pages">327-334</span>
-			<span class="publisher">Pergamon</span><br>
-            <span class="website"><a href="http://cnrpark.it">http://cnrpark.it</a></span>
+			<span class="publisher">Pergamon</span>
+			<span class="citazioni">41 (Google Scholar) &ndash; 24 (Scopus) &ndash; 14 (WoS)</span>
+			<span class="website"><a href="http://cnrpark.it">http://cnrpark.it</a></span>
 		</li>
-		<li class="pub">
+
+		<h3>Conferenze Internazionali</h3>
+		<li class="pub conference">
+			<span class="year"><time>2018</time></span>
+			<span class="titolo">A wireless smart camera network for parking monitoring</span>
+			<span class="autori">
+                Amato, <span class="nome">Giuseppe</span>; Bolettieri, <span class="nome">Paolo</span>; Carrara, <span class="nome">Fabio</span>; Ciampi, <span class="nome">Luca</span>; Gennaro, <span class="nome">Claudio</span>; Leone, <span class="nome">Giuseppe</span> <span class="nome">Riccardo</span>; Moroni, <span class="nome">Davide</span>; Pieri, <span class="nome">G</span>; Vairo, <span class="nome">Claudio</span>
+			</span>
+			<cite class="publication">(ACCEPTED) International Workshop on Cooperative Sensing for Smart MObility (COSSMO) of the IEEE Global Communications (GLOBECOM) Conference</cite>
+			<span class="where">Abu Dhabi, UAE, December 2018</span>
+			<!-- 
+            <span class="pages">-</span>
+		    <span class="publisher"></span>
+            -->
+		</li>
+		<li class="pub conference">
+			<span class="year"><time>2018</time></span>
+			<span class="titolo">Facial-based Intrusion Detection System with Deep Learning in Embedded Devices</span>
+			<span class="autori">
+                Amato, <span class="nome">Giuseppe</span>; Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span>; Vairo, <span class="nome">Claudio</span>
+			</span>
+			<cite class="publication">(IN PRESS) 2018 International Conference on Sensors, Signal and Image Processing (SSIP)</cite>
+			<span class="where">Prague, Czech Republic, October 2018</span>
+			<!--
+		    <span class="pages">420-423</span>
+		    <span class="publisher">ACM</span>
+            -->
+		</li>
+		<li class="pub conference">
+			<span class="year"><time>2018</time></span>
+			<span class="titolo">Learning Relationship-aware Visual Features</span>
+			<span class="autori">
+                Messina, <span class="nome">Nicola</span>; Amato, <span class="nome">Giuseppe</span>; Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span>
+			</span>
+			<cite class="publication">(IN PRESS) 2018 European Conference on Computer Vision Workshops (ECCVW)</cite>
+			<span class="where">Munich, Germany, September 2018</span>
+			<span class="publication"><!-- placeholder for visualization purposes --></span>
+			<span class="website"><a href="http://rcbir.org">http://rcbir.org</a></span>
+			<!--
+		    <span class="pages">420-423</span>
+		    <span class="publisher">ACM</span>
+            -->
+		</li>
+		<li class="pub conference">
+			<span class="year"><time>2018</time></span>
+			<span class="titolo">Adversarial examples detection in features distance spaces</span>
+			<span class="autori">
+                Carrara, <span class="nome">Fabio</span>; Becarelli, <span class="nome">Rudy</span> Caldelli, <span class="nome">Roberto</span>; Falchi, <span class="nome">Fabrizio</span>; Amato, <span class="nome">Giuseppe</span>;
+			</span>
+			<cite class="publication">(IN PRESS) 2018 European Conference on Computer Vision Workshops (ECCVW)</cite>
+			<span class="where">Munich, Germany, September 2018</span>
+		</li>
+		<li class="pub conference">
+			<span class="year"><time>2018</time></span>
+			<span class="titolo">Large-Scale Image Retrieval with Elasticsearch</span>
+			<span class="autori">
+                Amato, <span class="nome">Giuseppe</span>; Bolettieri, <span class="nome">Paolo</span>; Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span>
+			</span>
+			<cite class="publication">The 41st International ACM SIGIR Conference on Research Development in Information Retrieval</cite>
+			<span class="where">Ann Arbor Michigan, U.S.A, July 2018</span>
+			<span class="pages">925-928</span>
+			<span class="publisher">ACM</span>
+		</li>
+		<li class="pub conference">
+			<span class="year"><time>2017</time></span>
+			<span class="titolo">Cross-Media Learning for Image Sentiment Analysis in the Wild</span>
+			<span class="autori">
+                Vadicamo, <span class="nome">Lucia</span>; Carrara, <span class="nome">Fabio</span>; Cimino, <span class="nome">Andrea</span>; Cresci, <span class="nome">Stefano</span>; Dell'Orletta, <span class="nome">Felice</span>; Falchi, <span class="nome">Fabrizio</span>; Tesconi, <span class="nome">Maurizio</span>
+			</span>
+			<cite class="publication">2017 IEEE International Conference on Computer Vision Workshops (ICCVW)</cite>
+			<span class="where">Venice, Italy, October 2017</span>
+			<span class="pages">308-317</span>
+			<span class="publisher">IEEE</span>
+			<span class="citazioni">6 (Google Scholar) &ndash; 4 (Scopus) &ndash; 1 (WoS)</span>
+			<span class="website"><a href="http://t4sa.it">http://t4sa.it</a></span>
+		</li>
+		<li class="pub conference">
+			<span class="year"><time>2017</time></span>
+			<span class="titolo">Detecting adversarial example attacks to deep neural networks</span>
+			<span class="autori">
+                Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Caldelli, <span class="nome">Roberto</span>; Amato, <span class="nome">Giuseppe</span>; Fumarola, <span class="nome">Roberta</span>; Becarelli, <span class="nome">Rudy</span>
+			</span>
+			<cite class="publication">Proceedings of the 15th International Workshop on Content-Based Multimedia Indexing (CBMI)</cite>
+			<span class="where">Florence, Italy, June 2017</span>
+			<span class="pages">38</span>
+			<span class="publisher">ACM</span>
+			<span class="citazioni">3 (Google Scholar)</span>
+			<span class="website"><a href="http://deepfeatures.org/adversarials/">http://deepfeatures.org/adversarials/</a></span>
+		</li>
+		<li class="pub conference">
+			<span class="year"><time>2017</time></span>
+			<span class="titolo">Efficient Indexing of Regional Maximum Activations of Convolutions using Full-Text Search Engines</span>
+			<span class="autori">
+                Amato, <span class="nome">Giuseppe</span>; Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span>
+			</span>
+			<cite class="publication">Proceedings of the 2017 ACM on International Conference on Multimedia Retrieval (ICMR)</cite>
+			<span class="where">Bucharest, Romania, June 2017</span>
+			<span class="pages">420-423</span>
+			<span class="publisher">ACM</span>
+			<span class="citazioni">1 (Google Scholar) &ndash; 1 (Scopus)</span>
+		</li>
+		<li class="pub conference">
 			<span class="year"><time>2016</time></span>
 			<span class="titolo">Car parking occupancy detection using smart camera networks and Deep Learning</span>
 			<span class="autori">
-                Amato, <span class="nome">Giuseppe</span>;
-                Carrara, <span class="nome">Fabio</span>;
-                Falchi, <span class="nome">Fabrizio</span>;
-                Gennaro, <span class="nome">Claudio</span>;
-                Vairo, <span class="nome">Claudio</span>
-            </span>
-			<cite class="publication">Computers and Communication (ISCC), 2016 IEEE Symposium on</cite>
+                Amato, <span class="nome">Giuseppe</span>; Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span>; Vairo, <span class="nome">Claudio</span>
+			</span>
+			<cite class="publication">2016 IEEE Symposium on Computers and Communication (ISCC)</cite>
+			<span class="where">Messina, Italy, June 2016</span>
 			<span class="pages">1212-1217</span>
-			<span class="publisher">IEEE</span><br>
+			<span class="publisher">IEEE</span>
+			<span class="citazioni">22 (Google Scholar) &ndash; 13 (Scopus) &ndash; 5 (WoS)</span>
 			<span class="award">Best Italian Paper Award</span>
+		</li>
+        <li class="pub conference">
+			<span class="year"><time>2016</time></span>
+			<span class="titolo">Picture it in your mind: Generating high level visual representations from textual descriptions</span>
+			<span class="autori">
+                Carrara, <span class="nome">Fabio</span>; Esuli, <span class="nome">Andrea</span>; Fagni, <span class="nome">Tiziano</span>; Falchi, <span class="nome">Fabrizio</span>; Moreo, <span class="nome">Alejandro</span> <span class="nome">Fernández</span>
+			</span>
+			<cite class="publication">Neu-IR Workshop on Neural Information Retrieval, SIGIR 2016 &ndash; arXiv preprint arXiv:1606.07287</cite>
+			<!-- <span class="number">21(2)</span>
+			<span class="pages">208-229</span>
+			<span class="publisher">&ndash; arXiv preprint arXiv:1606.07287</span> -->
+		</li>
+		<li class="pub conference">
+			<span class="year"><time>2015</time></span>
+			<span class="titolo">Semiautomatic Learning of 3D Objects from Video Streams</span>
+			<span class="autori">
+                Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span>
+			</span>
+			<cite class="publication">International Conference on Similarity Search and Applications (SISAP)</cite>
+			<span class="where">Glasgow, Scotland, October 2015</span>
+			<span class="pages">217-228</span>
+			<span class="publisher">Springer International Publishing</span>
+		</li>
+		<li class="pub conference">
+			<span class="year"><time>2015</time></span>
+			<span class="titolo">Efficient foreground-background segmentation using local features for object detection</span>
+			<span class="autori">
+                Carrara, <span class="nome">Fabio</span>; Amato, <span class="nome">Giuseppe</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span>
+			</span>
+			<cite class="publication">Proceedings of the 9th International Conference on Distributed Smart Cameras (ICDSC)</cite>
+			<span class="where">Seville, Spain, September 2015</span>
+			<span class="pages">175-180</span>
+			<span class="publisher">ACM</span>
+			<span class="citazioni"> 1 (Google Scholar) &ndash; 1 (Scopus)</span>
+		</li>
+
+		<h3>Relazioni Tecniche e Relazioni di Progetto</h3>
+
+		<li class="pub">
+			<span class="year"><time>2018</time></span>
+			<span class="titolo">SMART NEWS - Visual Content Mining</span>
+			<span class="autori">
+                Amato, <span class="nome">Giuseppe</span>; Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span> Vadicamo, <span class="nome">Lucia</span>
+			</span>
+			<cite class="publication">Deliverable 3.3</cite>
+			<span class="project">SmartNews - Social sensing for breakingnews</span>
+			<span class="ref">ID People: 390729</span>
 		</li>
 		<li class="pub">
 			<span class="year"><time>2016</time></span>
 			<span class="titolo">Picture it in your mind: Generating high level visual representations from textual descriptions</span>
 			<span class="autori">
-                Carrara, <span class="nome">Fabio</span>;
-                Esuli, <span class="nome">Andrea</span>;
-                Fagni, <span class="nome">Tiziano</span>;
-                Falchi, <span class="nome">Fabrizio</span>;
-                Moreo, <span class="nome">Alejandro</span> <span class="nome">Fernández</span>
-            </span>
-			<cite class="publication">arXiv preprint arXiv:1606.07287</cite>
+                Carrara, <span class="nome">Fabio</span>; Esuli, <span class="nome">Andrea</span>; Fagni, <span class="nome">Tiziano</span>; Falchi, <span class="nome">Fabrizio</span>; Moreo, <span class="nome">Alejandro</span> <span class="nome">Fernández</span>
+			</span>
+			<cite class="publication">Technical Report</cite>
+			<span class="ref">ID People: 366999, rif. PUMA: cnr.isti/2016-TR-056</span>
+		</li>
+		<li class="pub">
+			<span class="year"><time>2016</time></span>
+			<span class="titolo">ProgettISTI 2016</span>
+			<span class="autori">
+				Banterle, <span class="nome">F.</span>; Barsocchi <span class="nome">P.</span>; Candela <span class="nome">L.</span>; Carlini <span class="nome">E.</span>; Carrara <span class="nome">F.</span>; Cassarà <span class="nome">P.</span>; Ciancia <span class="nome">V.</span>; Cintia <span class="nome">P.</span>; Dellepiane <span class="nome">M.</span>; Esuli <span class="nome">A.</span>; Gabrielli <span class="nome">L.</span>; Germanese <span class="nome">D.</span>; Girardi <span class="nome">M.</span>; Girolami <span class="nome">M.</span>; Kavalionak <span class="nome">H.</span>; Lonetti <span class="nome">F.</span>; Lulli <span class="nome">A.</span>; Moreo Fernandez <span class="nome">A.</span>; Moroni <span class="nome">D.</span>; Nardini <span class="nome">F.</span> <span class="nome">M.</span>; Monteiro De Lira <span class="nome">V.</span> <span class="nome">C.</span>; Palumbo <span class="nome">F.</span>; Pappalardo <span class="nome">L.</span>; Pascali <span class="nome">M.</span> <span class="nome">A.</span>; Reggianini <span class="nome">M.</span>; Righi <span class="nome">M.</span>; Rinzivillo <span class="nome">S.</span>; Russo <span class="nome">D.</span>; Siotto <span class="nome">E.</span>; Villa <span class="nome">A.</span>
+			</span>
+			<cite class="publication">Technical Report</cite>
+			<span class="ref">ID People: 360568, rif. PUMA: cnr.isti/2016-TR-042</span>
 		</li>
 		<li class="pub">
 			<span class="year"><time>2015</time></span>
-			<span class="titolo">Semiautomatic Learning of 3D Objects from Video Streams</span>
+			<span class="titolo">Smart Area CNR Pisa - Smart Parking</span>
 			<span class="autori">
-                Carrara, <span class="nome">Fabio</span>;
-                Falchi, <span class="nome">Fabrizio</span>;
-                Gennaro, <span class="nome">Claudio</span>
-            </span>
-			<cite class="publication">International Conference on Similarity Search and Applications</cite>
-			<span class="pages">217-228</span>
-			<span class="publisher">Springer International Publishing</span>
+                Amato, <span class="nome">Giuseppe</span>; Carrara, <span class="nome">Fabio</span>; Falchi, <span class="nome">Fabrizio</span>; Gennaro, <span class="nome">Claudio</span>; Vairo, <span class="nome">Claudio</span>
+			</span>
+			<cite class="publication">Technical Report</cite>
+			<span class="ref">ID People: 346380, rif. PUMA: cnr.isti/2015-TR-042</span>
 		</li>
+
+		<h3>Miscellanea</h3>
 		<li class="pub">
-			<span class="year"><time>2015</time></span>
-			<span class="titolo">Efficient foreground-background segmentation using local features for object detection</span>
+		    <span class="year"><time>2018</time></span>
+		    <span class="titolo">Real-Time Action Detection and Prediction in Human Motion Streams</span>
+		    <span class="autori">
+                Carrara, <span class="nome">Fabio</span>;
+                Elias, <span class="nome">Petr</span>;
+                Sedmidubsky, <span class="nome">Jan</span>;
+                Zezula, <span class="nome">Pavel</span>
+            </span>
+		    <cite class="publication">SOTTOMESSO a Rivista Internazionale</cite>
+		    <!-- <span class="pages"></span>
+		    <span class="publisher"></span>
+            <span class="website"><a href="http://">http://</a></span>-->
+	    </li>
+		<li class="pub">
+			<span class="year"><time>2017</time></span>
+			<span class="titolo">Exploring epoch-dependent stochastic residual networks</span>
 			<span class="autori">
-                Carrara, <span class="nome">Fabio</span>;
-                Amato, <span class="nome">Giuseppe</span>;
-                Falchi, <span class="nome">Fabrizio</span>;
-                Gennaro, <span class="nome">Claudio</span>
-            </span>
-			<cite class="publication">Proceedings of the 9th International Conference on Distributed Smart Cameras</cite>
-			<span class="pages">175-180</span>
-			<span class="publisher">ACM</span>
+                Carrara, <span class="nome">Fabio</span>; Esuli, <span class="nome">Andrea</span>; Falchi, <span class="nome">Fabrizio</span>; Moreo, <span class="nome">Alejandro</span> <span class="nome">Fernández</span>
+			</span>
+			<cite class="publication">arXiv preprint arXiv:1704.06178</cite>
 		</li>
-		<li class="pub">
+		<li class="pub thesis">
 			<span class="year"><time>2015</time></span>
 			<span class="titolo">Design and implementation of a system for incremental real-time visual object detection and autonomous recognition</span>
 			<span class="autori">Carrara, <span class="nome">Fabio</span></span>
+			<cite class="publication">Tesi di Laurea Magistrale</cite>
+			<span class="website"><a href="https://etd.adm.unipi.it/theses/available/etd-01122015-181044/">https://etd.adm.unipi.it/theses/available/etd-01122015-181044/</a></span>
 		</li>
 	</ol>
+	<section id="congressi">
+		<h2>Partecipazione a Congressi Internazionali</h2>
+		<hr>
+		
+		<h3>Organizzazione di congressi internazionali</h3>
+		<p>Ha svolto il ruolo di collaboratore volontario per l'organizzazione dei seguenti congressi internazionali:</p>
+		
+		<div class="volontario">
+			<span class="cosa">SIGIR 2016: 9th International ACM SIGIR Conference on Research and Development in Information Retrieval</span>
+			<span class="quando">17-21 Luglio 2016</span>
+			<span class="dove">Pisa, Italy</span>
+			<span class="descrizione">Incaricato da Alejandro Moreo Fernández e Franco Maria Nardini in qualità di SIGIR 2016 Volunteers Coordinators</span>
+		</div>
+		<div class="volontario">
+			<span class="cosa">SISAP 2015: 8th International Conference on Similarity Search and Applications</span>
+			<span class="quando">12-14 Ottobre 2015</span>
+			<span class="dove">Glagow, Scotland, UK</span>
+			<span class="descrizione">Incaricato da Giuseppe Amato e Richard Connor in qualità di Program Chairs di SISAP 2015.</span>
+		</div>
+		
+		<h3>Relatore a congressi internazionali</h3>
+		<p>Ha presentato personalmente prodotti di ricerca alle seguenti conferenze internazionali:</p>
+		<div class="talk">
+			<span class="cosa">CEFRL (ECCV 2018): 2nd International Workshop on Compact and Efficient Feature Representation and Learning</span>
+			<span class="quando">8 - 14 September, 2018</span>
+			<span class="dove">Munich, Germany</span>
+			<span class="descrizione">Learning Relationship-aware Visual Features</span>
+			<span class="autori">Nicola Messina, Giuseppe Amato, Fabio Carrara, Fabrizio Falchi, Claudio Gennaro</span>
+		</div>
+		
+		<div class="talk">
+			<span class="cosa">WOCM (ECCV 2018): International Workshop on Objectionable Content and Misinformation</span>
+			<span class="quando">8 - 14 September, 2018</span>
+			<span class="dove">Munich, Germany</span>
+			<span class="descrizione">Adversarial examples detection in features distance spaces</span>
+			<span class="autori">Fabio Carrara, Rudy Becarelli, Roberto Caldelli, Fabrizio Falchi, Giuseppe Amato</span>
+		</div>
+
+		<div class="talk">
+			<span class="cosa">VSM (ICCV 2017): 5th Workshop on Web-scale Vision and Social Media</span>
+			<span class="quando">22 - 29 October, 2017</span>
+			<span class="dove">Venice, Italy</span>
+			<span class="descrizione">Cross-Media Learning for Image Sentiment Analysis in the Wild</span>
+			<span class="autori">Lucia Vadicamo, Fabio Carrara, Andrea Cimino, Stefano Cresci, Felice Dell'Orletta, Fabrizio Falchi, Maurizio Tesconi</span>
+		</div>
+
+		<div class="talk">
+			<span class="cosa">CBMI 2017: 15th International Workshop on Content-Based Multimedia Indexing</span>
+			<span class="quando">19 - 21 June, 2017</span>
+			<span class="dove">Firenze, Italy</span>
+			<span class="descrizione">Detecting adversarial example attacks to deep neural networks</span>
+			<span class="autori">Fabio Carrara, Fabrizio Falchi, Roberto Caldelli, Giuseppe Amato, Roberta Fumarola, Rudy Becarelli</span>
+		</div>
+
+		<div class="talk">
+			<span class="cosa">ICMR 2017: ACM International Conference on Multimedia Retrieval</span>
+			<span class="quando">6 - 9 June, 2017</span>
+			<span class="dove">Bucharest, Romania</span>
+			<span class="descrizione">Efficient Indexing of Regional Maximum Activations of Convolutions using Full-Text Search Engines</span>
+			<span class="autori">Giuseppe Amato, Fabio Carrara, Fabrizio Falchi, Claudio Gennaro</span>
+		</div>
+
+		<div class="talk">
+			<span class="cosa">ISCC 2016: The Twenty-First IEEE Symposium on Computers and Communications</span>
+			<span class="quando">27 - 30 June, 2016</span>
+			<span class="dove">Messina, Italy</span>
+			<span class="descrizione">Car Parking Occupancy Detection Using Smart Camera Networks and Deep Learning</span>
+			<span class="autori">Giuseppe Amato, Fabio Carrara, Fabrizio Falchi, Claudio Gennaro, Claudio Vairo</span>
+			<span class="award">Best Italian Paper Award</span>
+		</div>
+
+		<div class="talk">
+			<span class="cosa">SISAP 2015: 8th International Conference on Similarity Search and Applications</span>
+			<span class="quando">12-14 Ottobre 2015</span>
+			<span class="dove">Glagow, Scotland, UK</span>
+			<span class="descrizione">Semiautomatic Learning of 3D Objects from Video Streams</span>
+			<span class="autori">Fabio Carrara, Fabrizio Falchi, Claudio Gennaro</span>
+		</div>
+		
+		<h3>Partecipazione a congressi nazionali e internazionali</h3>
+		<p>Ha partecipato ai seguenti congressi e workshop internazionali e nazionali:</p>
+		
+		<div class="partecipazione">
+			<span class="cosa">ECCV 2018: European Conference on Computer Vision</span>
+			<span class="quando">8 - 14 September, 2018</span>
+			<span class="dove">Munich, Germany</span>
+		</div>
+		
+		<div class="partecipazione">
+			<span class="cosa">CEFRL (ECCV 2018): 2nd International Workshop on Compact and Efficient Feature Representation and Learning</span>
+			<span class="quando">8 - 14 September, 2018</span>
+			<span class="dove">Munich, Germany</span>
+		</div>
+		
+		<div class="partecipazione">
+			<span class="cosa">WOCM (ECCV 2018): International Workshop on Objectionable Content and Misinformation</span>
+			<span class="quando">8 - 14 September, 2018</span>
+			<span class="dove">Munich, Germany</span>
+		</div>
+		
+		<div class="partecipazione">
+			<span class="cosa">IIR 2018: 9th Italian Information Retrieval Workshop</span>
+			<span class="quando">28 - 30 May, 2018</span>
+			<span class="dove">Rome, Italy</span>
+		</div>
+
+		<div class="partecipazione">
+			<span class="cosa">ICCV 2017: International Conference on Computer Vision</span>
+			<span class="quando">22 - 29 October, 2017</span>
+			<span class="dove">Venice, Italy</span>
+		</div>
+
+		<div class="partecipazione">
+			<span class="cosa">VSM (ICCV 2017): 5th Workshop on Web-scale Vision and Social Media</span>
+			<span class="quando">22 - 29 October, 2017</span>
+			<span class="dove">Venice, Italy</span>
+		</div>
+		
+		<div class="partecipazione">
+			<span class="cosa">CEFRL (ICCV 2017): International Workshop on Compact and Efficient Feature Representation and Learning</span>
+			<span class="quando">22 - 29 October, 2017</span>
+			<span class="dove">Venice, Italy</span>
+		</div>
+
+		<div class="partecipazione">
+			<span class="cosa">CBMI 2017: 15th International Workshop on Content-Based Multimedia Indexing</span>
+			<span class="quando">19 - 21 June, 2017</span>
+			<span class="dove">Firenze, Italy</span>
+		</div>
+
+		<div class="partecipazione">
+			<span class="cosa">ICMR 2017: ACM International Conference on Multimedia Retrieval</span>
+			<span class="quando">6 - 9 June, 2017</span>
+			<span class="dove">Bucharest, Romania</span>
+		</div>
+
+		<div class="partecipazione">
+			<span class="cosa">SIGIR 2016: 9th International ACM SIGIR Conference on Research and Development in Information Retrieval</span>
+			<span class="quando">17-21 Luglio 2016</span>
+			<span class="dove">Pisa, Italy</span>
+		</div>
+        
+        <div class="partecipazione">
+			<span class="cosa">Neu-IR (SIGIR 2016): The SIGIR 2016 Workshop on Neural Information Retrieval</span>
+			<span class="quando">17-21 Luglio 2016</span>
+			<span class="dove">Pisa, Italy</span>
+		</div>
+
+		<div class="partecipazione">
+			<span class="cosa">ISCC 2016: The Twenty-First IEEE Symposium on Computers and Communications</span>
+			<span class="quando">27 - 30 June, 2016</span>
+			<span class="dove">Messina, Italy</span>
+		</div>
+
+		<div class="partecipazione">
+			<span class="cosa">SISAP 2015: 8th International Conference on Similarity Search and Applications</span>
+			<span class="quando">12-14 Ottobre 2015</span>
+			<span class="dove">Glagow, Scotland, UK</span>
+		</div>
+	</section>
+	<section id="revisione">
+		<h2>Attività di revisione</h2>
+		<hr>
+		<p>Ha svolto attività di revisione per le seguenti riviste scientifiche e convegli internazionali:</p>
+		<h3>Riviste Internazionali</h3>
+		<ul class="riviste">
+			<li>Signal Processing: Image Communication (Elsevier, ISSN: 0923-5965)</li>
+			<li>Information Systems (Elsevier, ISSN: 0306-4379)</li>
+		</ul>
+		<h3>Atti di convegno</h3>
+		<ul class="conferenze">
+			<li>IEEE Symposium on Computers and Communications (ISCC 2016)</li>
+		</ul>
+	</section>
+	<section id="seminari">
+		<h2>Attività Seminariale</h2>
+        <hr>
+        <p>Ha tenuto i seguenti seminari:</p>
+		<div class="seminario">
+			<span class="cosa">Real-Time Action Detection and Prediction in Human Motion Streams (Ciclo seminari giovani in un'ora)</span>
+			<span class="quando">21 Novembre 2018</span>
+			<span class="dove">ISTI - CNR - Pisa</span>
+			<span class="descrizione">Presentazione attività di ricerca per gli award GYM e YRA - <a href="http://www.isti.cnr.it/news/seminars.php?display=all">http://www.isti.cnr.it/news/seminars.php?display=all</a></span>
+		</div>
+		
+		<div class="seminario">
+			<span class="cosa">Un approccio mediante la Sentiment Analysis alla qualità urbana</span>
+			<span class="quando">8 Febbraio 2018</span>
+			<span class="dove">Cisternino di Città - Livorno</span>
+			<span class="descrizione">Seminario "Patrimonio e percezione nelle morfologie urbane" a cura di Associazione CULT - Livorno - <a href="http://www.isti.cnr.it/news/seminars.php?display=all">https://cultlivorno.wordpress.com/2018/02/08/cult-e-il-progetto-mapp_livorno/</a></span>
+		</div>
+	</section>
+	<section id="dichiarazione-sostitutiva">
+		<p>Il sottoscritto Carrara Fabio, nato a Empoli (FI) il 23 luglio 1990 e residente in via Jacopo Carrucci 48, 50053, Empoli (FI), tel. 3332479082, Visto il D.P.R. 28 dicembre 2000, n. 445 concernente “T.U. delle disposizioni legislative e regolamentari in materia di documentazione amministrativa” e successive modifiche ed integrazioni; Vista la Legge 12 novembre 2011, n. 183 ed in particolare l’art. 15 concernente le nuove disposizioni in materia di certificati e dichiarazioni sostitutive (*); Consapevole che, ai sensi dell’art.76 del DPR 445/2000, le dichiarazioni mendaci, la falsità negli atti e l’uso di atti falsi sono punite ai sensi del Codice penale e delle leggi speciali vigenti in materia, dichiara, sotto la propria responsabilità, che quanto riportato nel presente curriculum vitae et studiorum è veritiero e corrisponde a realtà.</p>
+		<p>(*) ai sensi dell’art. 15, comma 1 della Legge 12/11/2011, n. 183 le certificazioni rilasciate dalla P.A. in ordine a stati, qualità personali e fatti sono valide e utilizzabili solo nei rapporti tra privati; nei rapporti con gli Organi della Pubblica Amministrazione e i gestori di pubblici servizi, i certificati sono sempre sostituiti dalle dichiarazioni sostitutive di certificazione o dall’atto di notorietà di cui agli artt. 46 e 47 del DPR 445/2000.</p>
+		<p>Autorizzo il trattamento dei miei dati personali ai sensi del D.lgs. 196 del 30 giugno 2003.</p>
+		<p>
+			<br>
+			<time>Pisa, <script> document.write(new Date().toLocaleDateString("it-IT")); </script></time>
+			<span class="firma">In fede, Fabio Carrara<br><img src="firma.png"></span>
+		</p>
+	</section>
+	<footer><p>Aggiornato al 5 Dicembre 2018 - Fabio CARRARA</p></footer>
 </body>
 </html>

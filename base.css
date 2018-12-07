@@ -1,19 +1,29 @@
-
 /* SHOW/HIDE LIST */
 
+@font-face {
+    font-family: Socicon;
+    src: url(fonts/Socicon.woff);
+}
+
+.panel-heading,
 #dati-personali h2,
 #dati-personali h3,
 #dati-personali .nato-a,
-#educazione .titolo-di-studio .data {
-    display: none;
-}
-
+#dati-bibliometrici h2,
+#educazione .titolo-di-studio .data,
+footer { display: none; }
 
 /* HEADER */
 
 h2 {
-    margin-left: 180px;
-    margin-top: 50px;
+    padding-left: 183px;
+    margin-top: 40px;
+	margin-bottom: 0px;
+	padding-top: 30px;
+	padding-bottom: 10px;
+	background-color: #f9f9f9;
+	border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
 
 header small {
@@ -21,79 +31,71 @@ header small {
 	margin-bottom: 20px;
 }
 
-#dati-personali div {
-	line-height: 1.75em;
-}
-
-#dati-personali .nato-il:before {
-    font-family: 'Glyphicons Halflings';
-    content: "\e008"; /* USER */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-}
+#dati-personali { margin-bottom: 20px; }
+#dati-personali div { line-height: 1.75em; }
 
 #foto {
 	float: left;
-	width: 161px;
+	width: 166px;
     border-radius: 5px;
 	margin-right: 18px;
 	box-sizing: border-box;
 }
 
-#residenza .via:before {
+#dati-personali .nato-il:before,
+#residenza .via:before,
+#contatti .telefono:before,
+#contatti .email:before,
+#misc .patente:before,
+#misc .github:before {
     font-family: 'Glyphicons Halflings';
-    content: "\e021"; /* HOME */
     vertical-align: bottom;
 	font-weight: normal;
-    padding: 5px;
+    padding: 5px 5px 5px 0px;
+	color: #333;
 }
 
-#contatti .telefono:after {
+#dati-personali .nato-il:before { content: "\e008"; /* USER */ }
+#residenza .via:before { content: "\e021"; /* HOME */ }
+#contatti .telefono:before { content: "\e182"; /* PHONE or 145 SMARTPHONE*/ }
+#contatti .email:before { content: "\2709"; /* MAIL */ }
+#misc .patente:before { content: "\e024"; /* ROAD */ }
+#misc .github:before {
+    font-family: "Socicon";
+    content: "\e032"; /* GITHUB */
+}
+
+#residenza .via:after { content: " \2013 "; /* &ndash; */ }
+
+#contatti .telefono:after,
+#misc .patente:after {
     content: "\A";
     white-space: pre;
 }
 
-#contatti .telefono:before {
-    font-family: 'Glyphicons Halflings';
-    content: "\e182"; /* PHONE or 145 SMARTPHONE*/
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-    color: #333;
-}
+#contatti .email:before:hover, #contatti .telefono:before:hover { text-decoration: none; }
 
-#contatti .email:before {
-    font-family: 'Glyphicons Halflings';
-    content: "\2709"; /* MAIL */
-    vertical-align: bottom;
-    padding: 5px;
-    color: #333;
-}
-
-#misc:before {
-    font-family: 'Glyphicons Halflings';
-    content: "\e024"; /* ROAD */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-    color: #333;
-}
-
-#contatti .email:before:hover, #contatti .telefono:before:hover {
-    text-decoration: none;
-}
+#dati-bibliometrici table { width: auto !important; min-width: 50%; }
+#dati-bibliometrici table tr:first-child * { padding-right: 35px;}
 
 /* FINE HEADER */
 
 #educazione .titolo-di-studio,
 #professione .esperienza-lavorativa,
 #lingue .certificazione,
+#premi .premio,
 #informatica .competenza,
-#presentazioni .talk,
+#congressi .talk, #congressi .partecipazione, #congressi .volontario,
+#seminari .seminario,
 #pubblicazioni .pub,
-hr {
-	clear: both;
+hr { clear: both; }
+
+a[href].label.label-primary:before,
+.website a:before {
+	font-family: 'Glyphicons Halflings';
+	content: "\e144";
+	padding-right: 4px;
+	font-size: 75%;
 }
 
 hr {
@@ -101,116 +103,108 @@ hr {
     margin-bottom: 0;
 }
 
+h2 + hr { margin-bottom: 25px; }
+
+p { margin-left: 184px; }
+
 #educazione .titolo-di-studio,
 #professione .esperienza-lavorativa,
 #lingue .certificazione,
+#premi .premio,
 #informatica .competenza {
     overflow: auto;
-    margin-bottom: 2px;
+    margin-bottom: 25px;
 }
 
 #educazione .titolo-di-studio .titolo,
 #professione .esperienza-lavorativa .cosa,
 #lingue .certificazione .cosa,
+#premi .premio .cosa,
 #informatica .competenza .cosa,
-#presentazioni .talk .cosa,
+#congressi .cosa,
+#seminari .seminario .cosa,
 #pubblicazioni .pub .titolo {
     font-size: 1.1em;
     font-weight: bold;
     display: inline-block;
-    margin: 10px 5px 4px 8px;
+    margin: 0px;
+    padding-bottom: 5px;
 }
 
-#informatica .competenza .cosa {
-	display: block;
+#informatica .competenza .cosa { display: block; }
+
+#educazione .repo { font-size: 100%; }
+
+#pubblicazioni .pub,
+#congressi .talk,
+#congressi .volontario,
+#congressi .partecipazione,
+#seminari .seminario {
+	margin-bottom: 15px;
 }
 
-#educazione .titolo-di-studio .titolo:before {
+#pubblicazioni .pub .titolo { margin-left: 0px; }
+
+#educazione .titolo-di-studio .titolo:before,
+#professione .esperienza-lavorativa .cosa:before,
+#premi .premio .cosa:before,
+#lingue .certificazione .cosa:before,
+#informatica .competenza .cosa:before,
+#congressi .cosa:before,
+#seminari .seminario .cosa:before,
+#pubblicazioni .pub .titolo:before,
+#software .repo .titolo:before,
+#software .repo .descrizione:before,
+#software .dataset .descrizione:before {
     font-family: 'Glyphicons Halflings';
-    /* content: "\e080"; /* > */
-    content: "\e233"; /* EDU */
     vertical-align: bottom;
 	font-weight: normal;
-    padding: 5px;
+    padding-right: 5px;
 }
 
-#pubblicazioni .pub .titolo {
-    margin-left: 0px;
+#educazione .titolo-di-studio .titolo:before { content: "\e233"; /* EDU */ /* 080: > */ }
+#pubblicazioni .pub .titolo:before { content:"\e022"; /* FILE */ /* 043 BOOK */ }
+#professione .esperienza-lavorativa .cosa:before { content: "\e139"; /* WORK */ }
+#lingue .certificazione .cosa:before { content: "\e124"; /* CERTIFICATE */ /* 135 GLOBE */ }
+#informatica .competenza .cosa:before { content: "\e172"; /* FLOPPY */ }
+#congressi .volontario .cosa:before { content: "\e129"; /* HAND UP */ }
+#seminari .seminario .cosa:before,
+#congressi .talk .cosa:before { content: "\e218"; /* BLACKBOARD */ }
+#congressi .partecipazione .cosa:before { content: "\e135"; /* GLOBE */ }
+#premi .premio .cosa:before { content: "\e006"; /* STAR */ }
+
+#software .repo .descrizione:before {
+    /* font-family: "Socicon";
+    content: "\e032"; /* Socicon GITHUB */
+    content: "\e254"; /* PROMPT */
+    padding-right: 10px;
 }
 
-#pubblicazioni .pub .titolo:before {
-    font-family: 'Glyphicons Halflings';
-    /* content: "\e043"; /* BOOK */
-    content:"\e022"; /* FILE */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
+#software .dataset .descrizione:before {
+	content: "\e060"; /* 60 IMAGE*/
 }
-
-#professione .esperienza-lavorativa .cosa:before {
-	font-family: 'Glyphicons Halflings';
-    /* content: "\e080"; /* > */
-    content: "\e139"; /* WORK */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-}
-
-#lingue .certificazione .cosa:before {
-	font-family: 'Glyphicons Halflings';
-    /* content: "\e080"; /* > */
-    content: "\e135"; /* GLOBE */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-}
-
-#informatica .competenza .cosa:before {
-	font-family: 'Glyphicons Halflings';
-    /* content: "\e080"; /* > */
-    content: "\e172"; /* FLOPPY */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-}
-
-#presentazioni .talk .cosa:before {
-	font-family: 'Glyphicons Halflings';
-    /* content: "\e080"; /* > */
-    content: "\e218"; /* BLACKBOARD */
-    vertical-align: bottom;
-	font-weight: normal;
-    padding: 5px;
-}
-
-/* #pubblicazioni .pub:before {
-	font-family: 'Glyphicons Halflings';
-*/
-    /* content: "\e080"; /* > */
-/*    content: "\e022"; /* FILE */
-/*    vertical-align: bottom;
-    padding: 5px;
-	font-style: normal;
-} */
-
 
 #educazione .titolo-di-studio .dove,
 #professione .esperienza-lavorativa .dove,
-#presentazioni .talk .dove {
+#premi .premio .dove,
+#seminari .seminario .dove,
+#congressi .talk .dove, #congressi .volontario .dove {
+	box-sizing: border-box;
+	width: 184px;
+	padding-right: 18px;
+	
 	float: left;
-	width: 170px;
     font-size: 0.9em;
 	text-align: right;
 	clear: left;
-	box-sizing: border-box;
-	padding-right: 5px;
-	padding-top: 2px;
 }
 
 #educazione .titolo-di-studio .dove,
 #professione .esperienza-lavorativa .dove,
 #lingue .certificazione .dove,
-#presentazioni .talk .dove {
+#premi .premio .dove,
+#seminari .seminario .dove,
+#congressi .dove {
     font-style: italic;
     color: #555;
 }
@@ -218,7 +212,9 @@ hr {
 #educazione .titolo-di-studio .dove:after,
 #professione .esperienza-lavorativa .dove:after,
 #lingue .certificazione .dove:after,
-#presentazioni .talk .dove:after {
+#premi .premio .dove:after,
+#seminari .seminario .dove:after, 
+#congressi .dove:after {
     content: "\A";
     white-space: pre;
 }
@@ -226,58 +222,72 @@ hr {
 #educazione .titolo-di-studio .quando,
 #professione .esperienza-lavorativa .quando,
 #lingue .certificazione .quando,
-#presentazioni .talk .quando {
+#premi .premio .quando, 
+#seminari .seminario .quando,
+#congressi .quando {
 	box-sizing: border-box;
-	padding-right: 5px;
+	width: 184px;
+	padding-right: 18px;
+    
+    margin-bottom: 4px;
     float: left;
-	width: 170px;
-    font-size: 1em;
+    
 	text-align: right;
     font-weight: bold;
 	font-style: italic;
-	padding-top: 8px;
 }
 
-#presentazioni .talk .award {
+.attivita-responsabilita ul li { padding: 5px 0; }
+
+#congressi .talk .award {
     font-size: 75%;
-  	margin-left: 182px;
+  	margin-left: 184px;
 }
 
 #educazione .titolo-di-studio .descrizione,
 #professione .esperienza-lavorativa .descrizione,
-#presentazioni .talk .descrizione,
-#presentazioni .talk .autori,
-#lingue .certificazione .ref {
-    font-size: 85%;
-  	margin-left: 182px;
+#congressi .descrizione,
+#congressi .talk .autori, #congressi .partecipazione .dove,
+#seminari .seminario .descrizione,
+#lingue .certificazione .ref,
+#premi .premio span.ref {
+    font-size: 95%;
+  	margin-left: 184px;
 	display: block;
 }
 
-
-#informatica .competenza .descrizione {
-	margin-left: 32px;
-	display: inline-block;
+#pubblicazioni .pub .citazioni {
+    font-size: 95%;
+  	margin-left: 184px;
 }
+
+#informatica .competenza .descrizione { display: inline-block; }
 
 #educazione .titolo-di-studio .corsi,
 #educazione .titolo-di-studio .tesi,
 #educazione .titolo-di-studio .esami,
+#educazione .titolo-di-studio .dettagli,
 #professione .esperienza-lavorativa .dettagli {
-    font-size: 85%;
-    padding-top: 5px;
+    font-size: 95%;
+    /* padding-top: 5px; */
     box-sizing: border-box;
 	clear: both;
 }
 
+#educazione .titolo-di-studio .corsi table {
+    margin-bottom: 10px;
+}
+
 #educazione .titolo-di-studio table .titolo-corso {
-    padding-left: 25px;
+    padding-left: 5px;
+    font-style: italic;
 }
 
 #educazione .titolo-di-studio table caption {
     padding-left: 4px;
 }
 
-.tesi table th {
+.tesi th {
     text-align: right;
     padding-left: 15px !important;
 }
@@ -286,8 +296,8 @@ hr {
 	font-family: monospace;
 }
 
-.panel-heading {
-	display: none;
+.panel {
+	margin-bottom: 0px;
 }
 
 .panel,
@@ -304,28 +314,44 @@ table > thead > tr > th {
     text-align: justify;
 }
 
+#educazione .titolo-di-studio .corsi tbody tr td:first-child{
+	font-style: italic;
+	text-align: right;
+}
+
+#lingue .lingue {
+	margin-bottom: 20px;
+}
+
+#dati-bibliometrici table tr > *:first-child,
+#lingue .lingue table tr > *:first-child,
 #educazione .titolo-di-studio table tr > *:first-child,
 #professione .esperienza-lavorativa table tr > *:first-child
 {
-	text-align: right;
-	width: 176px;
 	box-sizing: border-box;
-	padding-right: 12px;
+	width: 184px;
+	padding-right: 18px;
+	text-align: right;
 }
 
-#informatica .linguaggi {
+#dati-bibliometrici table tr *:nth-child(2),
+#lingue .lingue table tr *:nth-child(2),
+#educazione .titolo-di-studio table tr *:nth-child(2),
+#professione .esperienza-lavorativa table tr *:nth-child(2),
+#lingue .lingue table tr *:nth-child(2) {
 	padding-left: 0;
 }
 
-#informatica .competenza {
-	margin-top: 5px;
+#software .linguaggi,
+#informatica .linguaggi {
+	padding-left: 0;
 }
 
 #informatica .competenza .cosa,
 #informatica .competenza .descrizione,
 #informatica .competenza .linguaggi,
 #informatica .competenza .repo {
-    margin-left: 180px;
+    margin-left: 184px;
 }
 
 #informatica .competenza .repo {
@@ -334,86 +360,133 @@ table > thead > tr > th {
 
 #informatica .competenza cite {
     box-sizing: border-box;
-	padding-right: 5px;
+	width: 184px;
+	padding-right: 18px;
+	
     float: left;
-	width: 170px;
-    font-size: 1em;
+    margin-top: -2px;
+    
 	text-align: right;
     font-weight: bold;
-    padding-top: 8px;
 }
 
-#presentazioni .talk .award,
-#presentazioni .talk .autori {
-	font-size: 85%;
-}
-
-#presentazioni .talk .autori {
+#congressi .talk .autori {
 	font-style: italic;
 }
 
-/* #presentazioni .talk .autori:before {
-	content: ' - '
-} */
-
-#revisione ul,
-#revisione h3 {
-    margin-left: 180px;
+#revisione ul {
+    margin-left: 184px;
 }
 
 #revisione h3 {
-    font-size: 1.2em;
+    box-sizing: border-box;
+	width: 184px;
+    padding-right: 18px;
+    
+    float: left;
+    font-size: 1.1em;
+	text-align: right;
+    font-weight: bold;
+}
+
+#lingue h3,
+#congressi h3,
+#informatica h3,
+#pubblicazioni h3 {
+    /* padding: 20px 5px 0 0; */
+    margin-top: 40px;
+    margin-left: 184px;
+	margin-bottom: 12px;
+    font-size: 1.4em;
+    font-weight: bold;
+    border-bottom: 1px solid gainsboro;
+}
+
+#revisione h3 {
+    width: 184px;
+    padding-right: 18px;
+    font-size: 1em;
+    margin-top: 0;
+    line-height: 1.5em;
+}
+
+#revisione ul {
+    list-style: none;
+    padding-left: 0;
 }
 
 #pubblicazioni .pub .year {
     box-sizing: border-box;
-	padding-right: 5px;
+	width: 184px;
+	padding-right: 18px;
+    
     float: left;
-	width: 170px;
-    font-size: 1em;
 	text-align: right;
     font-weight: bold;
-    padding-top: 8px;
 }
 
 #pubblicazioni .pub .year time {
    margin-right: 5px;
 }
 
-#pubblicazioni .pub .autori,
-#pubblicazioni .pub .titolo {
+#pubblicazioni .pub .autori {
     display: block;
 }
 
-#pubblicazioni .pub .titolo {
-    padding-top: 7px;
-    font-size: 1.2em;
-    margin-top: 0;
-    margin-bottom: 0;
+#congressi .cosa,
+#pubblicazioni .pub .titolo,
+#congressi .partecipazione .cosa,
+#seminari .seminario .cosa {
+    padding-bottom: 0;
 }
 
-#pubblicazioni .pub .titolo,
 #pubblicazioni .pub .autori,
 #pubblicazioni .pub .publication,
 #pubblicazioni .pub .award,
-#pubblicazioni .pub .website {
-    margin-left: 180px;
+#pubblicazioni .pub .website,
+#pubblicazioni .pub .where,
+#software .repo .descrizione,
+#software .dataset .descrizione,
+#software .repo .url,
+#software .dataset .url { margin-left: 184px; }
+
+#pubblicazioni .pub.thesis .website {
+    margin-left: 0px;
 }
 
 #pubblicazioni .pub .autori,
-#pubblicazioni .pub .publication {
-    font-size: 0.85em;
+#pubblicazioni .pub .publication,
+#pubblicazioni .pub .where,
+#pubblicazioni .pub span,
+#pubblicazioni .pub cite {
+    font-size: 95%;
 }
 
 #pubblicazioni .pub .number:before {
-	content: 'n.'
+	content: 'n. '
 }
 
 #pubblicazioni .pub .pages:before {
 	content: 'pp. '
 }
 
-#pubblicazioni .pub .autori:after,
+#pubblicazioni .pub.conference .pages:before {
+	content: '\2013  pp. ' /* &ndash; */
+}
+
+#pubblicazioni .pub .ref:before {
+    content: '\2013  ' /* &ndash; */
+}
+
+#pubblicazioni .pub .project:before {
+    content: '\2013  Progetto "'
+}
+
+#pubblicazioni .pub .project:after {
+    content: '"'
+}
+
+/* #pubblicazioni .pub .autori:after, */
 #pubblicazioni .pub .number:after,
 #pubblicazioni .pub .pages:after {
 	content: ', '
@@ -422,8 +495,25 @@ table > thead > tr > th {
 #pubblicazioni .pub .website {
     font-size: 0.8em;
 }
+
+#pubblicazioni .pub .where {
+    display: inline-block;
+}
+
+#pubblicazioni .pub.conference .publication:after,
+#pubblicazioni .pub .publisher:after,
+#pubblicazioni .pub .citazioni:after,
+#pubblicazioni .pub .website:after {
+    white-space: pre;
+    content: "\A";
+}
+
 #pubblicazioni .pub .website a {
     color: white;
+}
+
+#pubblicazioni .pub .citazioni:before {
+    content: "Citazioni: ";
 }
 
 .voto {
@@ -436,14 +526,73 @@ cite.ref {
 	font-family: monospace;
 }
 
-ol {
+#pubblicazioni,
+#software {
 	counter-reset: list;
 	list-style-type: none;
 	padding-left: 0;
 }
+
 ol > li .year:after {
+    vertical-align: middle;
 	font-weight: bold;
 	font-family: monospace;
 	content: "[" counter(list) "]";
 	counter-increment: list;
 }
+
+#lingue .lingua-madre:before {
+    box-sizing: border-box;
+    width: 184px;
+    padding-right: 18px;
+    display: inline-block;
+    text-align: right;
+    font-weight: bold;
+    content: "Lingua madre ";
+}
+
+#lingue .lingue table tr:nth-child(2) td {
+    font-style: italic;
+    
+}
+
+#lingue .lingue {
+    margin-top: 20px;
+}
+
+#lingue .lingue table tr * {
+	text-align: center;
+	vertical-align: inherit;
+}
+
+#lingue .lingue table tr * + * {
+	border: 1px solid black !important;
+}
+
+#software .repo,
+#software .dataset {
+    text-align: justify;
+	margin-bottom: 25px;
+}
+
+#software .repo > *,
+#software .dataset > *{ display: block; }
+
+#software .repo .url,
+#software .dataset .url,
+#software .repo .linguaggi { display: inline; }
+
+#software .dataset .titolo,
+#software .repo .titolo {
+	box-sizing: border-box;
+    width: 184px;
+    padding-right: 18px;
+    
+    font-weight: bold;
+    display: inline-block;
+    float: left;
+    text-align: right;
+}
+
+footer { margin-top: 50px; }
+
