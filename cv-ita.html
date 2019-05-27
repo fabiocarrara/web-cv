@@ -39,21 +39,40 @@
 			// REFS
 			$('cite.ref').each(function(i, el) {
 				var $el = $(el);
-				var refs = $el.data('ref')
+				var refs = $el.data('ref');
 				if (!refs) return;
 				refs = refs.split(' ');
-				var text = '[';
+
+                var refInfo = [];
+                
 				for (j in refs) {
 					var refname = refs[j];
 					var $li = $('#' + refname);
 					console.log($li);
 					var ind = $li.closest("ol").find("li").index($li[0]) + 1;
 					console.log(refs[j] + ': ' + ind);
-					text += '<a href="#' + refname + '">' + ind + '</a>,'
+                    refInfo.push({ref: refname, num: ind, keep: true});
 				}
-
-				text = text.substr(0, text.length - 1) + ']';
-				$el.html(text);
+                
+                refInfo.sort((a, b) => a.num - b.num);
+                for(var j = 1; j < refInfo.length - 1; j++) {
+                    var p = refInfo[j-1];
+                    var x = refInfo[j];
+                    var n = refInfo[j+1];
+                    x.keep = (x.num - 1 != p.num) || (x.num + 1 != n.num);
+                }
+                
+                var refHtml = refInfo.map(function(x) { return (x.keep) ? '<a href="#' + x.ref + '">' + x.num + '</a>' : '-' });
+                refHtml = [...new Set(refHtml)]; // remove duplicates
+                
+                var text = '';
+                for (var j = 0; j < refHtml.length; j++) {
+                    var x = refHtml[j];
+                    text += x;
+                    if (x != '-' && (j != refHtml.length - 1) && (refHtml[j+1] != '-'))
+                        text += ', ';
+                }
+				$el.html('[' + text + ']');
 			});
 
 		});
