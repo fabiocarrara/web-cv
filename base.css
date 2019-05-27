@@ -11,6 +11,9 @@
 #dati-personali .nato-a,
 #dati-bibliometrici h2,
 #educazione .titolo-di-studio .data,
+#dichiarazione-sostitutiva,
+#dati-bibliometrici,
+.pub .citazioni,
 footer { display: none; }
 
 /* HEADER */

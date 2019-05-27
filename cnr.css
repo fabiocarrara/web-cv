@@ -2,6 +2,12 @@
     display: none;
 }
 
+#dati-bibliometrici,
+#dichiarazione-sostitutiva,
+.pub .citazioni {
+    display: inherit;
+}
+
 #dichiarazione-sostitutiva {
 	margin-top: 60px;
 	font-size: 90%;
