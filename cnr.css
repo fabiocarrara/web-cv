@@ -9,6 +9,7 @@
 }
 
 #dichiarazione-sostitutiva {
+    display: none !important ;
 	margin-top: 60px;
 	font-size: 90%;
 	font-style: italic;

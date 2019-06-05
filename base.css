@@ -13,8 +13,8 @@
 #educazione .titolo-di-studio .data,
 #dichiarazione-sostitutiva,
 #dati-bibliometrici,
-.pub .citazioni,
-footer { display: none; }
+.pub .citazioni
+{ display: none; }
 
 /* HEADER */
 
@@ -518,6 +518,12 @@ table > thead > tr > th {
 #pubblicazioni .pub .citazioni:before {
     content: "Citazioni: ";
 }
+
+#pubblicazioni .pub .citazioni .gs:after { content: " (Google Scholar)"; }
+#pubblicazioni .pub .citazioni .scopus:after { content: " (Scopus)"; }
+#pubblicazioni .pub .citazioni .wos:after { content: " (WoS)"; }
+#pubblicazioni .pub .citazioni .scopus:before,
+#pubblicazioni .pub .citazioni .wos:before { content: ' – '; }
 
 .voto {
 	margin-right: 5px;

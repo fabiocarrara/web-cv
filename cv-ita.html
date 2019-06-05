@@ -11,8 +11,9 @@
 
 	<link href="print.css" rel="stylesheet" type="text/css" media="print">
 	<link href="base.css" rel="stylesheet" type="text/css">
-	<!-- <link href="cnr.css" rel="stylesheet" type="text/css"> -->
+	<link href="cnr.css" rel="stylesheet" type="text/css">
 	<!-- <link href="short.css" rel="stylesheet" type="text/css"> -->
+    <script type="application/javascript" src="cites.js"></script>
 	<script>
 		$(function() {
 			$("#informatica .linguaggi li, #software .linguaggi li").addClass("label").addClass("label-default");
@@ -74,6 +75,25 @@
                 }
 				$el.html('[' + text + ']');
 			});
+            
+            // CITES
+            for (cite in cites) { // cites comes from cites.js
+                $pub = $('[id$=' + cite + ']');
+                $cit = $pub.find('.citazioni').eq(0);
+                if ($cit.length == 0) {
+                    $cit = $('<span class="citazioni"></span>');
+                    $pub.append($cit);
+                }
+                
+                $gs = $cit.find('.gs').eq(0);
+                if ($gs.length == 0) {
+                    $gs = $('<span class="gs"></span>');
+                    $cit.prepend($gs);
+                }
+                
+                $gs.text(cites[cite]);
+            }
+            
 
 		});
 	</script>
@@ -119,10 +139,10 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td>Citazioni</td><td>88</td><td>44</td><td>20</td>
+					<td>Citazioni</td><td>120</td><td>70</td><td>57</td>
 				</tr>
 				<tr>
-					<td>H-index</td><td>4</td><td>3</td><td>2</td>
+					<td>H-index</td><td>5</td><td>4</td><td>3</td>
 				</tr>
 			</tbody>
 		</table>
@@ -1114,7 +1134,7 @@ Symposium on Computers and Communications (ISCC).<br>Comunicato su: <a href="htt
             <span class="number">78(3)</span>
 			<span class="pages">2815-2835</span>
 			<span class="publisher">Springer Verlag</span>
-			<span class="citazioni">1 (Google Scholar)</span>			
+			<span class="citazioni"><span class="gs">1</span></span>			
 		</li>
         <li class="pub journal">
 			<span class="year"><time>2019</time></span>
@@ -1138,7 +1158,7 @@ Symposium on Computers and Communications (ISCC).<br>Comunicato su: <a href="htt
 			<span class="number">21(2)</span>
 			<span class="pages">208-229</span>
 			<span class="publisher">Springer Netherlands</span>
-			<span class="citazioni">10 (Google Scholar) &ndash; 1 (Scopus)</span>
+			<span class="citazioni"><span class="gs">10</span><span class="scopus">1</span></span>
 		</li>
 		<li class="pub journal">
 			<span class="year"><time>2017</time></span>
@@ -1150,7 +1170,7 @@ Symposium on Computers and Communications (ISCC).<br>Comunicato su: <a href="htt
 			<span class="number">72</span>
 			<span class="pages">327-334</span>
 			<span class="publisher">Pergamon</span>
-			<span class="citazioni">41 (Google Scholar) &ndash; 24 (Scopus) &ndash; 14 (WoS)</span>
+			<span class="citazioni"><span class="gs">41</span><span class="scopus">24</span><span class="wos">14</span></span>
 			<span class="website"><a href="http://cnrpark.it">http://cnrpark.it</a></span>
 		</li>
 
@@ -1235,7 +1255,7 @@ Symposium on Computers and Communications (ISCC).<br>Comunicato su: <a href="htt
 			<span class="where">Venice, Italy, October 2017</span>
 			<span class="pages">308-317</span>
 			<span class="publisher">IEEE</span>
-			<span class="citazioni">6 (Google Scholar) &ndash; 4 (Scopus) &ndash; 1 (WoS)</span>
+			<span class="citazioni"><span class="gs">6</span><span class="scopus">4</span><span class="wos">1</span></span>
 			<span class="website"><a href="http://t4sa.it">http://t4sa.it</a></span>
 		</li>
 		<li class="pub conference">
@@ -1248,7 +1268,7 @@ Symposium on Computers and Communications (ISCC).<br>Comunicato su: <a href="htt
 			<span class="where">Florence, Italy, June 2017</span>
 			<span class="pages">38</span>
 			<span class="publisher">ACM</span>
-			<span class="citazioni">3 (Google Scholar)</span>
+			<span class="citazioni"><span class="gs">3</span></span>
 			<span class="website"><a href="http://deepfeatures.org/adversarials/">http://deepfeatures.org/adversarials/</a></span>
 		</li>
 		<li class="pub conference">
@@ -1261,7 +1281,7 @@ Symposium on Computers and Communications (ISCC).<br>Comunicato su: <a href="htt
 			<span class="where">Bucharest, Romania, June 2017</span>
 			<span class="pages">420-423</span>
 			<span class="publisher">ACM</span>
-			<span class="citazioni">1 (Google Scholar) &ndash; 1 (Scopus)</span>
+			<span class="citazioni"><span class="gs">1</span><span class="scopus">1</span></span>
 		</li>
 		<li class="pub conference">
 			<span class="year"><time>2016</time></span>
@@ -1273,7 +1293,7 @@ Symposium on Computers and Communications (ISCC).<br>Comunicato su: <a href="htt
 			<span class="where">Messina, Italy, June 2016</span>
 			<span class="pages">1212-1217</span>
 			<span class="publisher">IEEE</span>
-			<span class="citazioni">22 (Google Scholar) &ndash; 13 (Scopus) &ndash; 5 (WoS)</span>
+			<span class="citazioni"><span class="gs">1</span><span class="scopus">13</span><span class="wos">5</span></span>
 			<span class="award">Best Italian Paper Award</span>
 		</li>
         <li class="pub conference">
@@ -1308,7 +1328,7 @@ Symposium on Computers and Communications (ISCC).<br>Comunicato su: <a href="htt
 			<span class="where">Seville, Spain, September 2015</span>
 			<span class="pages">175-180</span>
 			<span class="publisher">ACM</span>
-			<span class="citazioni"> 1 (Google Scholar) &ndash; 1 (Scopus)</span>
+			<span class="citazioni"><span class="gs">1</span><span class="scopus">1</span></span>
 		</li>
 
 		<h3>Relazioni Tecniche e Relazioni di Progetto</h3>
@@ -1594,6 +1614,6 @@ Symposium on Computers and Communications (ISCC).<br>Comunicato su: <a href="htt
 			<span class="firma">In fede, Fabio Carrara<br><img src="firma.png"></span>
 		</p>
 	</section>
-	<footer><p>Aggiornato al 5 Dicembre 2018 - Fabio CARRARA</p></footer>
+	<footer><p>Aggiornato al 29 Maggio 2019 - Fabio CARRARA</p></footer>
 </body>
 </html>

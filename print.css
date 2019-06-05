@@ -5,6 +5,8 @@
     }
 }
 
+h2 { margin-top: 35px !important; padding-top: 25px !important; font-size: 26px; }
+footer { display: none; }
 body { width: 210mm !important; /* A4 paper size */ }
 
 #congressi .cosa,
