@@ -2,18 +2,23 @@
     display: none;
 }
 
-#dati-bibliometrici,
+#dati-bibliometrici { display: none; }
+
 #dichiarazione-sostitutiva,
 .pub .citazioni {
     display: inherit;
 }
 
+#dichiarazioni-sostitutive-testa,
 #dichiarazione-sostitutiva {
-    display: none !important ;
-	margin-top: 60px;
 	font-size: 90%;
 	font-style: italic;
 }
+
+#dichiarazione-sostitutiva { margin-top: 60px; }
+#dichiarazioni-sostitutive-testa { margin-bottom: 60px; }
+
+#dichiarazioni-sostitutive-testa p,
 #dichiarazione-sostitutiva p {
 	margin-left: 0px;
 	text-align: justify;

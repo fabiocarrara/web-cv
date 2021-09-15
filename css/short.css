@@ -1,0 +1,32 @@
+#educazione .corsi,
+#educazione .tesi,
+#educazione .esami,
+#professione .dettagli, /*
+#presentazioni,
+*/ #revisione {
+    display: none;
+}
+
+.attivita-didattica .dove { height: 6ex; }
+
+.pub { text-align: justify; }
+.pub .year { height: 8.8ex; }
+.pub .titolo { font-size: 1em !important; }
+
+.pub .autori,
+.pub .publication,
+.pub .website,
+.pub .where { margin-left: 0px !important; }
+
+.pub .titolo,
+.pub .autori,
+.pub .where { display: inline !important; }
+
+.pub .website:after,
+.pub .publisher:after,
+.pub .publication:after { content: none !important; }
+
+@media print {
+    .pub .titolo { float: none !important; }
+    .pub .publication { display: inline !important; }
+}

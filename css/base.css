@@ -2,7 +2,7 @@
 
 @font-face {
     font-family: Socicon;
-    src: url(fonts/Socicon.woff);
+    src: url(../fonts/Socicon.woff);
 }
 
 .panel-heading,
@@ -12,6 +12,7 @@
 #dati-bibliometrici h2,
 #educazione .titolo-di-studio .data,
 #dichiarazione-sostitutiva,
+#dichiarazioni-sostitutive-testa,
 #dati-bibliometrici,
 .pub .citazioni
 { display: none; }
@@ -85,6 +86,7 @@ header small {
 
 #educazione .titolo-di-studio,
 #professione .esperienza-lavorativa,
+#didattica .attivita-didattica,
 #lingue .certificazione,
 #premi .premio,
 #informatica .competenza,
@@ -121,12 +123,14 @@ p { margin-left: 184px; }
 
 #educazione .titolo-di-studio .titolo,
 #professione .esperienza-lavorativa .cosa,
+#didattica .attivita-didattica .cosa,
 #lingue .certificazione .cosa,
 #premi .premio .cosa,
 #informatica .competenza .cosa,
 #congressi .cosa,
 #seminari .seminario .cosa,
 #pubblicazioni .pub .titolo {
+    text-align: justify;
     font-size: 1.1em;
     font-weight: bold;
     display: inline-block;
@@ -141,6 +145,7 @@ p { margin-left: 184px; }
 #pubblicazioni .pub,
 #congressi .talk,
 #congressi .volontario,
+#didattica .attivita-didattica,
 #congressi .partecipazione,
 #seminari .seminario {
 	margin-bottom: 15px;
@@ -150,6 +155,7 @@ p { margin-left: 184px; }
 
 #educazione .titolo-di-studio .titolo:before,
 #professione .esperienza-lavorativa .cosa:before,
+#didattica .attivita-didattica .cosa:before,
 #premi .premio .cosa:before,
 #lingue .certificazione .cosa:before,
 #informatica .competenza .cosa:before,
@@ -165,16 +171,18 @@ p { margin-left: 184px; }
     padding-right: 5px;
 }
 
-#educazione .titolo-di-studio .titolo:before { content: "\e233"; /* EDU */ /* 080: > */ }
-#pubblicazioni .pub .titolo:before { content:"\e022"; /* FILE */ /* 043 BOOK */ }
 #professione .esperienza-lavorativa .cosa:before { content: "\e139"; /* WORK */ }
+#educazione .titolo-di-studio .titolo:before { content: "\e233"; /* EDU */ /* 080: > */ }
+#didattica .attivita-didattica .cosa:before { content: "\e218"; /* BLACKBOARD */ }
 #lingue .certificazione .cosa:before { content: "\e124"; /* CERTIFICATE */ /* 135 GLOBE */ }
 #informatica .competenza .cosa:before { content: "\e172"; /* FLOPPY */ }
 #congressi .volontario .cosa:before { content: "\e129"; /* HAND UP */ }
+#pubblicazioni .pub .titolo:before { content:"\e022"; /* FILE */ /* 043 BOOK */ }
 #seminari .seminario .cosa:before,
 #congressi .talk .cosa:before { content: "\e218"; /* BLACKBOARD */ }
 #congressi .partecipazione .cosa:before { content: "\e135"; /* GLOBE */ }
 #premi .premio .cosa:before { content: "\e006"; /* STAR */ }
+#congressi .program-committee .cosa:before { content: "\e065"; /* EDIT */ }
 
 #software .repo .descrizione:before {
     /* font-family: "Socicon";
@@ -189,6 +197,7 @@ p { margin-left: 184px; }
 
 #educazione .titolo-di-studio .dove,
 #professione .esperienza-lavorativa .dove,
+#didattica .attivita-didattica .dove,
 #premi .premio .dove,
 #seminari .seminario .dove,
 #congressi .talk .dove, #congressi .volontario .dove {
@@ -224,6 +233,7 @@ p { margin-left: 184px; }
 
 #educazione .titolo-di-studio .quando,
 #professione .esperienza-lavorativa .quando,
+#didattica .attivita-didattica .quando,
 #lingue .certificazione .quando,
 #premi .premio .quando, 
 #seminari .seminario .quando,
@@ -350,9 +360,17 @@ table > thead > tr > th {
 	padding-left: 0;
 }
 
+#informatica #lang-summary {
+  margin-bottom: 30px;
+}
+
+#informatica #lang-summary .label {
+  font-size: 100%;
+}
+
 #informatica .competenza .cosa,
 #informatica .competenza .descrizione,
-#informatica .competenza .linguaggi,
+#informatica .linguaggi,
 #informatica .competenza .repo {
     margin-left: 184px;
 }
@@ -373,6 +391,11 @@ table > thead > tr > th {
     font-weight: bold;
 }
 
+#congressi .program-committee .cosa {
+    margin-left: 184px;
+    margin-top: 10px;
+}
+
 #congressi .talk .autori {
 	font-style: italic;
 }
@@ -390,6 +413,13 @@ table > thead > tr > th {
     font-size: 1.1em;
 	text-align: right;
     font-weight: bold;
+}
+
+#congressi h4 {
+    margin-top: 40px;
+    margin-left: 184px;
+	margin-bottom: 12px;
+    border-bottom: 1px solid gainsboro;
 }
 
 #lingue h3,
@@ -436,6 +466,7 @@ table > thead > tr > th {
     display: block;
 }
 
+#didattica .cosa,
 #congressi .cosa,
 #pubblicazioni .pub .titolo,
 #congressi .partecipazione .cosa,
