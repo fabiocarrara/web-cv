@@ -1,6 +1,3 @@
-[submodule "scholarly"]
-	path = scholarly
-	url = https://github.com/OrganicIrradiation/scholarly.git
 [submodule "scholar/scholarly"]
 	path = scholar/scholarly
 	url = https://github.com/OrganicIrradiation/scholarly.git

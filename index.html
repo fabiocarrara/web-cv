@@ -16,7 +16,6 @@
 	<link href="css/base.css" rel="stylesheet" type="text/css">
 	<!-- <link href="css/cnr.css" rel="stylesheet" type="text/css"> -->
 	<link href="css/short.css" rel="stylesheet" type="text/css">
-    <script type="application/javascript" src="cites.js"></script>
 	<script>
 		$(function() {
 			$("#informatica .linguaggi li, #software .linguaggi li").addClass("label").addClass("label-default");          
@@ -1284,20 +1283,20 @@ Symposium on Computers and Communications (ISCC).<br>Comunicato su: <a href="htt
     
     <script>
         
-        function linkReferences() {
+        function linkReferences(cites) {
         
             // CREATE REF NAMES
             $("#pubblicazioni .pub").each(function(i, el) {
-                    var $el = $(el);
-                    var autori = $el.find('.autori').text();
-                    var autore = autori.substr(0, autori.indexOf(',')).toLocaleLowerCase();
-                    var anno = $el.find('.year').text();
-                    var titolo = $el.find('.titolo').text();
-                    var parolaTitolo = titolo.substr(0, titolo.indexOf(' ')).toLocaleLowerCase();
-                    var id = (autore + anno + parolaTitolo).trim();
-                    if ($('#' + id).size() > 0) id = id + '-2'
+				var $el = $(el);
+				var autori = $el.find('.autori').text();
+				var autore = autori.substr(0, autori.indexOf(',')).toLocaleLowerCase();
+				var anno = $el.find('.year').text();
+				var titolo = $el.find('.titolo').text();
+				var parolaTitolo = titolo.substr(0, titolo.search(/[^a-zA-Z0-9_\-]/)).toLocaleLowerCase();
+				var id = (autore + anno + parolaTitolo).trim();
+				if ($('#' + id).size() > 0) id = id + '-2'
 
-                    $el.attr('id', id);
+				$el.attr('id', id);
             });
 
             // REFS
@@ -1340,7 +1339,7 @@ Symposium on Computers and Communications (ISCC).<br>Comunicato su: <a href="htt
             });
 
             // CITES
-            for (cite in cites) { // cites comes from cites.js
+            for (cite in cites) {
                 $pub = $('[id$=' + cite + ']');
                 $cit = $pub.find('.citazioni').eq(0);
                 if ($cit.length == 0) {
@@ -1363,25 +1362,16 @@ Symposium on Computers and Communications (ISCC).<br>Comunicato su: <a href="htt
         Vue.component('item', { props: ['item'], template: '#item-template' });
         
         $.getJSON('data/publications.json', function(data){
-            new Vue({
-                el: '#pubblicazioni',
-                data: data
-            });
-            linkReferences();
+            new Vue({ el: '#pubblicazioni', data: data});
+			$.getJSON('data/cites.json', linkReferences).fail(function(data){ console.error('Error linking references'); });
         }).fail(function(data){ console.error('Error loading publications'); });
         
         $.getJSON('data/conferences.json', function(data){
-            new Vue({
-                el: '#congressi',
-                data: data
-            });
+            new Vue({ el: '#congressi', data: data });
         }).fail(function(data){ console.error('Error loading conferences'); });
       
         $.getJSON('data/reviews.json', function(data){
-            new Vue({
-                el: '#revisione',
-                data: data
-            });
+            new Vue({ el: '#revisione', data: data });
         }).fail(function(data){ console.error('Error loading reviews'); });
     
         // ADD LABELS TO SOME URLS
